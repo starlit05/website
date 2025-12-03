@@ -1,0 +1,156 @@
+/*looking at my code all by yourself, handsome?*/
+/*just link back to me somewhere if you copy+paste something you find useful, okay?*/
+:root{
+  /*
+  colors from catppuccin macchiato https://catppuccin.com/palette/
+  */
+  --link-color:#c6a0f6; /*mauve*/
+  --font-color:#1e2030; /*mantle*/
+  --bg-color:#1e2030;
+
+  --red:#ed8796;
+  --maroon:#ee99a0;
+  --peach:#f5a97f;
+  --yellow:#eed49f;
+  --green:#a6da95;
+  --teal:#8bd5ca;
+  --sky:#91d7e3;
+  --sapphire:#7dc4e4;
+  --blue:#8aadf4;
+  --lavender:#b7bdf8;
+
+  --pink:#f5bde6;
+  --mauve:#c6a0f6;
+
+  --shale:#cad3f5;
+  --mantle:#1e2030;
+  /*--crust:#181926;*/
+}
+body {
+  background-color:#1e2030;
+  background-image: radial-gradient(circle at 1px 1px, var(--shale) 1px, transparent 0);
+  background-size: 25px 25px;
+  background-position:fixed;
+  color:var(--font-color);
+  font-family:'Apercu Mono', monospace;
+}
+
+* {scrollbar-color: var(--link-color) var(--bg-color);}
+
+::selection {background-color:var(--pink); color:var(--bg-color);}
+
+@font-face {font-family: 'Apercu Mono'; src: url(ApercuMonoProRegular.ttf);
+}
+@font-face {font-family: 'iosevka'; src: url(https://cdn.jsdelivr.net/fontsource/fonts/iosevka@latest/latin-400-normal.ttf);
+}
+@font-face {
+  font-family:'JF Dot 14';
+  src:url(JF-Dot-Shinonome-14-Regular.ttf);
+}
+
+h1, h2, h3, h4 {font-weight:normal; font-style:italic; margin:0;}
+
+h1 {text-align:center;}
+
+h5 {
+  font-size:1rem;
+  font-weight:normal;
+  margin:0;
+}
+
+#container {
+  width:65vw;
+  padding:.5em;
+  margin-top:3vh;
+  margin-inline:auto;
+  margin-bottom:3vh;
+  box-sizing:border-box;
+}
+
+.box {
+  padding:.5em;
+  margin-inline:auto;
+  position:absolute;
+  left:50%;top:50%;transform: translateX(-50%) translateY(-50%);
+  box-sizing:border-box;
+}
+
+#return {color:var(--shale); line-height:1.3em; filter: drop-shadow(.5px .5px 0 var(--font-color)) drop-shadow(-.5px 1px 0 var(--font-color)) drop-shadow(0 -.5px 0 var(--font-color)) drop-shadow(1px 0 var(--font-color)); margin-bottom:3vh;}
+
+.popup {
+  border-width:1px;
+  border-style:solid;
+  border-left-width:3px;
+  background-color:var(--bg-color);
+  color:var(--shale);
+  width:70%;
+  padding:.7em .5em .5em .5em;
+  margin-bottom:1vh;
+  &>h2 {font-weight:bold;}
+}
+.warning {border-color:var(--red); &>h2 {color:var(--red)}}
+
+.note {border-color:var(--blue); &>h2 {color:var(--blue)}}
+
+
+.inside {
+  border:1px dashed; 
+  padding:.3em;
+}
+
+.bit:not(:first-child) {display:none;} 
+
+footer {text-align:center; margin-top:3vh;}
+    
+p {/*text-indent:1em;*/ margin:3px;} 
+
+a {color:var(--font-color); text-decoration:2px solid underline var(--link-color);}
+a:hover {text-decoration:1px wavy underline var(--link-color);}
+
+img, iframe {max-width:100%;}
+
+ul {list-style: "> ";}
+
+hr {/*
+  border: none;
+  border-top: 1px dashed var(--link-color);
+  overflow: visible;
+  text-align: center;
+  margin:none;*/
+  background: url('https://file.garden/ZkRD3wbiZDsBIZnn/ribbons.png') no-repeat top center;
+  background-size: contain;
+  height:30px;
+  border:0;
+}
+
+textarea {
+  background:inherit;
+  border:1px solid var(--font-color);
+  color:var(--font-color);
+  font-family:'iosevka';
+  color:inherit;
+}
+
+#statuscafe-username {font-size:small;}
+#statuscafe {padding:3px;}
+#statuscafe-content:before {content:"'"} #statuscafe-content:after {content:"'"}
+
+.border {
+  color:white;
+  filter: drop-shadow(.5px .5px 0 var(--font-color)) drop-shadow(-.5px 1px 0 var(--font-color)) drop-shadow(0 -.5px 0 var(--font-color)) drop-shadow(1px 0 var(--font-color));
+}
+
+.flex {display:flex; gap:.5em;}
+
+.ttt {text-decoration:1px solid underline;}
+
+#s-m-t-tooltip {
+  background:rgba(0, 0, 0, 0.75);
+  font-size:1em;
+  color:white;
+  max-width: 300px;
+  text-align: center;
+  z-index: 9999;
+  margin:1em;
+  padding:.3em;
+}
