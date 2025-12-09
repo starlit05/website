@@ -1,0 +1,6 @@
+.site-box{text-align:center;background-image:url(//starlit05.nekoweb.org/flowers.png);background-size:cover;border:1px solid black;transition:.2s all}.site-box:hover{transform:scale(90%);}
+.site-box>a>p{visibility:hidden;}.site-box>a>span{visibility:hidden;color:white;filter:drop-shadow(.5px .5px 0 black) drop-shadow(-.5px 1px 0 black) drop-shadow(0 -.5px 0 black) drop-shadow(1px 0 black);font-size:1.3em;font-family:'courier new';position:relative;top:-10px;}
+.site-box .sitefeature{visibility: hidden;}
+
+.post-box{background:white;border:1px solid black;border-radius:0;font-family:courier; padding:.7em;padding-bottom:0;}.post-box .post-title {font-family:Times;color:black;}
+.post-box .post-author,.post-box .post-date,.post-box .post-title,.post-box .post-description{color:black}.post-box>a{color:black;}.post-box .post-author{color:black;}

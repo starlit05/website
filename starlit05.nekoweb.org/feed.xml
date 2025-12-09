@@ -1,0 +1,32 @@
+<rss version="2.0">
+	<channel>
+		<title>big updates</title>
+		<description>:3</description>
+		<link>https://starlit05.nekoweb.org</link>
+		<!--
+			<item>
+				<title>test 2</title>
+				<description>apparently you need two items for this to work?</description>
+				<link>https://starlit05.nekoweb.org/</link>
+				<guid>sol-3</guid>
+				<pubDate>Day, Date Month 2025 12:30:00 +0800</pubDate>
+			</item>
+		-->
+		
+		<item>
+			<title>i love false information</title>
+			<description>we're back?</description>
+			<link>https://starlit05.nekoweb.org/</link>
+			<guid>sol-2</guid>
+			<pubDate>Fri, 7 Dec 2025 20:35:00 +0800</pubDate>
+		</item>
+		
+		<item>
+			<title>hello world</title>
+			<description>we're back.</description>
+			<link>https://starlit05.nekoweb.org/</link>
+			<guid>sol-1</guid>
+			<pubDate>Sun, 7 Dec 2025 20:30:00 +0800</pubDate>
+		</item>
+	</channel>
+</rss>
