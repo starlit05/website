@@ -37,7 +37,8 @@ body {
   font-family:'iosevka', 'Apercu Mono', monospace;
 }
 
-* {scrollbar-color: var(--bg-color) var(--shale); cursor: url(https://cur.cursors-4u.net/nature/nat-3/nat260.cur), auto !important;}
+/*(c) cursor created by Sam  (https://layouts.spacehey.com/layout?id=103585)*/
+* {scrollbar-color: var(--bg-color) var(--shale); cursor: url(https://i.postimg.cc/Dyy4mc2K/2024-04-14-0jn-Kleki.png), auto !important;}
 
 ::selection {background-color:var(--pink); color:var(--font-color);}
 
@@ -67,6 +68,21 @@ h5 {
   margin-inline:auto;
   margin-bottom:3vh;
   box-sizing:border-box;
+}
+
+footer {text-align:left; width:70vw; margin-left:1vw;}
+
+#pagedoll {
+  position:fixed;
+  right:35px; bottom:0;
+  pointer-events:none;;
+  width:25%;
+}
+#yidoll {
+  position:fixed;
+  right:-150px; bottom:-10px;
+  pointer-events:none;
+  width:35%;
 }
 
 .box {
@@ -137,6 +153,8 @@ button {
   font-size:inherit;
   font-family:'iosevka';
 }
+
+.button {transition:.2s all ease-out;} .button:hover {transform:rotateX(20deg) scaleX(110%);}
 
 #statuscafe-username {font-size:small;}
 #statuscafe {padding:3px;}

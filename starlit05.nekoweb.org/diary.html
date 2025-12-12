@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg" href="https://file.garden/ZkRD3wbiZDsBIZnn/hya.svg">
+  <title>diary</title>
+  <meta name="description" content="peek into my brain">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+  <script src="tab.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script src="tooltip.js"></script>
+  <script src="layout.js"></script>
+
+  <style>
+    #container, footer {width:80vw; margin-inline:0;}
+
+    #marq {
+      border:1px solid;
+      border-bottom:none;
+      background-color:var(--bg-color);
+      padding:.2em;
+    }
+    #statuscafe-username {display:none;}
+
+    header {
+      border:1px solid var(--font-color);
+      box-shadow:0 0 15px white;
+      background-image:url('flowers.png');
+      background-size:cover;
+      height:250px;
+      padding:1em;
+      margin-bottom:1vh;
+    }
+
+    .flex {gap:.7em; margin-top:3vh;}
+
+    nav {
+      flex:1;
+      border:2px solid;
+      border-radius:5px;
+      outline:1px solid var(--font-color);
+      background:var(--mantle);
+      color:var(--shale);
+      padding:.7em;
+      height:500px;
+      overflow:auto;
+    }
+
+    details {margin:.5em;}
+    summary::marker, :is(::-webkit-details-marker) {content: "+ "; color:var(--darker);}
+    details[open]:first-of-type summary::marker {content: "− "; color:var(--darker)}
+
+    button {
+      display:block;
+      border:none;
+      background:none;
+      color:inherit;
+      font-size:inherit;
+      text-align:left;
+      margin:.3em;
+    }
+    button:hover {cursor:cell; margin-left:.5em;}
+    button:hover:before {content:"> ";}
+
+    #posts {
+      border:1px solid;
+      border-radius:5px;
+      box-shadow:0 0 10px white;
+      background:white;
+      padding:.7em;
+      width:45vw;
+      height:500px;
+      overflow:auto;
+    }
+    #posts .bit:not(:first-child) {display:none;} 
+    /* from https://www.tutorialspoint.com/how-to-use-a-not-first-child-selector-in-css */
+    
+    p {text-indent:1em;}
+    a {color:inherit; text-decoration-color:var(--mauve);}
+
+    blockquote>p:first-of-type:before {content:"“ "} 
+    blockquote>p:first-of-type:after {content:" ”"}
+    blockquote p:first-of-type {text-indent:0;}
+
+    .spoiler {background-color:var(--bg-color); color:var(--bg-color);} .spoiler:hover {color:var(--font-color);}
+
+    @media screen and (max-width:700px) {
+      #container, footer {width:100%;}
+      .flex {flex-wrap:wrap;}
+      nav, #posts {width:100%;}
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <section id="marq">
+      <div><div id="statuscafe-username"></div><div id="statuscafe-content"></div> <script src="https://status.cafe/current-status.js?name=kitty" defer></script></div>
+    </section>
+    <header></header>
+    <div class="flex">
+      <nav>
+        <a href="javascript:history.back()">&lt; return</a>
+
+        <details open>
+          <summary><h3 style="display:inline-block;">before you continue...</h3></summary>
+            <p>this is the diary of a mentally ill teenager and the contents will reflect this fact. as previously mentioned on the landing page, there will be mentions of <strong>anxiety, depression, suicide</strong> and <strong>suggestive topics</strong>. click away now if you don't want to see that.</p>
+        </details>
+
+        <details>
+          <summary>2025</summary>
+            <button onclick="openBit('dec_11_25')">dec 11 // an update</button>
+            <button onclick="openBit('sep_5_25')">sept 5 // blood</button>
+            <button onclick="openBit('aug_13_25')">august 13 // ruinous</button>
+            <button onclick="openBit('aug_11_25')">august 11 // competition</button>
+            <button onclick="openBit('aug_9_25')">august 9 // starscream</button>
+            <button onclick="openBit('aug_6_25')">august 6 // tape binding</button>
+            <button onclick="openBit('jul_28_25')">july 28 // realigion</button>
+            <button onclick="openBit('jul_24_25')">july 24th // [...] leads</button>
+            <button onclick="openBit('jul_19_25')">july 19th // last night, i...</button>
+            <button onclick="openBit('jul_15_25')">july 15th // amazing day today</button>
+            <button onclick="openBit('jul_4_25')">july 4th // AMERICA *eagle screech*</button>
+            <button onclick="openBit('jun_9_25')">june 9th // selfishness</button>
+            <button onclick="openBit('may_28_25')">may 28 // "love me, normal(cy/ly)"</button>
+            <button onclick="openBit('may_17_25')">may 17 // joyous day</button>
+            <button onclick="openBit('may_9_25')">may 9 // lovesickness (for reality, for fiction)</button>
+            <button onclick="openBit('may_3_25')">may 3 // canonical minecraft yaoi</button>
+            <button onclick="openBit('apr_23_25')">apr 23 // hate</button>
+            <button onclick="openBit('mar_22_25')">march 22 // memory</button>
+            <button onclick="openBit('mar_18_25')">march 18 // lots of fun</button>
+            <button onclick="openBit('mar_1_25')">march 1 // fun</button>
+            <button onclick="openBit('feb_24_25')">february 24 // aid</button>
+            <button onclick="openBit('feb_20_25')">february 20 // to-do once more</button>
+            <button onclick="openBit('feb_19_25')">february 19 // affection</button>
+            <button onclick="openBit('feb_13_25')">february 13 // quote</button>
+            <button onclick="openBit('feb_6_25')">february 6 // chronic layout disease VI</button>
+            <button onclick="openBit('feb_5_25')">february 5 // chronic layout disease V</button>
+            <button onclick="openBit('jan_27_25')">january 27 // fear and identity</button>
+            <button onclick="openBit('jan_24_25')">january 24 // we're sack (sol back)</button>
+            <button onclick="openBit('jan_16_25')">january 16 // chronic layout disease IV</button>
+            <button onclick="openBit('jan_15_25')">january 15 // chronic layout disease III</button>
+            <button onclick="openBit('jan_13_25')">january 13 // to-do list</button>
+            <button onclick="openBit('jan_10_25')">january 10 // a confession of sorts</button>
+            <button onclick="openBit('jan_2_25')">jan 2 // happy new year!</button>
+        </details>
+
+        <details>
+          <summary>2024</summary>
+            <button onclick="openBit('dec_31_24')">december 31 // social dysphoria</button>
+            <button onclick="openBit('dec_26_24')">december 26 // ramble about pixel fonts and other indieweb topics</button>
+            <button onclick="openBit('dec_18_24')">december 18 // transformers idw1 review</button>
+            <button onclick="openBit('dec_11_24')">dec 11 // chronic layout disease II</button>
+            <button onclick="openBit('dec_2_24')">dec 2 // fifteen years of silly</button>
+            <button onclick="openBit('nov_18_24')">nov 18 // what if i'm not who i think i am</button>
+            <button onclick="openBit('nov_13_24')">nov 13 // chronic layout disease I</button>
+            <button onclick="openBit('nov_10_24')">nov 10 // transformers one review</button>
+            <button onclick="openBit('nov_7_24')">nov 7 // average thursday</button>
+            <button onclick="openBit('nov_6_24')">nov 6 // election fever</button>
+        </details>
+      </nav>
+      
+      <section id="posts">
+        <article id="dec_11_25" class="bit">
+          <h2>dec 11 // an update</h2>
+            <p>hello nekowebbers. i had a draft for the last "latest update" back in late september, and then everything got away from me and i got worse again :heart: the draft was about when me and a friend going to see a movie; i have since irreprably destroyed the relationship between me and said friend. i've been feeling pretty guilty about it and then feeling guilty about feeling guilty and then it spirals into gender bullshit and then unlovability bullshit so it's a big mess. but at least he doesnt have to pretend to care about me anymore</p>
+            <p>i had my birthday on the 1st. i cried that night, and the night after, and i had an ""intervention."" and then all i could think was how much i was blowing it all out of proportion. today i was supposed to have an appointment with a specialist in suicidal ideation. there was a scheduling mixup and now it's been moved to next fucking january. this is in no way different from what i was going to have before, and now i've also missed an entire period of class prepping for a final. for a session that was apparently hours earlier that i was not informed about.</p>
+            <p>well on the bright side i am becoming more yuripilled by the day. i've been thinking of writing humanformers violetscream and people encouraging me so in the nekoweb server is not helping!!! and here i go again showing off how healthy i am to stop spiraling and think about my stupid little drawings. i dont know. i want people to like me, and then i push the people closest to my heart away. i lie and say im working on communication and then when it comes to the things that do matter i shut down and hide, or worse, lash out. i hate it. it makes me feel just like my father. and i am. i will never change. i will never get better, i will never be good, i dont even deserve to feel guilt lol</p>
+        </article>
+
+        <article id="sep_5_25" class="bit">
+          <h2>sept 5 // blood</h2>
+            <p>it's hard to articulate how dysphoric being on my period can be. it's a thing, according to the kyriarchy, that only women and girls can have. this obviously completely ignores not only women/girls without uteri (the damned organ itself) but also people who are not women nor girls or even multigender people who might be women but might also be men at the same time. as a trans guy experiencing about this right now, it sucks. my "feminine products" (since people view periods as gross and not to be talked about) for my "feminine body." it's miserable, a lot of the time! i'm blasted in the face with "this is a thing only girls can experience" while my heart is crying "but i'm not. but there are others who are not-" and it doesn't matter. it never ends up mattering. people who are <em>supposed</em> to at least pretend to be allies will conveniently "forget" all about my damn name.</p>
+            <p>it's not even <em>just</em> the dysphoria either. no, there have to be the magical <strong><em>hormonal effects</em></strong> that turn every Girl(TM) on their disgusting little period into a bitch. and i do usually end up being an asshole on my period! i make bad descisions! i say things i normally would never say! and it feels like shit! i feel like i'm "proving the stereotype" when in reality the stereotype is targeting me! i hate it! the combination of the misogyny i cannot escape and my being a transmasculine individual intersect in... maybe some sort of anti-transmasculinity...</p>
+            <p>i won't lie that an amount of my mental state has worsened due to General Life Stuff and. well. tumblr discourse. it makes me upset!! it makes my head spin!! idolatry of "theorists" and bad faith takes will be the death of me. i know i should read <u>Whipping Girl,</u> but is it really not going to be filled with <a href="https://lgbtqia.wiki/wiki/Exorsexism">exorsexism</a> and overly-technical language? guh. i'm really tired.</p>
+            <p>i don't want to be misgendered but i want to be knowledgable. i want to do my best but it's never enough. i'm really tired. this isn't much of a journal entry. sorry.</p>
+        </article>
+        
+        <article id="aug_13_25" class="bit">
+          <h3>aug 13 // ruinous</h3>
+            <p>i'm forcing everyone else to take care of me. they don't deserve to have to deal with me.</p>
+            <p><span class="spoiler">i've just strung her along this whole time. she deserves better than a hollow shell like me. i can't even love her in the right way. i care about her so much, i like her so much my heart hurts, but i don't know if i can <em>love</em> properly. i'm such an idiot. i really wish my other wish was true right now. no matter if other people are ""worse than me,"" they still deserve the chance to dispose of me. even writing this is another example of me being so stupid and manipulative. i know people i care about are going to see it but because i just can't ever help myself, i'm going to save it anyways. i'm forcing all of them to take care of me, but if you're reading this and i know you, just leave, please, for your own mental health. i will be fine, i always am.</span></p>
+            <p>i just wish i was dead, so very badly. i'm so tired of it all. one day back and i was supposed to feel better, and then i didn't, can't it just happen already? i'm sick of putting it off year after year but i did this to myself, i had my chance but couldn't take it. i'm tired of my own indecision and then i'll go and charge my computer and curl up in bed and cry and wish someone would hold me once again. and no, i don't deserve anyone to hold me. to be miserable by myself is what i deserve. and i am and always will be a dumb little girl trying to seem bigger than she is. i am not a boy and i never will be. it's time i accepted it.</p>
+        </article>
+        
+        <article id="aug_11_25" class="bit">
+          <h3>august 11 // competition</h3>
+            <p>mfw im in an emotionally manipulative competition and my opponent is sol: D:</p>
+            <p>what happened to my original and quite sound plan of "ignore all problems, when they resurface ignore the true reason why they hurt, repeat as necessary." at some point it became the nonsense that is "wallow in misery, if someone tells you to get better they just don't understand how Fundementally Evil you are and ignore them." at least be productive, come on. it all just feels like i'm stupid. two days ago i unboxed and made my very first figurine for a "masculine" interest. isn't that great? and now you're back on this bullshit. like, can't we do better than this? note to self- reinstate the worst article you've ever written. it deserves to be here for posterity.</p>
+            <p>the genuinely worst part about all this is that people still attempt to care for me? i fear drastic measures must soon be taken so that everyone who tries to remain goes away as they should. i don't deserve their kindness, someone else does, and whoever this hypothetical someone else may be probably needs it more than me. they probably have real issues, with real problems and real baggage, unlike me. all i do is have a good day and feel like shit afterwards. that's not a real problem, that's being an ungrateful brat.</p>
+            <p>i was supposed to go to bed twenty minutes ago, which is yet another thing i've totally fucked up. school starts in less than two days, and i still haven't fixed myself. wow. at this point i should just die so people can stop wasting their efforts on me. it's never going to get better. one step forward eighty steps back. it's just my fault and since it's my fault alone i deserve to die for it, right? i don't know what i was expecting from telling a group of christians that i have bad mental health. "we have a christian counseling center here!" well yes but i want to tell god to disembowl himself and shove the guts down his throat. i have little patience and little respect left for Him. (logically, i'm aware there is likely no "God," no omnipotent, omniscient, all-loving deity responsible for everything forever and ever, but that's easier than admitting i did this to myself.)</p>
+            <p>this is such a stupid, selfish, manipulative desire but i kinda wish marks brought on by digging nails into skin lasted longer. it's wrong for me to want someone to notice the redness up my hands and arm and ask if i'm okay. it's really dumb, i know, i just want someone to hold me and let me cry and cry and cry. i hate crying a lot. i don't even want a person to do this for me. in my head i'll just replace the gray head with that of a stuffed toy or something so i can continue pretending i don't want people to care because i do, i do, i do, i do, but i never want them inside my head because that's too scary if they poke around too much i'll say the wrong thing or make the wrong face or ask the wrong question and i'll be stupid and they'll be mad and then how can i trust anyone again? they hate me they're just pretending they don't so my stupid little girl feelings aren't hurt because i'm so fragile. just drop the me that's made of porcelain on the ground and stomp all over it, already, please. i'm so tired of waiting for the other shoe to drop and i just don't have the heart to throw it to the dirt myself. i'm still faking all this though, a mirror of a slurry of real symptoms real people have that i'm making a mockery of by existing. seven minutes past bedtime i wish i didn't promise because now i have to keep it. i really wish i knew what it felt like but of course i'm too much of a coward to try. always pushing it later and later and later again. i'm so dumb.</p>
+            <p>this school year i'm gonna do my best to be who i really am on ths inside: nothing. i'll join as many clubs as my mom wants i'll do as many sports as she wants i'll pretend my heart hasn't been clawing out of my chest to become even a fraction more of a caricature of masculinity for years if she asks me. i want to be good. and what i am right now isn't good enough for anyone. i just need to shut up and focus.</p>
+        </article>
+
+        <article id="aug_9_25" class="bit">
+          <h3>august 9th, 2025 // starscream</h3>
+            <p>i assembled the starscream figurine my friend got me from japan this morning. she's a <a href="https://blokees.com/en-us/products/transformers-classic-class-transformers-one-starscream">blokees figure</a> and a little shorter than my hand. while i put her together, i pretended i was in a youtube video like when i was a kid, and it felt nice. usually i was only given "feminine" toys as a kid, so while it wasn't crazy reliving-my-childhood stuff, i still enjoyed it.</p>
+            <p>first i put together her head, which was easy because there's only four parts in it. the 3d-printing is done really well and looks almost-entirely movie accurate, <span class="ttt" title="has watched tfone five times">and i would know.</span> however, there is one teeny tiny little inaccuracy: the eye color. in the movie, starscream's eye color is red, as it usually is. however, on the toy, it's an orange that turns a goldenrod yellow once shaken and the light inside her chest activates. it reminded me of a starbee (starscream/bumblebee ship) fancomic where starscream got a reframe and changed his eyes to gold... it was really cute. i forgot the name of the artist, but if i remember, i'll go back and edit this bit.</p>
+            <p>anyways i had a lot of fun putting all her parts together and i felt silly when i was putting her modesty/aft panels on (sje was NAKED!!!!!!!!!!!!!!!!!) but my fingers ended up getting really raw since she's so pokey. it hurts a little to type too but it's not as bad as earlier. i should really get a desk to. y'know. put her on but also i hate shopping so much my god. my web agenda today is to remake homepage, about page, and make a shrine for my gf. no matter how pathetic little meow meow starscream is, she will never beat [Partner] in my heart &gt;3</p>
+        </article>
+
+        <article id="aug_6_25" class="bit">
+          <h3>august 6th, 2025 // tape binding</h3>
+            <p>i tried it for the first time last night!! it felt really good!!! i already wrote and drew a little bit about how it felt, but man. i also have some news to share!! it's a bit hard to articulate, but man, it felt so so <em>so</em> nice to have something even barely passing a flat chest. when i had the tape on i felt so good and it didn't feel like it hurt or pulled too hard on my skin at all. afterwards, though, there's still red spots from the back of where the tape pulled (under my armpits) and this is two days after application! i'd love to tape bind more in the future, but i have to space out my usage :&lpar;</p>
+            <p>i'm gonna be honest here and say that i got my info on tape binding from half-a random queer site and half-reddit. i probably should've done more research, but i was already in the bathroom with scissors, my parents were focused on something else, my brother had already finished brushing his teeth for the day, and basically i had no idea if i'd get another chance like this anytime soon. what the site and reddit post had in common was that people recommended three strips, one directly on the nipple, two for support. iirc one of the reddit answers said to start from top to bottom and to do one breast at a time, so i did that. however i forgor that to tape bind you actually need to... bind. so i forgot to tighten my first attempt to actually bind properly. the second time i put the middle part first and used the two after to help. and turn i turned to the mirror. and i don't even know how to explain it. it wasn't even very different than my usual, but i felt so <em>good.</em> i wish i didn't have to risk irritating my skin for this feeling. it kind of hit me how much i hate my chest when that happened. most of the time i can barely look down at myself without feeling <em>wrong</em>, so to feel something that was finally <em>right</em> was crazy.</p>
+            <p>i spent the entire night and whole day afterwards with the tape on, which was probably inadvisable. for context, the guides i was looking at were for <a href="https://transtape.life/">actual TransTape</a> while i had to make do with breast tape marketed to the "Typical Cis Woman With Breasts and Stuff The <a href="https://en.wikipedia.org/wiki/Kyriarchy">Kyriarchy</a> Thinks Women Should Have" so naturally they would be different in usage. for example, TransTape is noted to best be removable only with oil, and can be worn for multiple days without wearing out, even during physical activity, even after showers. the tape i was using fell apart after one shower and while it came off without any oil, it did leave those red marks that hurt to run my finger over when i first got them. now they're a lot better. anyways, here are my <strong>top tips for tape binding (keep in mind I, too, am still a beginner!)</strong></p>
+            <ul>
+              <li>please do <em>not</em> forget to protect your nipples it will hurt to rip what is essentially skin-safe duct tape off them. i used a piece of toilet paper but i implore you to use something like a pasty that is inteded to be used like that.</li>
+              <li>go from middle to bottom to top. middle to hold the main part to the side, bottom to lift it, and honestly the top isn't necessarily, well, necessary. from my one time tape binding, it was just there if i needed extra.</li>
+              <li>get sharpened scissors. the reason why i couldn't try this for so long is because the one pair we had in the house was a decade old and duller than a rock.</li>
+            </ul>
+            <p>okay it's time to reveal my good news!!!! i got to hang out with my friends after not seeing the majority of them all summer. it was fun and we got to see one of them's new cat. her name is Faust (limbus company reference). this same friend also got me a starscream figure that i get to put together tomorrow morning! i'm really excited, but i just realized since he got it in japan, the instructions might all be in japanese... i hope there's an english translation on there. if not i'll have to resort to google translate, i'm afraid. but that's not <strong>the</strong> good news, even though it is good news. no, <strong>the</strong> good news is that <strong class="ttt" title="for context, i've been wanting this for four years now"><em>I'M FINALLY GETTING MY HAIR CUT SHORT!!!</em></strong> miraculously my father agreed to it, and my mother followed suit. there's a catch- it's august now, right? i have to wait until our trip to the Philippines in December to get it. it's going to be a long wait, but it's going to be worth it. i really hope it will be.</p>
+            <p>other than hanging out and getting this great news, i've also finally opened a mental health app i used to have but deleted a while ago. i couldn't recover my data, but that's okay. i didn't get too attached, but i think i named my pet the exact same thing as i did last time, which is Grape because it's a purple bird. teehee. i got my girlfriend to download it so i could get a reward... she's too kind to me. we set up a joint goal thing and the goal we chose was to wake up in the morning, which i do actually find a little difficult at times. the reason why i brought this up is because i'll hopefully be using this app, Finch, to be writing my more... er... fragile thoughts instead of dumping it all here. i mentioned this to my friend and he agreed it would be good for me. if i start getting depressive, you (readers) have full permission to pour butter on my head in the cbox, okay?</p>
+            <p>goodnight, everyone!</p>
+        </article>
+
+        <article id="jul_28_25" class="bit">
+          <h3>july 28th, 2025 // realigion</h3>
+            <p>i think i should reformat this again. last week i thought it looked nice and plain, but now i feel unhappy with the lack of detail. i guess that's just the type of person i am, fickle and shallow. never the same one day to another. it's hard to make a personal website when you're not a real person. everyone has their own sense of self, and where mine was supposed to me is a big hole in the center of my chest. or maybe slightly leftward; half the time it feels the same if i didn't have a heart, anyways. i'm chronically on tumblr to a concerning degree but at least i'm not at the point where i write my diary entries on there. no offense to the people that do, it just feels better typing on my own grounds. or something. sol opinions are always subject to change. change change change, everything is always subject to change. i don't want to grow up, i want to turn back time and be a kid again (but that's the nostalgia speaking- i was barely the carefree child i imagine myself to be. i gained the slightest edge over my peers now i spend my days pretending i have an edge on my wrist. ha ha.)</p>
+            <p>i went to church yesterday (today's saturday). i looked after the kids. i think they missed me a bit, which felt nice. i'm wanted, if only for basic tasks. someone i've known since kindergarten got baptized. i wonder when my parents will start asking me again when it's my turn. i spent the rest of the day doing nothing uselessly. then i went to youth. the message was about hearing god's voice. i spaced out for most of it. someone prayed over me because i've been having trouble sleeping; my usual methods haven't been working lately. being unconcious is so much better than being awake, but i can never get myself there. during small group, we talked about what we learned during the message. i couldn't say anything. one of my "friends" talked about how she can barely hear His voice sometimes. my only experience on this topic is that of absence. if He is real, He has never seen me fit enough to hear His words. i will never be pure, i will never be perfect.</p>
+            <p>how could a fake human being be enough for the Lord, anyways? lately my life has felt like this gif:</p> <img src="https://file.garden/ZkRD3wbiZDsBIZnn/dontworrymiserable.gif" style="float:right; width:150px; margin-left:.5em;" alt="A gif of Sunny from Omori with a neutral expression. He is captioned with the words: 'don't worry, i'm doing fine. behind him is the background which in-game signals a character is miserable."> <p>this afternoon when i went down to lunch my mother (rightfully) chewed me out for being useless and ungrateful. i don't know why i got so upset. i said "i'm sorry" a lot but she told me to stop. i'm so annoying. i feel really bad that she has to deal with me all the time. i'm the older one so i should be easier to take care of, but all i ever do is nothing at all. i think if nothing changes by tonight i should try <span class="ttt" title="please don't worry about me anymore. there's nothing worth worrying about.">something new</span>. it's not like she was ever going to call my doctor and ask for a referral. to do so would imply that she sees my mental health as anything more than a chore. it is a chore, don't get me wrong, if i had to take care of myself i'd have killed the other me a long time ago. what a nice thought.</p>
+            <p>but still, do i have the right to be disappointed? (not really.) i come downstairs looking weird, probably, and she gets mad when i don't respond instantly to something she said. i'm so tired. it's my fault, i should've moved faster and said sorry only once and told her i loved the food and that i would accept whatever punishment she'd throw at me and it was okay if she hated me. that usually gets people to lower their voices. and then when we were eating, it's like if she doesn't scream for a while something goes off in her brain that makes her do it. i don't get why she <em>has</em> to be loud, but it's my fault for being so sensitive. i can't ask people to accomodate my ridiculousness. anyways check this thing out</p>
+            <pre>                  _  /)                   
+              mo / )                   
+              |/)\)                    
+                /\_                     
+                \__|=                   
+              (    )                   
+              __)(__                   
+        _____/      \\_____            
+        |                   ||           
+        |     + R.I.P. +    ||           
+        |                   ||           
+        |       "sol"       ||           
+        |  this should've   ||           
+        |  happened years   ||           
+        |        ago        ||           
+        |                   ||           
+  *       | *   **    * **    |**      **  
+  \))ejm97/.,(//,,..,,\||(,,.,\\,.((//   </pre>
+          <p>i guess it got a little messed up. oh well. made with <a href="https://tomb.zone/">tomb.zone</a></p>
+        </article>
+
+        <article id="jul_24_25" class="bit">
+          <h3>july 24th, 2025 // [...] leads</h3>
+            <p>and we can only follow.</p>
+          <h4>[the Universe]</h4>
+            <p>siffrin isat is doing a lot worse than i am, to be honest. in my mind he's still in that time loop, never reaching out. he cares, he cares, but the people they love are so far away. are they even real? they might think, before going, no, no, that's awful. i'm awful for thinking that.it's funny to me how people can despise past versions of themselves. if i had the girl i once had before me i'd wrap my hands around her neck and squeeze and squeeze and squeeze until there was nothing, nothing, nothing. you're always going to be alone, so you might as well just accept it! always cheering from the sidelines because you're too scared of the limelight. because when you're on that stage, what you do is real. when their eyes are on you, the body that you have is real. when they hear your voice, everything is real, real, <em>real</em>. you can't go home again. if you can't remember, was it ever real? was it ever true? if you can barely remember a time before, did it exist? maybe you were always this way. it's selfish of me to think of a character being the same as myself when they've clearly been through so much worse.</p>
+          <h4>[the Lord]</h4>
+            <p>"if he has to learn things the hard way, then let him." you're so right, Mother dearest! i <em>should</em> cover my ears and hide when you or Father turn your newest experiment into a useless, suicidal, ungrateful brat! all your creations do is whine whine whine, and the Lord created you to <s>make them worse</s> set them straight! you care for them so much, the Son and the Daughter. the Son will do great things and bring you lots of grandchildren, and the Daughter will rot in bed and bring you lots of grandchildren, quietly trying to protest the whole way. it doesn't matter, you still get what you want. God-fearing offspring and the warm glow of approval from everyone around you! it's such a shame the Firstborn never made it so you could never mold him into a perfect child, too. (it's insensitive to even think that you're jealous. a son, dead before he could whine and cry about its parents not doing exactly what it wanted.)</p>
+            <p>i deserve exactly what i get. this is what going against the will of the Father does. i deserve this. i deserve this. i deserve this. i deserve this. i deserve this. i'm just being dramatic. i just need to pray. i just need to pay more attention during church. i just need to repent. i just need to be the perfect, feminine, God-fearing daughter my Mother and my Father know i should be. it's my fault. i just need to read the bible. i just need to go to church. i just need to stop. it's so easy to fix everything "wrong" with my life, i just need to stop thinking as it as wrong. if the Lord my Father in Heaven says i must suffer, then who am i to contradict him? not an angel, not a devil, but a perfect, holy daughter made in His image.</p>
+            <blockquote><p>Death for the believer is not an event to be feared but a promotion to anticipate.  Jesus is right now preparing an eternal home for all who know him – so that we may live with him forever.</p></blockquote>
+            <p>so don't i get to die, please? if it's such a great thing, then can it just happen already? an eternal home, an eternal home, an eternal home, all for me. so why don't i get to have it? i know i don't deserve it, but please? i'm so tired.</p>
+        </article>
+
+        <article id="jul_19_25" class="bit">
+          <h3>july 15, 2025 // last night, i thought about killing myself</h3>
+          <h4><s>(...and why i can't go through with it)</s></h4>
+            <p>i read some fanfic last night. i cried about it like the idiot i am. for some reason, i got hung up on the idea of someone wrapping me in their arms and letting me cry as much as i needed. i guess if you suck bad enough everyone else feels like an angel in comparison. there's a tumblr post by valtsv that goes like "in a moment of weakness i cry out for my mother but turn to the audience and clarify that i meant the symbol of motherly love and not my actual mom because if she was there she'd make it worse" and that's basically how i felt last night. if my mom actually showed up she'd gibber about how i don't have to feel this way and end the conversation with more empty platitudes about how i should pray or how we need to make a schedule or how sad she'd be if i died. i don't really feel like not being blunt right now, but that's the whole point. when i first became like 'this' that was the whole point. that my parents would weep at my grave and that they'd do so much better with the next one. well whatever. it's not like i can do that anymore. no matter how much i want people to stop caring about me, they won't, and i don't have it in me to break the hearts of those who know me far more than my parents ever will.</p>
+            <a href="https://i.redd.it/1yw4y6fji6781.jpg"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxZEiyoF7XQ63dKgvKLVniKo_xSy_9GNSMunFJiwLo_edS-j40ZnzcBFUFiS-3bwJ6vLE&usqp=CAU" alt="child emotional neglect got me like [image of a large, silly face with big eyes and a flat expression]" style="float:left; margin-right:.5em;" title="when i first saw this on google images i laughed, a pit slowly opening in my stomach. i didn't like how 'accurate' it felt to how i act at times. but that was ridiculous. i wasn't neglected in any way. i was just being dramatic."></a>
+            <p>sometimes, though, my mom, despite her being basically one of the two people i can somehow barely open up to, manages to fall flat on her face every single time. she managed to get me to cook food this morning, do the dishes, and put the laundry out to dry. but it wasn't without her insinuating that i'm just lazy lazy lazy, that everything will just vanish into thin air if i just go outside in the morning! do my chores! make my bed! go outside in the afternoon! no being inside my room! being inside my room will make me lazy and if i'm lazy then i'm useless useless useless. and naturally the way to fix all this is the schedule. the fucking schedule. don't you know that the only way you have to stop being suicidal is to have a schedule? monitored all by your loving mother, of course. step one: wake up. step two: pray. step three: make your bed. step four: go outside. step five: eat breakfast. it's all so easy! why can't you do it? why can't you just make a schedule and fucking follow it already? you're not trying hard enough. if you really wanted then you wouldn't be a waste of money like you are. it's all your fault, you know. you're not praying enough. that's clearly what's wrong. you need to beg for forgiveness, everyone can see that. you're nothing but dirt under the loving Lord's heel, right? so pray for forgiveness that you don't deserve. what have you done to help your community today? what have you done to help the church today? what have you done to justify your existence today? nothing? well, there's a special place for people like you after they die.</p>
+            <p>but you're not even good enough to die. too scared to even look over the edge. you always back off at the last minute. you had your chance, now lie with it. so close to it finally being over before anyone got too attached. it would've been so, so simple! the people you "befriended" would've forgotten you anyways. it's too late for that hope now. aren't you happy? people care about you! why are you still fucking whining about it? you have a house. you have a room. you have a bed. you have stuffed toys. you have a phone. you have food. you have a tablet. you are being stupid. you have everything. there's no real reason to feel like this. just get over yourself. it's so easy to move on. just stop feeling this way. oh, do your eyes hurt? does your heart ache? does your head throb? if it hurts so bad, then move on. it's so easy. why can't you just be yourself again? unless there was never a "you" to return to. and that's right, you know, there was never a "you" at all. just your mothers perfect little daughter who loved her and would do everything for her. your mother's daughter never yelled or cried or had secrets or lied or did anything that you do wrong. your mother's daughter loved to read and draw and play with her friends and nothing was ever wrong with <em>her</em> so why is there everything wrong with you? you have more than she ever did. so why are you still upset?</p>
+            <p>just stop holding on. you aren't real and you never were. real people don't feel like this. real people have it worse than you do. what's your biggest problem, "wah wah mommy won't let me get a haircut :("? you're so fucking priveleged you can't see past your own nose. just move on, it's easy. everyone else can do it, if a real person can do it, why can't you? just move on. that's the role you're supposed to play. stop lying in bed feeling your chest hollow out, stop crying over nothing. people care about you, stop worrying them. i know they shouldn't care about you, but they do, and they will, so just get better so they won't have to worry anymore. you don't even need "professional help," just get out of bed and take a walk. it's so easy. why can't you just do it already? and if you stay up past 10:30, did you even ever want to get better at all? what's wrong with you? you don't want to worry your friends, so why aren't you getting better? you want things for yourself but you can't even make your bed. you got things to put in your closet half an hour ago and your throat's closing up as you type the stupidest fucking thing you think you've ever read. come on. it's so easy. just get up. you're not better than this, but everyone else can. you think you're so perfect but you can't even take a simple walk. you can't even eat breakfast. you can't even eat half your lunch before feeling sick. you're so pathetic. just get better already.</p>
+        </article>
+
+        <article id="jul_15_25" class="bit">
+          <h3>july 15, 2025 // amazing day today</h3>
+            <p>i had a nightmare last night about my father finding me on my phone late at night and getting mad at me. i don't actually remember him getting mad at me, but what i do remember is the fear. that he'd be so, so disappointed in me. i was supposed to do better, but i didn't. which is weird because i haven't cared about his opinions in years. i've kind of already made my peace with the idea that i'll never live up to his expectations.</p>
+            <p>anyways i watched the Matrix and Apothecary Diaries with my partner today. i gave her a permanent gift and a temporary one. the permanent gift is something i made when i was a lot younger and on my #comphet arc. but it still means a lot to me, and it means a lot to me that she liked it too. the temporary gift wasn't even planned, i just handed it to her by the end of her visit. i've recieved reports from a trustworthy source that she's enjoying it.</p>
+            <p>the hangout itself was really fun as well. i got to play with a new fidget toy. it's a little quiet, but i'm sure as time passes i'll be able to get it to be as loud as i want it to be. speaking of which, i need to remember to bring my green pen out. it's just so very important.</p>
+            <p>i do adore being silly, but at times i worry about how much it's influenced by my dumb hormones. what part of me is real and what part of me is fleeting? parts of myself, as a "person" can be real and temporary at the same time, but they never serve me well. what's the point of reality if it's not eternal? <span style="color:gray">what's the point of a me that's not eternal?</span> and, if things are only temporary, then i must be bothering myself with them. torturing myself with them. i could stop at any time (it's only temporary) but do i deserve to <em>have it</em> stop?</p>
+            <p>nothing i write really makes sense. i like how my long cat smells now that she's snuggled with it. i wish i had a [Partner's Name]-scented perfume so i could spray it over everything i own and just bask in it. even thinking about her scent makes me miss her more and more,,, she's so cute. so kind and sweet. i want to break her soooooooo bad but i guess since i subscribe to "human morality" i CAN'T. ugh. whatever #mywhatever</p>
+            <p>but still. i had the thought of giving her a third gift. something very important. i think she'd really like it and then we could match, but i don't know if she could actually wear it in her day-to-day life :&lpar; fuck my stupid transgender life</p>
+            <p>to sum it up: don't worry ultrakill on nekoweb fans. the hollyleaf = megatron = sol = gabriel essay is coming soon. and yes i finally realized beating myself over the head with being a shut-in doesn't actually help with being a shut-in. who knew? [skips away before you can answer]</p>
+        </article>
+
+        <article id="jul_4_25" class="bit">
+          <h3>july 4, 2025 // AMERICA *eagle screech*</h3>
+            <p>a whole bunch of stuff has happened in the past month. no more pride. only suppression and denial. "happy fourth of july" to americans and "i'm so sorry" to non-americans. how should i start?</p>
+            <p>deltarune came out and i bought it day one, but i still had school so i snuck my switch into P.E and played it there. i'll write a separate article on my deltarune ch3 and ch4 takes #mytakes later. my teacher gave us snow cones, which was pretty cool. all in all i did well on finals. i didn't even fail Spanish, which is surprising.</p>
+            <p>since then i have been. well. let's justr say. rotting away in front of a screen. unfortunately for me school provides structure and without it i revert back into my depressed slug forme. i've had like eight different spirals (i really have to come up with something funny to call them because "depressive spiral" is <em>not</em> cutting it) but! at least i'm not in one right now! speaking of not doing something, i've been putting off telling my mom about my increasingly-bad mental wellness because. well. the past few times she's heard about it she's decided that what i need is to get into after-school activities. i'm not saying that getting out more would be <strong>bad</strong>, it's just... really? your notably reclusive and avoidant-of-anything-that-could-possibly-cause-cconflict child is actually coming to you for something? and you brush it off like that? well, no wonder they're avoidant-of-anything-that-could-possibly-cause-cconflict. sigh.</p>
+            <p>we went to Mexico for a week and it was nice. i dug a hole, but i forgot to go back for it, so i dug another hole later. i got sunburnt on my shoulders and got a weird-looking tan. i forget so often how pale my """real""" coloring is. for context i'm filipino-chinese and while i usually have a "filipino complexion" (darker) if i stay inside for too long i turn really pale ("chinese complexion"). my relatives keep saying i "look like a korean." i do not. i don't know why they keep saying that. when i was a kid and was mostly pale, maybe, but now? no way. i tried guacamole for the first time and it kinda just tasted like nothing if nothing had a slightly cooler temperature than room temperature. i'd try it again if so pressed.</p>
+            <p>after we got back from Mexico, we went to Mount Diablo. it was really cool to see all the displays and the history. i got a bad picture of myself standing on the summit. there were a whole bunch of dragonflies just There at the visitor center. i was worried they'd go up to me and poke me, but it never happened. i bought a shirt with the different bug types on the mount.</p>
+            <p>then we went to Calaveras Big Trees state park. there was a little museum in the visitor center there so i read all the blurbs next to the displays. my relatives didn't (they never do). for some reason it always feels like they're more obsessed with taking pictures whenever we go places instead of, y'know, learning about the place we're at. it's so weird. conversely, i hate taking pictures, but i'm old enough to know the less i protest the faster i can go back to <em>not</em> taking pictures. we went on a hike and i really liked it! we had a little booklet where we could learn about some of the stops. at the beginning, though, there was a sign that said "please do not step on or touch the trees to preserve them." after i was done reading it, i turned around to see my brother standing on a stump. i told my mom (who had coaxed him up there for a picture) and she was like "oh yeah? where does it say that?" and i had to point to the sign for her. isn't that ridiculous? why didn't she read it? it was right there at the beginning of the trail, first thing you see. people just don't make sense sometimes. oh well.</p>
+            <p>and now we're at today. i woke up late, ate lunch (a bit of rice and a lot of ribs) and got to work on my blog revamp soon after. i think it's time to bring up that this isn't really a blog, moreso a diary. so i guess this'll be the diary page from now on</p>
+        </article>
+
+        <article id="jun_9_25" class="bit">
+          <h3>june 9, 2025 // selfishness</h3>
+          <p>all i can do is make it about myself, i cant comfort anyone and the first thing i think is "it's my fault" there's no need to be so self-centered about it. i offer criticism in places i have no knowledge in i tell others what to do, what not to do, i barely go outside, i barely talk to anyone, i barely am a person because im not. im not a person at all. reading stuff online doesn't count as a hobby. i said i'd go outside this summer and so far i haven't. i have so much stuff to do- i understand the king from isat. i wish everything could stay, that nobody i love would ever be hurt again. perfect.</p>
+          <p>on further reflection of my last sol moment i likely don't have moral ocd, but researching it helped me calm down last time. there's still a tightness in my chest. i'm making myself feel worse deliberately by writing this out; the things that i want to say are already taken by those suffering worse than i. my jaw feels heavy. i had that thought again. it feels more real than last time, i even said to myself "if i'm really gonna do it, i'll wait until after her birthday. i'd hate to ruin it." halfway through the last sentence i got bored and started looking at <a href="https://macthemes.garden/l-desc/1">this website</a>, of old macbook themes. the link's sorted by most likes. reading it didn't make me feel better. i feel very selfish, i know that writing this will make my friends worry, but i fear keeping my thoughts in my head has never helped. i refuse to write these "sol moments" in a physical journal- my parents might find it.</p>
+          <p>it's a bit hard to explain my mental state to people without going off on tangents. it's not good per se but it's not bad. if nothing goes wrong in the day i feel nothing, more often than not. if something goes wrong but i don't care about it i feel nothing. if something goes wrong and it's related to friends, family, whatever, i consider that life may be better for everyone if i wasn't there. it's really that simple. i only truly become suicidal when i have PMS, and luckily that's only once a month. i need to do more research, but i wonder if birth control can help reduce PMS symptoms. would be pretty cool, but i sincerely doubt my mother would let me, let alone my father. he's mad at me right now, i can feel it. i don't feel hungry. i don't know if i can shower, i'm too tired. i just want to wallow right now i guess. i haven't been actively suicidal in ages. it stands to question if i was ever "actively" suicidal at all. i've always been putting it off. always been telling myself, "when [brother]'s old enough to remember me i'll do it," "when i'm ten i'll do it," "when i'm thirteen i'll do it." there is no version of me who is real who was never suicidal. it was selfish of me to think that my presence could've prevented a similar fate from befalling my brother. it didn't. i can only hope he ends up better, in the smallest way of not hating my father. i don't know if he has it in him to truly hate. he's young though, wait and see. oh neat it's 7:11 PM make a wish</p>
+          <p>i got upset earlier because i couldn't comfort my friend, that all i do is be a  burden on him and all my others. i'm a burden to my partner too. the awful thought i keep having that i hate is that i should break up with her before i make her a worse person, too. even typing this is making my eyes sting and skin burn. i don't want to do it. but i don't want to drag her down with me too. i just want to know what's wrong with me. is that selfish? i don't want to have to force the people i love to deal with me before i get better, and i can't get better if i don't know what's wrong with me. but school's over and i can't speak with a counselor. the only thing my mother took away from their call was that i should do sports after school. what a joke.</p>
+          <p>i hate crying a lot. it's a bit silly to say, but i guess i internalized a bit of toxic masculinity from my father as i grew up, despite not being raised male. i suppose my brand is a little different as a result, so does that even make it toxic masculinity? it's selfish to think i could even begin to understand what others go through. when i was younger, i'd do something wrong, intentionally or otherwise, and my father would yell at me. and i'd cry. and then he'd yell at me for crying. and then i'd cry. and then he'd yell at me for being [tagalog word for dramatic]. the funny thing is, i never learned what [tagalog word for dramatic] was as i grew up. i think i learned it when i was nine or ten, long after i learned to be quiet and agree with whatever he said so i could escape "unscathed." it's not quite the right word, i don't think. i should be grateful he didn't beat me. i still can't hear an adult man raising his voice without freezing or flinching.</p>
+          <p> i hate confrontation. it makes me feel like i'm being boiled from the inside out. i guess i should clarify that confrontation, as in negative interaction, with strangers usually has no effect on me. it's when it comes to people i care about when i start freezing up. haha freezing up from deltarune. or worse, if i don't freeze, i fight. even if i'm in the wrong, especially when i'm in the wrong. and then i go home and i (rightfully) feel like shit. is it selfish to not be like this? i wish i could talk through my issues like a normal person. the longer i go without eating tonight i can feel my father becoming more upset with me. that's okay, i deserve to be yelled at today. i suppose when i'm done writing i should go shower. if not a meal, i should shower. wash my hair, it's all oily. i wouldn't want to ruin her special day. i'll be good. i promise.</p>
+        </article>
+        
+        <article id="may_28_25" class="bit">
+          <h3>may 28, 2025 // "love me, normal(cy/ly)"</h3>
+          <video width="150" height="100" controls>
+            <source src="https://file.garden/ZkRD3wbiZDsBIZnn/lmn.mp4" type="video/mp4"></video>
+          <blockquote>
+            <p>(1) In lipstick on the mirror are the lyrics to my obituary<br>(2)In iambic pentameter, followed parameter<br>(3) Crossing my eyes, dot my T's<br>(4) I was delivered holding scissors<br>(5) I live deliberately, I'm a quitter<br>(6) And a winner anyway<br>(7) 'Cause I never agreed to participate in this game</p>
+          </blockquote>
+          <p>(1): a little note to those who loved me best (2): i hate iambic pentameter (3): death but at least i did what i needed to (4): was i always destinied to remember all this, to hold all this? (5): loser shut-in (6): but my life is great (7): i'm sorry</p>
+          <blockquote>
+            <p>(10) And I'd rather be normal, yes, so normal<br>(11) I suggest that we keep this informal<br>(12) 'Cause a normal human being wouldn't need<br>(13) To pretend to be normal, to be normal<br>(14) Well, I guess that's the least that I owe ya</p>
+          </blockquote>
+          <p>(10): you get the point (11): it wasnt until very recently when i told anyone in a professional setting. it was the first person i think i've told outside of very close friends at all (12): am i a person or just some thing pretending to be one (13): it's like i have to try so much harder to be like everyone else (14): i'll do it anyways because that's what (i have to do/i've always done)</p>
+          <blockquote>
+            <p>(21) Is it courageous or escapist to<br>(22) Leave the quarantine when you're contagious?<br>(23) It may just be a cold<br>(24) And besides, I don't wanna get old, yeah<br>(25) I drank myself to death to be the afterlife of the party<br>(26) When the afterparty came, I was rolling in my grave</p>
+          </blockquote>
+          <p>(21): all i can ever do is wrap myself in escapism (22): maybe it would've been better (23): i'm too much of a burden, im sorry to bother (24): you get the point (25): can't i just lighten up for once (26): it seems so much better when i'm not there</p>
+          <blockquote>
+            <p>(40) I want you to find those points of no return, those singularities<br>(41) Those burning rings of fire in the beautiful pupils<br>(42) Of the beautiful eyes of the beautiful boy, girl, neither, both<br>(43) Or in-betweens that you brought with you tonight<br>(44) And I want you to tell 'em how you really feel<br>(45) I want you to love the way they so seamlessly<br>(46) Like-a-dreamfully, oh-so-beautifully,<br>(47) Oh-so-dutifully jam that square peg in the round hole in their heart</p>
+          </blockquote>
+          <p>(40): im sick (41): im sick (42): im sick (43): im sick (44): i cant (45): i cant (46): what if im faking it (47): what if im bringing them down with me</p>
+          <blockquote>
+            <p>(48) I want you to tell 'em that you love the way<br>(49) That they don't stick out like sore middle fingers<br>(50) That they crawl their way up the side of the bell curve<br>(51) Stick their flag in the peak, and slide their way back down<br>(52)I want you to tell 'em that you love the way that they're not maladaptive<br>(53) Not malcontent, not malignant or maleficent<br>(54)But rather, that you love them exactly the way that everybody else is</p>
+          </blockquote>
+          <p>(48): im sorry (49): im sorry (50): im sorry (51): im sorry (52): you get the point (53): i wish i could be more like them (54): we should start over with a new sol</p>
+          <blockquote>
+            <p>(55) I was nothing before, so I couldn't have asked to be born<br>(56) I'll be nothing again, so what am I between now and then?<br>(57) Is there nothing to fear? 'Cause shit's getting weird<br>(58) So to God who made this man<br>(59) You better have one hell of a plan</p>
+          </blockquote>
+          <p>(55): i would've preferred if my parents took the time to look at themselves before they had children. would've saved us a lot of trouble, that's for sure (56): use life to support others (trans rights but not for me i dont deserve that shit) (57): why cant i feel worse when i hear the latest news. is it because im apathetic or because im terrible? maybe its both (58): i only believe in god when i feel like shit and that's to curse (59): your plan sucks ass father can we make a new one</p>
+          <blockquote>
+            <p>(70) C'mon, c'mon and love me... normally.</p>
+          </blockquote>
+          <p>love me, normally/love me normally - love me, in a way that is normal/love me, (because) i am normal. im sorry</p>
+        </article>
+        
+        <article id="may_17_25" class="bit">
+          <h3>may 17, 2025 // joyous day</h3>
+          <p>i went to one of my friends' birthday party today. another of my friends overslept so we started off a bit late. we listened to a few songs from everyone's favorites in the car. the beach was windy but it was nice to see everyone hanging out. yet another of my friends was sick and couldn't make it, i hope he gets well soon :&#40; then we went to the mall in japantown. i loved the food, my favorite part was the salmon sashimi and the mochi ice cream. then we went to a gachapon store, but they didn't have the undertale charms anymore. i got a bunch of sanrio-themed oysters. we went around for a while before returning to the car to drive back for cake. i snuggled with my partner in the backseat (annoying pda couple) the cake was limbus company themed. i ate don's face. it tasted like artificial lemon  a little bit. i didn't like the don mango flavor, but faust cookie and cream was nice. then i had to go home. i had a lot of fun today, i hope we can do karaoke soon. i really wanna sing "Blue Velvet" Reboot Starring Tom Waits (suburbia overture/welcome to mary bell township/vampire culture/love me, normally) with all my friends... also laplace's angel would be fun.</p>
+          <p>i like being normal. being normal is so fun. that's why i've partnered with hit artist will wood to sing his song "love me, normally" from hit album "the normal album." but first i need to grab him and shake and ask "why? why not release a 2024 remaster? why another laplace's angel recording? i'm not mad, shrimply confused."</p>
+        </article>
+        
+        <article id="may_9_25" class="bit">
+          <h3>may 9, 2025 // lovesickness (for reality, for fiction)</h3>
+          <p>hi. im sol. ive been normal for quite a while now. in fact, i had a nice conversation with my partner last night. i've been reading a few books lately. i finished <i>persepolis</i> in one sitting and i'm almost done with <i>maus part one</i>. admittedly not what most people pick up for a relaxing after-school afternoon, but whatever. i love to learn about others' lives and perspectives... (sickos) haha... yes... YES..! it really is too bad that getting people to open up about themselves requires emotional committment (im not good at this) and a crowbar (i do not own one).</p>
+          <p>speaking of crowbars, i am always reminded of my love for hlvrai, which stands for <i>half-life vr but the ai is self aware</i>. there's technically a hlvrai2 but i havent watched it yet, and i also want to watch it with my partner ^_^ i love them, i think, a lot a lot a lot a lot. i want to wrap them in a soft blanket so they never have to deal with nonsense ever... whenever theyre like "thing went even slightly negatively" im like This Is Unacceptable. oh yeah we might be looking at a half-life 3 btw. but my partner is more important in my heart... but still i must discuss hlvrai.</p>
+          <p>BUT ALSO my partner's probably gonna read this and get spoiled (!!) so i will say only this. i like benrey a lot. speaking of relatively obscure media, i really need to catch up on the webcomic adaptation of <i>omniscient reader</i>. it's so peak... but i always forget to sign back into my webtoon account so i never get notifications for updates. one day i'll read the orignal but right now i'll stick with the comic until the end, then compare differences with the webnovel.</p>
+          <p>i guess i've always been a reader. i think i started reading when i was 3-4 years old? that's what my mom says, anyways. i graduated pretty fast from books with pages full of drawings to chapter books, and aside from the bible (natch, you really think my devout-as-a-woman-raised-catholic mother would've let her <em>biblio</em>phile daughter to go the first few years of her life without setting eyes on The book?) as far as i can remember, <i>wings of fire</i> was my first chapter book. i'm surprised my mom didn't read through it what with how protective she is, but she probably saw the cute dragon on the cover and thought it was fine. nowadays i'm <em>still</em> waiting for her to play limbus company so i can download it. ughhhhhhh. anyways in the first book a character beheads what turns out to be her father and two of the three parental figures the main charactrers have are killed, one in front of them, the other in cold blood by someone he trusted. (i can't remember if it was dune or kestrel who was killed? it's been a while since i did a full reread.)</p>
+          <p>although i read wof for longer, the series that had a larger effect on me was <i>warriors</i>, yes as in warrior cats. yes i did name myself after sol warriors. no do i regret it. it's a sick name and it's one of the best decisions i've ever made. i think that speaks to how much more warriors had effected me since if i thought more about wof daily i would've named myself starflight or something. it is good to note that i only got into warriors since i heard tui t. sutherland was an erin. anyways warriors sucks and is like violently misogynistic at times but it still is the series i loved as a child. if i ever reread it again i'm just gonna take the books out from my local library instead of buying them.</p>
+          <p>articles to write:</p>
+          <ol>
+            <li>"kind of like transformers," a tiny voice in my brain says before i squish it flat. can this idot get any worse - transgenderism in transformers idw1</li>
+            <li>hollyleaf is literally megatron if he was cool</li>
+            <li>neon genesis evangelion experience so far</li>
+          </ol>
+        </article>
+        
+        <article id="may_3_25" class="bit">
+          <h3>may 3, 2025 // canonical minecraft yaoi</h3>
+          <strong>content warning: hormonal teenager behavior.</strong>
+          <p>i love yaoi. many people know this fact about me, but really, yaoi makes up a huge portion of my life. in fact, i spend most of my mornings, afternoons, evenings, and nights thinking about various types of yaoi. recently though i came into contact with a brand-new form: <em>canonical minecraft yaoi.</em> garett and steve had so much homoerotic tension it was crazy. i think the minecraft movie (sorry, <em>a</em> minecraft movie) was kinda badly written and felt ai generated a bit but that is just my opinion. i dislike how they treated the female "characters" for indeed they were not really characters at all, merely footnotes in the guys' story. all they do is hide, kinda try to defend, get left behind, build pretty home, and heal and generally just stand behind the male characters.</p>
+          <p>dawn's (i thought her name was don because of <a href="https://limbuscompany.fandom.com/wiki/Don_Quixote">limbus company-adjacency brainrot</a> and lack of subtitles) whole "closer with nature animal tamer" thing was kinda like. 1940's era oppositional sexism as put into perspective with the juxtaposition of the guys being like, melee oriented and the "real fighters" who get the plot moving. honestly they could've done more with natalie's loss of innocence/childhood due to having to take care of her brother with <a href="https://www.verywellmind.com/eldest-daughter-syndrome-8623347">her role as the older sister</a> (this is coming from a guy whose entire identity for a while literally was "older sister") and her whole self defense thing, while admittedly a cute ending, was undercut by the fact that she was Not A Character and this whole love for hand-to-hand combat came totally out of left field. also the concept of henry and natalie's mom just having mysteriously died and just never brought up again is... strange. it doesn't exactly lean into <a href="https://en.wikipedia.org/wiki/Women_in_refrigerators">fridging</a> as henry isn't (visibly) affected. at all. maybe i am just too tvpilled tropemaxxing though. waitwait before i move onto Sol Yaoi it is Really Quite Strange how the only Black person in this movie (at least in a prominent role) is the one seen as 1. closer to nature and 2. the sassy woman stereotype bringing natalie's "inner wild" out but it also falls kind of flat because they don't even get that much screentime? take everything i say with one million salts please i am word vomiting onto the (web)page.</p>
+          <p>Sol Yaoi time. i had him. i had him in my hands. and i let him go. then we lost our minds over each other for an hour. god i need him. I Really Could Not Care Less If We Are Bad For Each Other because if we're that bad for each other then why would i subject someone else to my awfulness. im sure thats not what the warnings mean but that's all i can interpret it as. &lt;- has been switching between depressed and <i>freaky</i> (emphasis mine) for the past like two and a half weeks. i indirectly told him what's on my mind and he returned it. god i need him. and frankly if in a few weeks or however long it turns out this was just infatuation, a fleeting interest, it's the best i've ever felt in my goddamned life. holy shit. im so fucking ill i know why they call it 'lovesick' god i need him. i had him but i let him go but who knows about next time. desire is stronger when it's not totally satisfied (disco elysium reference). god i need him. fuck. fuck. fuck. fuck. fuck. fuck. &lt;- six of them. teehee (cries) (throws up) (bashes my head against a wall) (crawling darkly) (screaming) (twisted) (crawling darkly) (screaming) (twisting) (crawling darkly) (screaming) (crawling) (twisting) (splitting) (creeping darkly) (tumbling) (crawling violently) (twisting) (convulsing) (roaring) (creeping) (growling sinisterly) (crawling) (splitting) (walking ashore) (twisting) (convulsing) (creeping) (walking twisted) (attack regardless of target) god i fucking need him. DIES AND EXPLODES</p>
+          <h6 style="font-size:1em; font-weight:500; font-style:italic; margin:.5em;">to do list ^_^ yayy</h6>
+          <ol>
+            <li>finish website redesign... i think this one is really cute !!</li>
+            <li>tell him how i feel, for real. no dumb screenshots, no deleting it, no running away.</li>
+            <li>read homestuck</li>
+            <li>draw gabriel in a maid outfit, again- let's see my improvement in five months</li>
+            <li>go outside mores</li>
+          </ol>
+        </article>
+        
+        <article id="apr_23_25" class="bit">
+          <h3>apr 23, 2025 // hate</h3>
+          <p>this article removed for inappropriate content.</p>
+        </article>
+        
+        <article id="mar_22_25" class="bit">
+          <h3>march 22, 2025 // memory</h3>
+          <p><b>content warning: mentions of depression and suicide/self-harm</b></p>
+          <p>bro my memory is SO bad how did i forget that i used to scrape my own nails against my own skin for years 💀💀💀💀💀💀 i only remembered last night because i was itchy and itched my leg and went "ow this seems kinda familiar" and it came flooding back. am i stupid</p>
+          <p>it's probably a bad sign that i consider the sting of scratched flesh to be a familiar, maybe even comforting presence. i guess it's the same as being depressed lol at some point the lowest point is also the most comforting one. it's better than being dead at least. if i told someone that my having long nails is a sign i used to be severely suicidal theyd probably laugh at me. its such a silly thought if you put it that way // sol voice: i sure hope nobody asks why i know that my nail scratches fade in 2-3 hours</p>
+          <p>when i was younger, when i was far worse, my idea of a "perfect death" always had to do with heights. it was perfect because i've always been scared of heights. i don't even remember why i was afraid of heights before i was suicidal, but now i'm afraid of them because i'm worried i won't be able to stop myself from jumping. i hated going to the grand canyon. it was beautiful, but each time i got too close to the edge i could never stop the thought of "if i climbed over this tiny, tiny fence, it'd all be over" from crossing my mind. my father refused to let me buy a book on the worst grand canyon deaths, and i'm glad he did, although i was upset in the moment.</p>
+          <p>i think mostly i never wanted to die, per se, but for it to stop. i'm sure i've thought the words "god i wish my father grabbed me by the hair and bashed my head against a wall until i bled so i'd have an actually good reason for being suicidal" at some point in my life. i mean cmon. look at this idiot, she wants to die so the shouting can stop. mostly when i was a kid the best part of the "perfect death" was my father at my funeral regretting that he ever treated me poorly and my mother regretting that she never stopped him.</p>
+          <p>when my brother was born i started getting a little better. i never told anyone what was going on inside my head, but i wanted him to grow up (so my parents couldn't lie to him about what i was like) first. looking back, if he grew up and i killed myself, that would've been far more traumatizing for him than my death when he was young. it's kind of silly to believe that i only admitted i was suicidal to someone other than a close friend last year, who then immediately told my mother who cried and held me in her arms and cried more when i told her i've been like this almost as long as i can remember. i cried too, but i can't for the life of me figure out why. maybe i felt bad that i hid it from her for so long?</p>
+          <p><sub>i actually usually scratched my upper legs so nobody would notice. the method itself of scratching was perfect for denial: the marks would fade far quicker than if inflicted by a knife. having long nails is a normal little girl trait. and even if i was caught- and i was, often- there was always the plausible deniability of having done it on accident.</sub></p>
+          <p>you know what's funny? i didn't even start out like this. i just thought about running away at first, when i was little and hid in my bed from whoever was mad at me at the moment. but then, i told myself, it'd just continue when they forgot what it was like to lose me if only for a few hours. no, i needed something more permanent, so if they ever had another child they'd know to treat them right and not just when they felt they needed to. i suppose this rationale has followed me even to today, when i see my father acting with the same lack of care which led to me Ending Up Like This. i don't think i hate him, i just think i'm disappointed in him. you'd think that when i stopped saying "i love you" back or stopped looking at him or stopped staying in the same room as him that he'd at least try to do some introspection. and i look to my left and i see my mother being the same person she's always been, always making excuses for him. always always always always. maybe you can't teach an old dog new tricks. maybe they'll just be like this forever. oh well.</p>
+        </article>
+        
+        <article id="mar_18_25" class="bit">
+          <h3>march 18, 2025 // lots of fun</h3>
+          <p>content warning: sappy hormonal idiot behavior</p>
+          <p>he came over on saturday. i kissed him and i quite liked it. i was really nervous. we kept on watching jacksepticeye's silent hill 2 remake video. he had to leave early, but it's okay because for some reason the pork in the sinigang tasted really really bad. i'm sad he had to leave early but i'm happy it wasn't his first experience with one of the most dishes of all time. saturday was fun.</p>
+          <p>i like him a lot a lot a lot a lot. i keep thinking about him all the time. i want to be clingier but whenever he's in the vicinity i become aware of everything i do. my breathing. my tone. my stupid jokes. frankly i dont care if i'm his little jester or whatever if it means he's laughing. is that what romantic love feels like? it feels like i'm a plant and he's the sun. i (love/adore/admire/like) his laugh. i wish i could hear it all the time. romeo has a skill issue. i bet he's never cared about juliet's laugh, how she gets all excited or quiet depending on what he does. loser.</p>
+          <p>i'm happy all that sol virus, sol blight whatever stuff is over. i intended it to be a one-off joke and even before it became a romantic rivals type situation it was becoming kinda uncomfortable. that's not anyone's fault but my own, though. i like focusing on other people more- especially him. he lights up my whole day.</p>
+          <p>guhhhh. my stomach really hurts but writing this makes me feel a little better at least. i really can't stop thinking of <span style="color:black;">the noises he would make if i really did bite him, and his face if i kissed him immediately afterwards.</span> i'm sure wanting to draw another's blood with nothing but your teeth and blind determination is normal, right? anyways i don't think this is like. a sex thing or anything similar. i just wanna see. normalize biting people... now!!!</p>
+          <p>lalalalala. my rage grows by the minute and so does my desire but we stay silly! :3c</p>
+        </article>
+        
+        <article id="mar_1_25" class="bit">
+          <h3>march 1, 2025 // fun</h3>
+          <p>today was fun. my brother had a dentist appointment so i got the house to myself in the morning. watched gravity falls with cereal. i intended to eat more but my appetite disappeared. texted ren a little. did my chores. brother and mom came back. did a sudoku on easy mode and it took me nearly fifteen minutes to beat. that's okay, it's my first one in a while. i worked on a homepage revamp for a little while. pesto and chicken for lunch. didn't eat a lot. cleaned up before he visited. we watched a lot of stupid ultrakill videos and jujitsu kaisen. i dont really get the plot that much but i like to watch it with him. i begrudgingly admitted that gojo is cute. i think he's cuter. something nearly happened. i wish it did. something happened. it felt really nice. ive hired these goons to stare at you. then he had to go home. i played cookie run. i really want the new pv costume but i probably wont get it, which is fine. in the span of a week ive become a purelily fan and for good reason. white lily cookie is so sweet it makes me sad when bad stuff happens to her. she deserves to blow shadow milk up forever tbh. we called and i watched him play hollow knight. it was fun. today was fun.</p>
+        </article>
+        
+        <article id="feb_24_25" class="bit">
+          <h3>february 24, 2025 // aid</h3>
+          <p>i want to help. im sorry. i really do- but for whatever reason i cant. because i dont know what to say. because its my fault. because i decided to say something hurtful that day. because im not allowed to leave. because all i can repeat is "im sorry" over and over and over. im sorry for apologizing, i know it's annoying. my behavior never changes and you deserve better than me, you always have.</p>
+          <p>please don't feel bad either. it's not your fault and it's not mine. it's not your fault you were born to people who should've gotten help before they decided to have children and it's not mine for being the same. i wish i could help without making it worse but not chosing which words to speak and which words to whisper is a dangerous game that we can't afford to play. i want to curl up next to you and tell you it's alright although i know it's not and i want to make you feel better. you dont deserve this, nobody does. nobody deserves this. i want to be impartial because impartiality is the father of justice yet i cannot be for the simple fact that i will listen to you first- except when my anger overcomes my mind and i briefly become the worst person in the world. it's not about me but im sorry. im sorry i said that im sorry i did that would it have made you happier or worse if we had never met at all?</p>
+          <p>you deserve your space and you deserve to be held close. im supposed to know you yet you dont know me? how do i open up? how do i spill my insides to the world? every time i speak my mind i freeze. its not the fault of those who raised me yet it is. it isn't yet it is for all of us. first five years, right? first five years mean everything. forgive me if my speech is unclear or absurd. my problems are trite in comparison. i want you to feel better. im going to disappear now</p>
+          <p>this is addressed to both of you, or neither of you, or just to me, or none of us. im sorry to bother you.</p>
+        </article>
+        
+        <article id="feb_20_25" class="bit">
+          <h3>february 20, 2025 // to-do once more</h3>
+          <ul>
+            <li>go outside more often. heathen</li>
+            <li>finish noli me tangere / restart fortuna</li>
+            <li>restart homestuck</li>
+            <li>restart nge</li>
+          </ul>
+          <p>im happy to report the things that have not reappeared from my last to-do list have been completed. i finished idw2 (sad it's over, but happy it existed at all), decided if i wanted to finish g1 (i didn't), and figured out if im 100% aro or nebularomantic (im nebularomantic gay. awesome sauce) anyways i just felt like i needed to update this. oh yeah i might revamp the homepage AGAIN dkfjlksdjflksjdflksjdf;lkjsdfljjf</p>
+        </article>
+        
+        <article id="feb_19_25" class="bit">
+          <h3>february 19, 2025 // affection</h3>
+            <p>GUH GUH GUH GUH GUH GUH GUH GUH GUH GUH GUH GUH GUH GUH GUH GUH guys will claim "im not emotionally repressed" then stay up for 20 minutes staring at the ceiling after admitting 1 (one) thing i want. GUH GUH GUH GUH GUH GUH GUH GUH anyways the 3-step evil plan went off pretty well, i'd say. only downside was being out of it for a third of spanish but it wasn't too bad. my groupmates helped cover. the thing im most worried about is my english presentation because frankly im not sure if my groupmates <em>there</em> managed to write scripts without chatgpt. sigh.</p>
+            <p>to note: the only other time i've written the words "em*tionally r*pressed" is when i was talking about cyclonus mtmte. UGH</p>
+        </article>
+        
+        <article id="feb_13_25" class="bit">
+          <h3>february 13, 2025 // quote</h3>
+            <p>"None of us remembers who we were pre-Christianity and pre-colonisation. We are all pulling at little pieces of the past that we call African culture, and trying to sew together a heritage." <i>-Arya Jeipea Karijo</i></p>
+            <p>ah. i get that. &lt;- filipino </p>
+            <p>"For me, this search is more than an anthropological interest. It's because I am a transgender person. And in my country, transgender people like me are referred to as a foreign concept, as "unAfrican... Others say that we have no place in the Christian "Kingdom of God.""</p>
+            <p>yeah...</p>
+        </article>
+        
+        <article id="feb_6_25" class="bit">
+          <h3>february 6, 2025 // chronic layout disease VI</h3>
+            <p>we are so back chat i redid the homepage again and also i convinced him to play hollow knight and fun things are happening : &#41; im probably gonna rename this solstice as the "highest point of the sun" i.e, my (suppose, for but a moment, that since my name is sol i am the metaphorical sun) highest point (a place where i can be completely myself). sol.nekoweb.org is still something i have an eye on, but still... i could always use the url for something else.</p>
+            <p>it's kinda shocking to me that people in the nekoweb server, y'know, actually plan their websites out. they do "design passes" and everything. for me, I just. make stuff. this redesign is purple because i like purple. (the purplerrrrr)</p>
+            <p>today in general was pretty neat. i pulled dark cacao cookie and ascended him, so now he has a cool new outfit and a stronger attack. i want sea fairy's rippling moonlight outfit so bad but i am perpetually unlucky with the outfit gacha.</p>
+            <p>ghhHHHFHFFfhdjfksdfhsdf hollow kngiht</p>
+        </article>
+        
+        <article id="feb_5_25" class="bit">
+          <h3>february 5, 2025 // chronic layout disease V</h3>
+            <p>seriously considering renaming this to solaire or solstice. once i decide it's over for you</p>
+        </article>
+        
+        <article id="jan_27_25" class="bit">
+          <h3>january 27, 2025 // fear and identity</h3>
+            <p>im a boy, probably. im just some guy and i always have been. im of the height you'd expect a person like me to have and i have the hair color you'd expect a person like me to have and i have the eye color you'd expect a person like me to have and so on until eternity.</p>
+            <p>i used to have anxiety. never got diagnosed, but i probably had generalized anxiety disorder. ive been getting better (read: when i start down a spiral i stop and go "that literally wont even happen" and move on) but recently theres been a lot more to worry about. politics. family. friends. politics. i worry about the radicalization of my peers and the radicalization of my parents. i care, i think. i care very deeply about those around me and it hurts when it turns out they dont care back. i dont think ill ever forget when i asked those around me, "you know politicians can lie, right?" and they replied with several seconds of silence and a blank stare. then they started parroting transphobic rhetoric as i realized that this was not a safe place for me and never was.</p>
+            <p>my parents mean a lot to me. i dont think i know what love is. everyone around me acts like it's a big, important thing but i dont know what it is. can it be defined? can it be held? can i eat it? can i destroy it? forgive me if my speech is unclear or absurd. i have little experience in this regard. they say they love me yet they deny my autonomy, my right to be who i want to be- is that love? i think people can love you and hurt you. they want the best for me but they refuse me the chance to try and to fail. my mother awknowledges she coddled me too much as a child yet continues to do so now. she is human. i am human. we make mistakes and do not learn. i am made from her and my father but i dont ever want to become either of them. i used to worry id end up exactly as her. now i worry ill end up exactly as him.</p>
+            <p>my entire being is shaped from experiences and so is yours. how do i define myself, my indentity, if i have forgotten all that ive known? im a fish swimming downstream despite the fact that i have seen countless versions of myself go and drown and drown and drown. i never learn from my mistakes and i never will.</p>
+            <p>im a boy, probably, but even if im not, ill never forget that nobody let me try.</p>
+        </article>
+        
+        <article id="jan_24_25" class="bit">
+          <h3>january 24, 2025 // we're sack (sol back)</h3>
+            <p>funny thing is as soon as i got a bf i stopped being on that coding grindset. i mean what</p>
+            <p>idk if i can call him my bf <sub>yet</sub> but im so . excited becausei technically have dated people before ive just never. gotten so excited. i like him a lot a lot a lot a lot a lot a lot a lot a lot a lot a lot <span style="font-size:smaller">a lot a lot a lot a lot</span> <span style="font-size:small">a lot a lot a lot a lot</span> <span style="font-size:x-small">a lot a lot a lot a lot</span> <span style="font-size:xx-small">a lot a lot a lot a lot...</span></p>
+            <p>thats not to say my previous relationships didnt bring me joy, rather that this one is different somehow ? i think it's not platonic in the ways ive dated people before ohhh my god im so jittery when i said i liked him mybones stopped being able to move and i could barely throw long cat around. (IMPORTANT DETAIL)</p>
+            <p>you know wgats not makign matters better is that my parents are at the stage where they bother me about dating and MY FACE TURNED RED WHEN MY MOM BROUGHT HIM UP. its joever...............</p>
+            <p>anyways he said i can read him transformers :D :D :D :D :D :D :D :D</p>
+        </article>
+        
+        <article id="jan_16_25" class="bit">
+          <h3>january 16, 2025 // chronic layout disease IV</h3>
+            <p>chronic layout disease got so bad i made <a href="https://sol.poyoweb.org">a whole new website</a>. oopsies</p>
+        </article>
+        
+        <article id="jan_15_25" class="bit">
+          <h3>january 15, 2025 // chronic layout disease III</h3>
+            <p>chronic layout disease is real and haunts me</p>
+        </article>
+        
+        <article id="jan_13_25" class="bit">
+          <h3>january 13, 2025 // to-do list</h3>
+            <p>to do</p>
+            <ul>
+              <li>start going outside more often</li>
+              <li>finish idw2</li>
+              <li>decide if you want to finish g1</li>
+              <li>restart fortuna</li>
+              <li>restart homestuck</li>
+              <li>restart neon genesis evangelion</li>
+              <li>figure out if youre 100% aro or just nebularomantic</li>
+            </ul>
+        </article>
+        
+        <article id="jan_10_25" class="bit">
+          <h3>january 10, 2025 // a confession of sorts</h3>
+            <p>it's friday.</p>
+            <p>a lot of stuff has happened this week. i guess i should start from the beginning as it'll get my thoughts in order.</p>
+            <p>i joked about sol points with my friends from middle school on monday and briefly mentioned it to another friend on tuesday. let's call him b. my friends, s and g, are in my server which is for irls only. b is also in this server. i say that reading transformers will net at least 500 sol points. i turn my phone off and go to bed.</p>
+            <p>the next morning there are messages of g and b fighting over who has more sol points. to me it seems like we are doing a Fun Bit and i join in. g reveals he read transformers late into the night, and while i don't condone skipping out on sleep, it's not like i can talk. i'm also very happy that one of my friends has gotten interested in transformers.</p>
+            <p>timeskip to thursday morning. the sol essay dropped wednesday night. i read it. at this point i'm starting to question if this is just a Fun Bit.</p>
+            <p>timeskip to today, just before fourth period. i check my discord. a screenshot's loading in.</p>
+            <p>oh my god</p>
+            <p>oh, my god.</p>
+            <p>me and b talked about it during lunch. the conversation was really awkward. i didn't know what to say at all. everything's different now but i still want to be friends but i dont want to "lead him on" AGHHHHHHHHHHHHH why do i have to be so bad at talking and why does my face always smile when i dont want it to and why cant i EVER just be normal about anything. guhhhhhhhh</p>
+            <p>everythings different now and i dont know how to get it back to normal</p>
+            <p>i shouldnt have started the conversation i shouldve just done what i always do: pretend it didnt happen it works with my parents why wouldnt it have worked for this</p>
+            <p>i shouldnt have remarked on his spelling it was the worst possible thing tosay</p>
+        </article>
+        
+        <article id="jan_2_25" class="bit">
+          <h3>jan 2, 2025 // happy new year!</h3> 
+            <p>it is the new year and look at us. im writing this curled up next to my blahaj so lovingly named mr sharkie and you're reading some freak online's blog post. don't take my word for it though, let's look through all the <span style="font-family:'Times New Roman', Times, serif; font-style:italic;">freaky</span> stuff i did in 2024, like... get into transformers. and get a gf (didn't last long) (we weren't really romantic in the first place) (we're still best friends and i think she's super cool im just not calling her my gf anymore). and have a breakdown first week of school about how i feel all i am is my grades. y'know, all that <span style="font-family:'Times New Roman', Times, serif; font-style:italic;">freaky</span> sstuff. okay fine im just a normal guy whatever. i guess you (singular reader) can have my new year's resolutions. if it's crossed out it means i win btw</p>
+            <ul>
+              <li><s>draw gabriel in a maid outfit</s></li>
+              <li>learn to draw hands (nearing the second year i've put it off in a row)</li>
+              <li>figure css animations out because they look cool</li>
+              <li><s>convince my "loyal subjects" to reelect me as <a href="https://en.wikipedia.org/wiki/Benevolent_dictatorship">mayor of torment town</a></s> firing missiles at each other over who has more sol points counts right</li>
+              <li>add comments to blog posts</li>
+            </ul>
+          <p>i don't really feel like i grew as a person in 2024. did i? did i just not notice it? kinda weird to think about; i'll ask my friends and family if they saw me change. man. this year was my 15th birthday which is crazy. i <b>feel</b> so weird. that's only three years away from 18. now i have to learn to drive and everything &lt;- american WELL WHATEVER i just failed my english short answer finals and im not stressed about that appearing on my college transcript at all lol</p>
+          <p>incredibly short and stupid article, i know. now imagine being the guy who had to write it (your brain explodes)</p>
+        </article>
+        
+        <article id="dec_31_24" class="bit">
+          <h3>december 31, 2024 // social dysphoria</h3>
+            <p>originally this had a stupidly long intro but basically i keep wondering if im really trans or if im just faking it. like am i stupid? if im just faking it why am i putting myself through the heartache and the fear and the worry of having to tread slowly around every new person i meet wondering if i tell them "i'm a guy" they'll look at me differently or crying myself to sleep about how my parents will never see me as anything other than a daughter.</p>
+            <p>"anything other than a daughter." that specific wording is important to me because my parents arent really "bad" people in my opinion. i'd like to think nobody is. they're not exactly consciously sexist, but for me it doesn't matter if they're being aware of it or not. they're still acting as though having leg or miniscule amounts of facial hair will ruin me forever. make me infinitely unwantable to anyone who would theoretically want me. being a son would make me worse, intentionally sinful in their eyes, for rejecting the perfect feminine body so graciously given to me by the Lord. ("kind of like transformers," a tiny voice in my brain says before i squish it flat. can this idot get any worse)</p>
+            <p>evenif i weren't actively avoiding the question of my faith i guess i see why my parents don't want me to be trans. after all, there's no mention of it in the bible. the bible, which condones slavery. the bible, which says there were only two humans at the beginning and everything was great before a snake ruined it all. yippee.</p>
+            <p>sigh. i don't think i can finish this article tbh.</p>
+        </article>
+        
+        <article id="dec_26_24" class="bit">
+          <h3>december 26, 2024 // ramble about pixel fonts and other indieweb topics
+          </h3>
+            <p>this is kinda related to my tragic case of chronic layout disease, but here goes sol trying to make sense of his brain once more. take everything in here and more with at least enough salt to kill a snail.</p>
+            <p>i used to chase after having the "best" pixel font a lot when trying to remake my website. it just looked cool, i reasoned. the first font i had on my website, after web defaults, of course, was VCR OSD Mono, or "the Ultrakill font." crazy. back then it actually made sense for my website to be called ultrakill on the nekoweb dot org, although if you read <a href="/about">the about page</a> you'd know this website didn't start off as ultrakill, but that's a story for another time.</p>
+            <p>my website also was made in flexbox (crazy. known flexbox hater sol used it long ago...) and was horrible and not mobile accessible + not anyone on a big computer screen accessible. it was a simple thing with a marquee at the top, three columns, and a few random things below it. i literally cannot remember how i pulled that off to be honest but what ever. it looked cool to me, but too simple. i wanted more, so i bounced around image borders for a while but now i've come back to the humble border:1px solid black;</p>
+            <p>there are a few wuestions that drove me to begin writing this. what is minimalism? what separates the aesthetics of the indie web from the aesthetics of the corporate web? is nostalgia inherently bad? is there such a thing as "too" individual on the indie web? and other pretentious nonsense. idk maybe im just shocked at someone writing multiple blog posts calling others slurs when i thought, y'know, isn't this thing about community in the end. but the people on nekoweb don't owe me anything and i don't owe them anything, but man do i wish i wouldn't get shouted down in the server for asking others to maybe not use eugenicist language. what ever who even cares (&lt;- he does) (this happened weeks ago) "i took a class on eugenics" okay and did you grasp the concept that it's not something we should mimic or...? okay sorry enough whining</p>
+            <p>is simpler bad or good? i guess it depends. everything depends on everything depending on everything else depending on everything. for me i want simpler because it's less visually cluttering and you as the reader can focus on the actual living, breathing soul of the page: the text. i suck at consistency though sorry chat my index + home + about + blog + actual blog posts all look different and don't even get me started on the fandom pages.</p>
+            <p>everyone is their own individual person, i'm not trying to say we're not. maybe ijust think that at some point if you being "different" is just because you think saying the direct opposite to what someone else is saying then you're not being individual you're being awful and annoying. i lied im not done complaining yet cause like okay you said sorry do we grasp the concept of why playing devil's advocate when talking about serious issues is maybe. hmmmmm. maybe it's not very nice? and i understand i took the L when we were having that funny silly dark humor conversation so yeah! i wont bother you about it anymore! i just think it's messed up that 1. we have to live in a world where joking about it can either be mocking the perpetrators or the victims and it's legitimately hard to tell! and 2. that it even happens often enough that it's a funny topic. to joke about. dkfjksdjfkdfjkdkf haha i love it when the world feels it's actively collapsing around me (&lt;- freshman)</p>
+            <p>it was simpler back then, wasn't it? i don't know. my childhood was probably extremely boring for most second-gen asian kids. my parents had to work a lot and they couldn't really afford to bring me to extracurriculars, so the highlights of being an elementary schooler were mainly watching shows on netflix and attempting to create a "cat club." she was such a sweet kid. too bad she's dead hash tag transgenderism but yeah! it would have been simpler if i was the same person forever, if i didn't grow up, if i didn't start seeing the world for what it is. am i an optimist? not really. i don't feel like the future's bright, and certainly not my future. i'm not good at anything at all, really. i don't have an eye for design, i can't draw very well, i suck at literary analysis, and if i'm decent at math??? who cares? ai will do that!! god i can't wait for the ai bubble to pop it took like 5 years off my lifespan. am i a nihilist? not really. even if the far future seems scary i do somehow have friends- people who tolerate me even when i'm literally being the worstest person in the world (experiencing Male Hysteria) or whining (turns me evil).</p>
+            <p>not sure how to end this one either. i guess the true pixel font discussion was the blog post i wrote along the way.</p>
+        </article>
+        
+        <article id="dec_18_24" class="bit">
+          <h3>december 18, 2024 // transformers idw1 review</h3>
+            <p>to preface: reading all* of tfidw in a month may have scrambled my memories just a little tiny bit, so there may be... incorrect information. do not take my word as law (although i doubt anyone <i>was</i> in the first place) and <b>beware of spoilers!!!</b> i relied on <a href="https://comicbookreadingorders.com/other/transformers-idw-reading-order/">this</a> and <a href="https://www.howtolovecomics.com/2016/10/17/idws-transformers-reading-order/">this</a> reading list on my idw journey, switching to the second when the first just . dropped off in the middle, and i know the second <i>also</i> doesn't finish idw as well, i think it's all i can take for now</p>
+            <p>anyways. reading this continuity was an emotional rollercoaster- one with many lows, a few highs, and a fair amount of times i went "that isn't good." this is all stream-of-conciousness, by the way. it wouldn't be a certified sol blog if not! let's start with a classic: unordered list of my favorite characters off the top of my head. if you've met me even once, irl or in the discord server, i'm sure you can guess who i think of first.</p>
+            <ul>
+              <li><b>starscream</b>, ex-mayor of vos (canon!) the most fascinating little guy imo... i keep thinking of his character arc (or lack therof) when im supposed to be going to sleep early (it is finals week) (i refuse to study). tee bee aech i am kind of disappointed with how his relationship with megatron turned out... okay i guess it went badly! how did this affect them?? it's brought up like thrice in the starscream-centric comics and like. five million years of abuse and he doesn't get closure? and his death made me go "what" because he literally just went selfish again and now he's not now that the gang's all back together? come on now. it is also possible all my analysis is empty prose, i am just a pretentious high schooler, etc.</li>
+              <li><b>megatron</b>, ex-miner. oh boy where do i even start with this guy. uhhh megastar beam go as previously mentioned i dislike how his and starscream's relationship is simplified so much when idw seems to expand on so many other aspects. like they managed to make megop of all things viable through The Conversation (i will never stop thinking about The Conversation) but no the guy and his second will never make any sense nooooo. i take great interest in how idw treats "redemption" honestly, especially with the fool's energon reveal. it was so obvious in hindsight and i feel like it did a lot for his character. ALSO him wanting to become a medic??? i need to lie down this makes. so much sense. lost light ending is so inch resting because what deos optimus think of this ?? (probably answered in the rest of idw which i have not read yet but what ever)</li>
+              <li><b>misfire</b>, ex... something. he is so silly. i love his relationship with the scavengers and although they're just side characters, i think he and the others kind of come into their own and get closer in the few issues where they're prominently featured. i haven't found any yet but a post-lost light miniseries of the scavengers' interactions' with megatron, ultra magnus, etc, would be super cool :D <br> the reveal where he's actually kind of a good shot was so cathartic... you really showed em my boy</li>
+            </ul>
+            <p>honorable mentions include windblade, knock out, and riptide, because i find them fun. the concept of cityspeaking is super cool tee bee aech, knock out was my second favorite character in transformers prime (the first tf media i consumed as a teenager after the bayverse movies) (guess who the first is), and honestly riptide is just neat. we need more shark characters in everything forever. thats my hot take of the day</p>
+            <p>crazy? i was crazy once. they locked me in  a room. a room where megatron and starscream's relationship kept being as interesting in the rest of the comics as they were in all hail megatron. i can see why it's the recommended starting point (as someone who started before it) because it really is good and honestly it has the furthest-reaching implications in terms of the story at large.</p>
+            <p>genuinely still cannot get over the fact that they invented cybertronian gender for arcee and for arcee alone. this is like when i was a kid and thought there was something wrong with me because i didn't want to wear skirts. although i am happy that in mtmte/lost light the writers looked back and went "we should do something about this" and made, y'know, non-weird trans rep (anode and lug t4t lesbians!! yippee!!) also i will never shut up about how if bluestreak and cyclonus interacted with humans for more than an hour on a day where the universe doesn't hang in the balance they'd realize they r women; this is based on their holoforms being women despite presenting masculinely (for cybertronians, anyways) and using he/him pronouns. cyclonus is literally me though like imagine being so emotionally repressed you harm yourself instead of telling the person you care about how you feel 🤣🤣🤣</p>
+            <p>brainstorm is too silly to die</p>
+            <img src="https://dl.imgdrop.io/file/aed8b140-8472-4813-922b-7ce35ef93c9e/2024/12/18/Screenshot-2024-12-05-8.02.03-PM7a8900d85b2e0a9e.png">
+            <p>rodimus and brainstorm being br*t*sh is diss gustting... i cant believe the writers would validate br*ts like this... clearly thay dont deserve anything !! but tbh its cool how they slipped those little hints in :) accents are a bit hard to convey through plain text so i will be takning notes for the future</p>
+            <h3>the decepticon justice division is immensely splinky and here's why</h3>
+            <ul>
+              <li><b>tarn</b>, who is weirdly affectionate with his crew at some times and kills them at others. mechs when they find themselves simply equal to that what they hated all along:</li>
+              <li><b>THE PET</b>. by god the pet i will NEVER stop thinking about the pet i will never RECOVER from the pet i will never stop wishing things turned out BETTER for the pet. falls over</li>
+            </ul>
+            <p>anyways READ TRANSFORMERS!!! i know this was a Nothing Article but it's a solblog what did you expect</p>
+        </article>
+        
+        <article id="dec_11_24" class="bit">
+          <h3>dec 11, 2024 // chronic layout disease II</h3>
+            <p>oh, diary, i failed a single english presentation and now my grade is utterly doomed forever, i led my men into the trenches and we all died, etc and whatever. i'm over that now. the entry is titled "chronic layout disease II", not "sol whines about getting a C".</p>
+            <p>i've titled the layout i'm building now "star song". then i put starscream in the header oh god im so cooked</p>
+            <p>not sure if this really counts as a "blog" "post" (it's more of a journal page tbh) and it's even lower quality than my usual. every sentence is a line for christs sake</p>
+            <p>FALLS OVER AND DIES... no! dealing with the fact that he may be aromantic will kill the patient! he needs horrible fictional man to live! (yes this is why i enjoy starscream. am i happy about it? no.)</p>
+            <p>i should really remake this...</p>
+        </article>
+        
+        <article id="dec_2_24" class="bit">
+          <h3>dec 2, 2024 // fifteen years of silly</h3>
+            <p>as of yesterday, at technically 6:00pm, i turned fifteen years of age. which is kinda crazy innit. looks like <i>this</i> freak survived yet another year. and it feels exactly the same. maybe it's just because it's literally been a day but there is no noticable difference than when i was fourteen other than there being 100 more dollars in my posession. thank you pookie.</p>
+            <p>went to the doctor today. they kept calling me young lady, miss, etc. one of the sections on the teen response form was addressed to young women only, but i filled it out anyways because to the eyes of the world at large, i am that young woman. also it was about menstrual health and i kinda need to keep an eye on that. also got my ear cleaned out and everything sounds so much louder now. the hum of the lights in the doctor's office. the clicking of the keys i am typing with now. my brother, who i love dearly, shouting to my father across a waiting room. i guess i'm still in a state of shock of sorts.</p>
+            <p>fifteen is a good number; it's a multiple of five. i like fives and i like odd numbers. when i turn the volume up i like to have it at nine, eleven, thirteen, fifteen or seventeen. i liked transformers one (as previously mentioned on this blog). also i have extra thoughts on it now that i've rewatched it twice, bringing the total tfone views to a whopping three. the second time was from watching it on the night of thanksgiving with my mom and the third was from watching it the next morning with my father. they liked it. (born mid 70's, therefore the exact age demographic that g1 was aimed at.) my previous review mentioned how d-16 didn't explicitly rename himself megatron and that was wrong, i was too busy goofing off with my friends and i guess i missed it. i'm not editing that part because honestly if i want this blog/journal/diary thing to be as "authentic" as possible it has got to stay stream-of-conciousness because what am i if not a guy who goes over the grooves in my brain over and over and over again.</p>
+            <p>back to my doctor's visit; apparently i was pretty underweight for my age when i was ten and under. crazy. my ribcage also used to show prominently through my chest and my mom worried about it a lot. you can actually still see the bottom few if you look hard enough, which you won't, because the only person who can see that is me. i also got my blood drawn for anemia reasons, to clarify: i do have an iron deficiency. i take iron supplements for it. if i don't take 'em i get tired and snappish. my doctor just wanted to double check. i know christmas i coming up but damn do i want steak rn auuauahuahajhajhajgjgghuhfj</p>
+            <p>i gotta revamp this blog's code dude. add dark mode. fix the weird text outlines. now that i've learned a little about mobile responsiveness, i should add that in too.</p>
+            <p style="color:var(--accent); font-size:.9rem;">ok guys hear me out Sentinel Prime. i couldn't fix him but i would hold it over his head that i, a tiny little human, would never do something as stupid and power-hungry as kill the Primes and try and take the Matrix of Leadership. the scene where he's backing away in fear made me go hmmmm because if we're being honest although starscream is my all-time transformers silly, SP in tfone has more screen time and is, as shown, more awful. and i am nothing if not a guy who wants to worm his way into the minds of those who are cruel.</p>
+            <p>also I NEED TO ADD COMMENTS RAHHHHHHHH</p>
+        </article>
+        
+        <article id="nov_18_24" class="bit">
+          <h3>nov 18, 2024 // what if i'm not who i think i am</h3>
+            <p>so yeah i guess im on my period lol lmao i love owning a uterus which only seems to want to destroy all my relationships and my identity. had an argument with more than one nekowebber (i was not referring to only you when i said 'they,' sorry.) about why they shouldn't call people degenerates and it went poorly. i just don't have to hold respect for people i don't like so i wont :D</p>
+            <p>my mom told me yesterday that i'm too easily angered and honestly sure i am maybe i don't want to hold a conversation with a woman who can't even gender me correctly or makes up millions of excuses why i shouldn't be allowed to have short hair. maybe i don't have to tolerate her but also she's my mom and she feeds me and she gave birth to me so i don't know what to do.</p>
+            <p>there's a possibility i'm literally just faking it. and im secretly actually a cis neurotypical girl who just needs to shut up and focus on her schoolwork. like would that fix me or am i the correct one and what would actually help would be a fucking haircut and a binder. speaking of haircuts i had a dream that my mom let me get one and i was so happy i cried in-dream and it looked great and then i woke up 😁 and then i told my mom and she laughed at me.</p>
+            <p>i saw ducks on the way back from school which made me feel a little better but tee bee aech for now i'm just gonna try and suck it up.</p>
+        </article>
+        
+        <article id="nov_13_24" class="bit">
+          <h3>nov 13, 2024 // chronic layout disease I</h3>
+            <p>so, now's the time to talk about my absolutely horrible illness. chronic layout disease, as i like to call it, isn't really a disease but more of my constant urge to change my entire website layout. before it was easy, now it's hard. it doesn't feel like any of the new homepages i've made so far are like. good. at all. i love <a href="https://viscera.nekoweb.org/">viscera on nekoweb</a> and i want mine to be ?similar? but not the same, if that makes sense. i do like the webmaster's recent stained-glass-catholic-guilt thingy as of right now. viscera is a beautiful name for a baby boy.</p>
+            <p>but yeah. i've tried 6-2 // AESTHETICS OF HATE before and it looked kinda bad tbh. should i go back? it's my site, after all, nobody can tell me what to do with it, but also i don't like red that much despite appreciation for its striking hues, and honestly i prefer ourple. ourple is a good color but for a lot of people, including me, it just kinda looks. edgy? not that edgy is a bad thing, it's just not really what i think would make sense for <i>my</i> website. my emo phase has been over since sixth grade.</p>
+            <p>i want it cutesy but also you get the feeling that the webmaster Has Feelings About The Aesthetic He's Using(?) like yeah i guess i do have protestant guilt and stuff or whatever. i had an argument with my mom this morning, if it can be called that. more like i snapped at her after being told what to do twice in a minute and she took that to mean me and my brother are entitled brats and she shouldn't be treated like a maid. i don't think she should be treated like a maid, but honestly, if i told her that she wouldn't believe me. i know this comes off as typical teenage whining but honestly? i do not care about that.</p>
+            <p>it feels like since i was a little kid my parents have been pressuring me to hide what little emotion i show them. irritation over being told for the fifth time this week to put my chromebook away when i was checking for club emails, irritation over <i>being reminded to eat</i> (i'm not four), frustration for being told not to cry, mocking me for the things i like, reminding me (as if i didn't know) that i shouldn't believe everything i read (as if they don't believe a 2,000 year old book will grant them eternal life?), etc and so on and so forth. and when i decide i don't want to hang out with my parents they whine and cry about how i don't love them anymore and how i've replaced them with my friends. okay buddy, have you considered that maybe telling your kid that "she" shouldn't waste "her" perfect feminine body because god so graciously gave it to "her" when he tries to come out to you might've fucked your relationship over? maybe he doesn't want to debate with you about how no, he doesn't believe in a good, nice, perfect god after witnessing you be excited over the destruction of an entire people because "it means the 'rapture' is coming soon."</p>
+            <p>you, the reader, may have noticed i titled this one "chronic layout disease I." this is because i do not think this'll be the last time i complain about my mind runnething over with ideas. so much stuff i wanna do today... add comments to blog posts, remake homepage, figure out how to absorb others' minds into my own, make all new files in phcode start of with 2-space tabs, convince frg (short for something which i will not disclose) to watch dungeon meshi... so yeah.</p>
+            <p>i don't know what i'm going to do now.</p>
+        </article>
+        
+        <article id="nov_10_24" class="bit">
+          <h3>nov 10, '24 // transformers one review</h3>
+            <h4>you might be surprised, but there's spoilers in this thing!! beware!!</h4>
+              <p>the 7.5/10 rating on imdb worried me, but i prevailed after seeing a spoiler about megastar. transformers one, the movie which i cared enough about to wait to release on streaming services but not enough to watch in theaters. after the aforementioned megastar-themed spoiler, i told my friends that we should watch it together and they agreed. just a few days before our meetup i actually looked up if it was actually still in theaters and lo and behold, it was not. luckily we were able to change plans and meet at my gf's place to watch on a streaming service instead, which i find kinda funny.</p>
+              <p>after some normal stuff, like buying the movie on amazon prime for like $14 dollars i think and making popcorn, we sat down on the couch at 3pm and started the movie. it started with optimu- i mean orion pax breaking into the archives, which was a surprise to me, considering in most tf iterations, orion pax is a librarian, meaning he shouldn't have to break into the archives, but it mattered not. another thing i found surprising was how deep his voice was. small things, i know, but good things i thought about the ~first five minutes were:</p>
+                <ol>
+                  <li>amazing graphics oh my god they were so good i loved the chase sequence</li>
+                  <li>setting up D-16's love for Megatronus with the sticker <s>and foreshadowing how the Decepticon insignia came to be</s></li>
+                  <li>elita-1 (elita-1)</li>
+                </ol>
+              <p>obviously there was some more good stuff, like how my question of "how did the surface get dirted?" was <i>actually answered</i> in the movie and how, much like the bayverse, Sentinel Prime is a dirty traitor. also me and my friends were surprised when at the end Michael Bay was there, so I guess that makes sense with his portrayal. Sentinel's design is so good, and... well. all of the designs are good, in my opinion. i like how recent tf media has realized that most people generally prefer the old designs and just go with those with slight upgrades, because come on, Sentinel's sun-themed wings are sick as hell.</p>
+              <p>remember what i said about megastar earlier? you may be surprised, but starscream is my favorite character. <s>not that it's related to anything but i had to take my sweatshirt off when he appeared</s> i think it's a little silly how him, soundwave, shockwave, and the seekers got relegated to "high guards" despite. well. there not being any reason for there to <i>be</i> high guards in this iteration. no council, no other primes, and it doesn't seem like there's any other cities here than Iacon. starscream usually hails from Vos, and he's usually a prince, so yeah, i think it's funny that he's the leader of the high guard in tfone.</p>
+              <p>also the D-16 choking starscream scene was so. erm not to be shipping-brained but toxic yaoi real. obviously D-16/Orion Pax is toxic yaoi but oh my god when the camera cut back to Orion as D-16 was doing the thing... damn. and starscream started just. telling him to do it harder?? okay <span style="font-family:Times New Roman"><i>freak</i></span>scream...</p>
+              <p>the fusion cannon was actually crazy though. like... i guess they match each other's <span style="font-family:Times New Roman"><i>freak</i></span>. sorry i think this effect is funny. also speaking of megastar. i like how they didn't have D-16 explicitly rename himself Megatronus -&gt; Megatron in the movie as that's implied at the end without him like. saying it. i also think it's interesting that they brought a new spin on his character with the Megatronus thingy. usually, Megatronus is the traitor, but Sentinel is instead. it lines up with how D-16 is the rule-follower and how he idolizes the primes and how his entire system of morality kinda falls apart after he learns about Sentinel's betrayal, unlike how in most iterations he becomes Megatron because <i>he wants</i> to defy the primes.</p>
+              <p>this actually makes tfone's D-16 <i>a lot</i> like Hollyleaf Warriors- [gets shot and dies] okay but you know what i mean though. rule-followers to a fault, they lose their minds and start killing when the system falls apart right in front of them due to people they respected being rule-breakers all along. does this mean Orion Pax is lionblaze.</p>
+              <p>so yeah i liked tfone a lot and that's why. i don't do media analysis because i am stupid btw. sol out</p>
+              </article>
+        
+        <article id="nov_7_24" class="bit">
+          <h3>nov 7, '24 // average thursday</h3>
+            <p>freaked out this morning because i had a C in english (see yesterday's blog about me checking my grades) but it turns out my teacher just didn't grade my final draft lol. note to self: don't make a bunch of fancy tabs  in the future because they can't be viewed in google classroom.</p>
+            <p>i've created a to-do table on what i want to do with my blog and website today.</p>
+              <table>
+                <tr>
+                  <th>blog stuff</th>
+                  <th>general website stuff</th>
+                </tr>
+                
+                <tr>
+                  <td>sort months into summary/detail elements</td>
+                  <td>do i remake the entire layout... now that's the question....</td>
+                </tr>
+                <tr>
+                  <td>upload bg image + font to nekoweb. i have a lot of storage, might as well use it</td>
+                  <td>figure out how tables work??? i only managed this through w3schools tbh</td>
+                </tr>
+              </table>
+            <p>tbh i have no idea if i'm even gonna finish any of it today, or even finish at all, but i do agree that <a href="https://trademarkhell.net/blog/webdesignisfun/">web design is actually kinda fun</a> if you don't know what you're doing. rare sol agreeing with tm for once, real shocker.</p>
+            <p>it's a three-day weekend this week, since we have monday off for veteran's day, i think. excited to watch tfone with my friends this saturday :D</p>
+            <p>we watched coco entirely in spanish today, it was pretty cool and now i get to hold this over my dad's head (it's his favorite movie) (i got to watch it and he didn't) (i think it's his favorite because of the intergenerational trauma but we'll talk about that later)</p>
+            <p>i ended up doing none of the things on my table because i was too busy trying to figure out how to add my font to status.cafe lmao. <a href="https://file.garden">file.garden</a> my beloved, always there to save the day.</p>
+            <p>i did add a box-shadow to this, which looks terrible on the sidebar, but at least i'm trying something new for once. i like how on my main site, it's all nighttime webcore or whatever and here it's just. idk. purple clouds. i like the contrast.</p>
+            <p>checked "the divine comedy" out at the library today! super excited to get through all 900+ pages of ooey gooey classic literature goodness, although my mother fears i believe everything i read because she does (christian). that's not a slight on all christians, if you're wondering, just me disliking the concept of believing an old book because it says if you don't you'll go to  "the bad place" after you die. spoooky... it is funny when she starts defrosting nov 1 though. i don't like christianity but i do enjoy wintertime festivities, if that makes sense.</p>
+            <p>ending this here because i need to eat dinner. remember to give your images alt tags kids...</p>
+        </article>
+        
+        <article id="nov_6_24" class="bit">
+          <h3>nov 6, '24 // election fever</h3>
+          <p>election fever's been running high as of late. found out my lunchmates have fallen for trump's propoganda despite all being girls of color. might've said a few swear words and freaked out as they started parroting transphobic talking points, but what ever. cried a bit as i walked to math, but i still think i did okay on the test.</p>
+          <p>at least i made my friend (emphasis on <b>friend</b>) <a href="/templates">a template</a> for his shrine. i'm quite proud of it too. i've also decided to go sit with him at lunch tomorrow to try it out and let the dust settle from my previous lunch group.</p>
+          <p>one of my friends (?) kind of freaked out when i started talking about  my <b>friend</b>. i think he's worried i'm going to replace him and my gf, but even if i make new friends, they're always going to be my friends too. it's not a zero-sum game... although i understand the worry, having felt it myself in the past.</p>
+          <p>carpet by toby fox is actually pretty good. my brother likes it too, which  is a real shocker given he doesn't usually like anything i like.</p>
+          <p>i like this font. i think i'm gonna switch most of what i have over to it because it's everything i've ever wanted in a pixel font, tbh. cute and clearly pixelated...</p>
+          <p>pciv is actually so good though. i grow ever fonder day by day, even if it is, in my own words, "so stupid it loops around to being good again."</p>
+          <p>i haven't checked my grades in a while, so i should probably do that tomorrow morning (it's past 10 as i write.) don't worry, i'm aware grades aren't everything, but they are at the very least important. kinda hard to believe when i'm a senior, i'll have to go through all this again, and that time i'll get a say in it. i hope things don't go too badly to shit for us in the next few years.</p>
+          <p>i'll admit i'm frustrated with the people advocating not to vote, but i know there weren't enough of them to make a sizable difference. i know if people my age were allowed to, we probably wouldn't, despite politics influencing everything in our lives because "they aren't that into politics." at a point it becomes less ignorance and more not wanting to see the real world  for what it is, although i don't really want to be the one to tell my peers that. they won't respect me now and they won't respect me later.</p>
+          <p>who i should be upset with is clearly the red voter. they're the group that used their vote to harm, after all. i shouldn't be hitting my own side with a stick if the other side's got a bigger one, or whatever.</p>
+          <p>made a custom template for him... it's joever.</p>
+        </article>
+      </section>
+    </div>
+
+    <footer></footer>
+
+    <img src="https://64.media.tumblr.com/72bf6204fe796cc1080d7fad205bd32f/edf21ab8be8c4878-8e/s2048x3072/5254d213afaee2a7bf4db14877a6a1f5b1cb7d95.pnj" alt="" id="yidoll">
+    
+    <img src="frillku.png" id="pagedoll" class="border">
+  </div>
+</body>
+</html>
