@@ -16,7 +16,14 @@
     <script src="tab.js"></script>
 
     <style>
-      #container {width:70vw; margin-inline:0;}
+      body {
+        background-image:url(waves.png);
+        background-repeat:no-repeat;
+        background-size:cover;
+        background-attachment:fixed;
+      }
+
+      #container {width:75vw; margin-inline:0;}
 
       .homediv, .bit {
         border:1px solid;
@@ -182,6 +189,8 @@
         <button onclick="openBit('ext')">extra</button>
         <button>nya</button>
         <button>meow</button>
+
+        <select id="theme-switcher"></select>
       </nav>
       
       <div class="flex" style="gap:1em;">
@@ -348,4 +357,12 @@
     
     <img src="frillku.png" id="pagedoll" class="border">
   </body>
+  <script>
+  var library = {
+    "dark theme" : "dark.css",
+    "light theme" : "light.css",
+  };
+  window.themes.initialize(library);
+  window.themes.set("Dark Theme");
+  </script>
   </html>

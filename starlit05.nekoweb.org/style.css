@@ -5,7 +5,7 @@
   colors from catppuccin macchiato https://catppuccin.com/palette/
   */
   --link-color:#ed8796;
-  --font-color:#24273a;
+  --font-color:black;
   --bg-color:white;
 
   --red:#ed8796;
@@ -32,15 +32,21 @@ body {
   background-repeat:no-repeat;
   background-size:cover;
   background-attachment:fixed;
-  font-size:1.1em;
+  background-color:var(--bg-color);
+  font-size:1em;
   color:var(--font-color);
-  font-family:'iosevka', 'Apercu Mono', monospace;
+  font-family:'Hei', 'Apercu Mono', sans-serif, monospace;
+  line-height:1.3em;
 }
 
 /*(c) cursor created by Sam  (https://layouts.spacehey.com/layout?id=103585)*/
 * {scrollbar-color: var(--bg-color) var(--shale); cursor: url(https://i.postimg.cc/Dyy4mc2K/2024-04-14-0jn-Kleki.png), auto !important;}
 
-::selection {background-color:var(--pink); color:var(--font-color);}
+::selection {
+  color:var(--bg-color);
+  text-shadow: -1px 0 var(--font-color), 0 1px var(--font-color), 1px 0 var(--font-color), 0 -1px var(--font-color),
+  0px 0px 3px var(--font-color), 0px 0px 3px var(--font-color);
+}
 
 @font-face {font-family: 'Apercu Mono'; src: url(ApercuMonoProRegular.ttf);
 }
@@ -49,6 +55,10 @@ body {
 @font-face {
   font-family:'JF Dot';
   src:url(JF-Dot-Shinonome-14-Regular.ttf);
+}
+@font-face {
+  font-family:'Hei';
+  src:url(hei-regular.ttf);
 }
 
 h1, h2, h3, h4 {font-weight:normal; font-style:italic; margin:0;}
@@ -62,7 +72,7 @@ h5 {
 }
 
 #container {
-  width:65vw;
+  width:60vw;
   padding:.5em;
   margin-top:3vh;
   margin-inline:auto;
@@ -70,12 +80,29 @@ h5 {
   box-sizing:border-box;
 }
 
-footer {text-align:left; width:70vw; margin-left:1vw;}
+footer {width:75vw; margin-left:1vw; margin-inline:auto;}
+
+#itdoll {
+  position:fixed; 
+  left:14px; bottom:-3.3vh;
+  pointer-events:none;
+  z-index:100;
+  width:15%;
+}
+
+#headdoll {
+  position:fixed; 
+  left:-70px; bottom:-5vh; 
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1); 
+  pointer-events:none;
+  width:40%;
+}
 
 #pagedoll {
   position:fixed;
   right:35px; bottom:0;
-  pointer-events:none;;
+  pointer-events:none;
   width:25%;
 }
 #yidoll {
@@ -93,15 +120,14 @@ footer {text-align:left; width:70vw; margin-left:1vw;}
   box-sizing:border-box;
 }
 
-#return {color:var(--shale); line-height:1.3em; filter: drop-shadow(.5px .5px 0 var(--font-color)) drop-shadow(-.5px 1px 0 var(--font-color)) drop-shadow(0 -.5px 0 var(--font-color)) drop-shadow(1px 0 var(--font-color)); margin-bottom:3vh;}
-
 .popup {
   border-width:2px;
   border-style:solid;
   border-left-width:7px;
-  outline:1px solid var(--font-color);
-  background-color:var(--mantle);
-  color:var(--shale);
+  outline:1px solid var(--mantle);
+  background-color:var(--bg-color);
+  color:var(--font-color);
+  font-size:smaller;
   width:70%;
   padding:.7em .5em .5em .5em;
   margin-bottom:1vh;
@@ -121,8 +147,12 @@ footer {text-align:left; width:70vw; margin-left:1vw;}
     
 p {/*text-indent:1em;*/ margin:3px;} 
 
-a {color:var(--font-color); text-decoration:2px solid underline var(--link-color);}
-a:hover {text-decoration:1px wavy underline var(--link-color);}
+a {
+  color:var(--font-color);
+  text-decoration:1px solid underline;}
+a:hover {
+  font-weight:bold;
+  text-decoration:none;}
 
 img, iframe {max-width:100%;}
 
@@ -144,14 +174,14 @@ textarea {
   border:1px solid var(--font-color);
   background:var(--bg-color);
   color:var(--font-color);
-  font-family:'iosevka';
+  font-family:'Hei', sans-serif;
 }
 
 button {
   background:inherit;
   color:var(--font-color);
   font-size:inherit;
-  font-family:'iosevka';
+  font-family:'Hei';
 }
 
 .button {transition:.2s all ease-out;} .button:hover {transform:rotateX(20deg) scaleX(110%);}
@@ -162,7 +192,7 @@ button {
 
 .border {
   color:white;
-  filter: drop-shadow(.5px .5px 0 var(--font-color)) drop-shadow(-.5px 1px 0 var(--font-color)) drop-shadow(0 -.5px 0 var(--font-color)) drop-shadow(1px 0 var(--font-color));
+  filter: drop-shadow(.5px .5px 0 black) drop-shadow(-.5px 1px 0 black) drop-shadow(0 -.5px 0 black) drop-shadow(1px 0 black);
 }
 
 .flex {display:flex; gap:.5em;}
