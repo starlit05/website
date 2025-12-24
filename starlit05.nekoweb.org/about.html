@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>amoeba preview</title>
+  <title>starlit05</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script src="tooltip.js"></script>
+  <script src="statLoad.js"></script>
+  <script src="layout.js"></script>
+  <script src="tab.js"></script>
+  <script src="theme-wizard.js"></script>
 
   <style>
     :root {
       --bg-color:#d8c3ec;
       --font-color:#3f4148;
-      --link-color:rgb(85, 65, 145);
+      --link-color:rgb(79, 55, 154);
+
+      --whitey:white;
     }
 
     @font-face {
       font-family:'jf';
       src:url(JF-Dot-Shinonome-14-Regular.ttf);
     }
-    @font-face {
-      font-family:'comic';
-      src:url(ComicMono.ttf);
-    }
+    @font-face {font-family: 'Apercu Mono'; src: url(ApercuMonoProRegular.ttf);}
     @font-face {
       font-family:'annotation mono';
       src:url(Regular.ttf);
@@ -31,7 +36,7 @@
 
     body {
       background-color:var(--bg-color);
-      font-family:'comic', 'annotation mono', serif;
+      font-family:'apercu mono', 'annotation mono', serif;
       font-size:1.2em;
       color:var(--font-color);
 
@@ -65,46 +70,52 @@
     img {max-width: 100%}
 
     #container {
-      display:grid;
-      gap:.5em;
-      grid-template-columns:.7fr 1fr .7fr;
-      grid-template-rows:10vh 1fr 3em;
-      grid-template-areas:
-        "header header header"
-        "left main right"
-        "footer footer footer";
-      width:85vw;
+      width:50vw;
       margin-inline:auto;
     }
 
     header {
       grid-area:header;
       position:fixed;
-      top:3vh;
+      top:0; left:0;
       background-color:var(--bg-color);
       border-bottom:1px solid;
       color:var(--link-color);
       text-align:center;
+      width:100%;
+      padding:.5em;
     } header h1 {margin:0;}
+
+    #left, #right {
+      width:220px;
+      padding:.5em;
+    }
 
     #left {
       grid-area:left;
+      position:fixed;
+      top:13vh; left:2vw;
+    }
+    nav h2 {margin:.5em;}
+    nav h3 {margin:.3em; margin-top:1em;}
+    nav a {
+      display:block;
+      font-family:'Mincho';
+      margin:.3em;
     }
 
     main {
-      grid-area:main;
+      margin-top:10vh;
     }
 
     #right {
       grid-area:right;
+      position:fixed;
+      top:13vh; right:3vw;
     }
 
     section {
       padding: 1em 2em;
-      border: 1px dashed;
-      outline: 1px solid;
-      outline-offset: 5px;
-      max-width: calc(100% - 10px);
     }
 
     hr {
@@ -130,15 +141,7 @@
     }
 
     dd { padding: 1rem; }
-
-    ul ul, ol ol { 
-    margin: 0 0 0 2rem;
-    }
-
-    p, table,  ul, ol, dl {
-    line-height: 1.5;
-    }
-
+    
     h1 {text-align: center; }
 
     blockquote {
@@ -173,12 +176,18 @@
 
     footer {
       grid-area:footer;
-      font-size: 0.8em;
-      text-align: center; 
+      font-size: 0.9em;
+      text-align: center;
+      width:70vw;
+      margin-top:3vh;
+      margin-inline:auto;
+      margin-bottom:5vh;
     }
 
     .up { position: fixed;
     bottom: 10px; right: 10px; }
+
+    .flex {display:flex; gap:.5em;}
 
     .flex-box {
       display:flex;
@@ -198,6 +207,29 @@
     .twothird { flex: 1 1 calc(66% - 2em); }
     .quarter { flex: 1 1 calc(25% - 2em); }
     .threequarter { flex: 1 1 calc(75% - 2em); }
+
+    .bubble {
+      position: relative;
+      border:1px solid;
+      border-radius: 10px;
+      background:var(--whitey);
+      box-sizing:border-box;
+      padding:.7em;
+      margin-bottom:4vh;
+    }
+    .bubble:after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 0;
+      z-index: 1;
+      border-style: solid;
+      border-color:var(--font-color) transparent;
+      border-width: 20px 15px 0;
+      bottom: -20px;
+      left: 50%;
+      margin-left: -20px;
+    }
 
     @media screen and (max-width: 1270px){
       .up { position: static; width: fit-content; margin: 10px auto; }
@@ -219,56 +251,49 @@
 </head>
 <body>
   <div id="container">
+    <section class="warning popup">
+      <h2>warning!</h2>
+        <p>this site contains ...</p>
+    </section>
+
     <header id="top">
-      <h1>⭐︎ starlit</h1>
+      <div class="flex">
+        <h1>⭐︎ starlit</h1>
+        <select id="theme-switcher"></select>
+      </div>
     </header>
 
     <aside id="left">
-      hiaii
+      <nav>
+        <h2>navigation</h2>
+          <h3>sitely</h3>
+          <a href="">homepage</a>
+          <a href="">about me</a>
+          <a href="">diary</a>
+          <a href="">now</a>
+          <a href="">credits</a>
+          <h3>projects</h3>
+          <a href="">azure</a>
+          <a href="">love and hate</a>
+          <a href="">stupid story</a>
+          <a href="">becoming a person</a>
+          <h3>fandom</h3>
+          <a href="">transformers</a>
+          <a href="">undertale + deltarune</a>
+          <a href="">ultrakill</a>
+          <a href="">sans aus</a>
+      </nav>
     </aside>
 
     <main>
-      <section> 
-      <h2>Heading 2</h2>
-      <h3>Heading 3</h3>
-      <h4>Heading 4</h4>
-      <h5>Heading 5</h5>
-      <h6>Heading 6</h6>
+      <div style="display:flex; align-content:flex-end; background-image:url(flowers.png); background-size:cover; border:1px solid; width:100%; height:200px; margin-bottom:2vh;">
+        
+      </div>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum cursus, arcu ut gravida aliquet, massa ante dictum justo, sit amet egestas lorem dolor sed velit. Mauris in laoreet lacus. Mauris id ipsum massa. Phasellus accumsan pulvinar tellus, ut auctor tellus. Curabitur a purus placerat, pharetra ex vel, accumsan velit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec vehicula, elit non varius consectetur, lacus est finibus mauris, convallis fringilla felis nunc vel lorem. Maecenas ornare augue sapien.</p>
+      <section>
+      <p>hai welcome to slopville. im sol starlit and this is my digital bedroom!!!</p>
 
       <hr>
-
-      <p>
-      <strong>This is strong,</strong>
-      this is normal,
-      <em>and this is emphasized!</em>
-      <a href="#">This is a link.</a>
-      <sup>This is superscript;</sup>
-      <sub>this is subscript.</sub>
-      <code>This is code.</code>
-      <s>This is strikethrough.</s>
-      </p>
-
-      <ul>
-      <li>Unordered list item 1</li>
-      <li>Unordered list item 2
-      <ul>
-      <li>Nested list</li>
-      </ul>
-      </li>
-      <li>Unordered list item 3</li>
-      </ul> 
-
-      <ol>
-      <li>Ordered list item 1</li>
-      <li>Ordered list item 2
-      <ol>
-      <li>Nested list</li>
-      </ol>
-      </li>
-      <li>Ordered list item 3</li>
-      </ol>
 
       <dl>
       <dt>Description list item 1</dt>
@@ -279,37 +304,30 @@
       <dd>Description details</dd>
       </dl>
 
-      <pre><code>This is a code block! If your screen is too narrow, it will scroll.</code></pre>
 
       <details>
       <summary>Summary</summary> <p>Details</p> 
       </details>
-
-      <blockquote>
-      <p>"Example blockquote paragraph."</p>
-      <cite>Example source</cite>
-      </blockquote> 
       </section>
-
-      <div class="flex-box">
-      <section class="half"><p>This is a half-width section.</p></section>
-      <section class="half"><p>This is a half-width section.</p></section>
-      <section class="third"><p>This is a third-width section.</p></section>
-      <section class="twothird"><p>This is a two thirds-width section.</p></section>
-      <section class="twothird"><p>This is a three quarter-width section.</p></section>
-      <section class="quarter"><p>This is a quarter-width section.</p></section>
-      </div>
     </main>
 
     <aside id="right">
-      lkdfj
+      <div class="bubble">
+        <div><div id="statuscafe-username"></div><div id="statuscafe-content"></div> <script src="https://status.cafe/current-status.js?name=kitty" defer></script></div>
+      </div>
+
+      <img src="itty.png">
     </aside>
 
     <div class="up"><a href="#top">to top</a></div>
-
-    <footer>
-      amoeba.css by <a href="https://ribo.zone/free/layouts/">ribo.zone</a>
-    </footer>
   </div>
 </body>
+<script>
+  var library = {
+    "dark theme" : "dark.css",
+    "light theme" : "light.css",
+  };
+  window.themes.initialize(library);
+  window.themes.set("Dark Theme");
+  </script>
 </html>
