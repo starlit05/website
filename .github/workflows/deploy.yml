@@ -13,7 +13,7 @@ jobs:
       - name: deploy2nekoweb
         uses: indiefellas/deploy2nekoweb@main
         with:
-          nekoweb-api-key: ${{ secrets.143c63f657a2f1b746bb37f517331859db584bccec140395a83c7bbbc1cc70cb }}
+          nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
           nekoweb-domain: 'sol.nekoweb.org'
           nekoweb-username: 'sol'
           directory: 'public'
