@@ -5,3 +5,5 @@
 
   --whitey:black;
 }
+
+body {background:var(--bg-color);}

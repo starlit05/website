@@ -1,6 +1,6 @@
 // this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
 
-let domain = "starlit05.nekoweb.org"; // <<<--- Insert your domain here!
+let domain = "sol.nekoweb.org"; // <<<--- Insert your domain here!
 
 (async () => {
   try {

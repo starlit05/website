@@ -4,126 +4,80 @@
   <title>starlit05</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
   <script src="tooltip.js"></script>
   <script src="statLoad.js"></script>
-  <script src="layout.js"></script>
   <script src="tab.js"></script>
   <script src="theme-wizard.js"></script>
 
   <style>
-    :root {
-      --bg-color:#d8c3ec;
-      --font-color:#3f4148;
-      --link-color:rgb(79, 55, 154);
-
-      --whitey:white;
-    }
-
-    @font-face {
-      font-family:'jf';
-      src:url(JF-Dot-Shinonome-14-Regular.ttf);
-    }
-    @font-face {font-family: 'Apercu Mono'; src: url(ApercuMonoProRegular.ttf);}
-    @font-face {
-      font-family:'annotation mono';
-      src:url(Regular.ttf);
-    }
-    @font-face {
-      font-family:'Mincho';
-      src:url(BIZUDMincho-Regular.ttf);
-    }
-
-    body {
-      background-color:var(--bg-color);
-      font-family:'apercu mono', 'annotation mono', serif;
-      font-size:1.2em;
-      color:var(--font-color);
-
-      &::after {
-        content: "";
-        background-image: url(noise.png);
-        opacity: 0.1;
-        position: fixed;
-        inset: 0;
-        image-rendering: auto;
-        pointer-events: none;
-        z-index: 99;
-      }
-    }
-
     * { 
     box-sizing: border-box;
     scrollbar-color:var(--link-color) var(--bg-color);
     }
 
-    *::-webkit-scrollbar {width:15px;}
-    *::-webkit-scrollbar-track {background:var(--bg-color);}
-    *::-webkit-scrollbar-thumb {background-color:var(--link-color); border:transparent;}
-
-    ::selection {
-      color:var(--bg-color);
-      text-shadow: -1px 0 var(--font-color), 0 1px var(--font-color), 1px 0 var(--font-color), 0 -1px var(--font-color),
-      0px 0px 3px var(--font-color), 0px 0px 3px var(--font-color);
-    }
-
-    img {max-width: 100%}
-
     #container {
-      width:50vw;
+      width:55vw;
       margin-inline:auto;
     }
 
     header {
-      grid-area:header;
-      position:fixed;
-      top:0; left:0;
-      background-color:var(--bg-color);
-      border-bottom:1px solid;
-      color:var(--link-color);
-      text-align:center;
-      width:100%;
-      padding:.5em;
-    } header h1 {margin:0;}
-
-    #left, #right {
-      width:220px;
-      padding:.5em;
+      color:var(--bg-color);
+      text-shadow: -1px 0 var(--font-color), 0 1px var(--font-color), 1px 0 var(--font-color), 0 -1px var(--font-color),
+      0px 0px 3px var(--font-color), 0px 0px 3px var(--font-color);
+      padding:1.5em;
     }
 
-    #left {
-      grid-area:left;
+    #left, #right {
       position:fixed;
-      top:13vh; left:2vw;
+      top:10vh;
+      width:250px;
+      opacity:60%;
+      transition:.4s opacity;
+      padding:.5em;
+    }
+    #left:hover {border:1px solid; background:var(--bg-color);}
+    #left:hover, #right:hover { opacity:100%;}
+
+    #left {
+      left:5vw;
+      border:1px solid transparent;
     }
     nav h2 {margin:.5em;}
     nav h3 {margin:.3em; margin-top:1em;}
     nav a {
       display:block;
-      font-family:'Mincho';
-      margin:.3em;
+      padding:.15em;
     }
 
     main {
-      margin-top:10vh;
+      border:1px solid;
+      background: linear-gradient(
+        to bottom,
+        #c7e3db,
+        #c7e3db 10%,
+        var(--bg-color) 10%,
+        var(--bg-color)
+      );
+      background-size: 100% 20px;
     }
 
     #right {
-      grid-area:right;
-      position:fixed;
-      top:13vh; right:3vw;
+      right:5vw;
+    }
+    #statuscafe {
+      background-image:url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F043%2F274%2F669%2Fnon_2x%2Fwhite-ripped-paper-scrap-graph-paper-with-torn-edge-scrapbook-sticky-notes-notebook-page-free-png.png&f=1&nofb=1&ipt=34f4a5c859e9ab9c491d9beb91c2e3c039f26b976432644f7bf55ea57a606fcd);
+      background-size:cover;
+      max-height:80px;
+      padding:1em;
+      padding-bottom:0;
+      overflow:auto;
     }
 
     section {
-      padding: 1em 2em;
+      padding: 1em 1.5em;
     }
-
-    hr {
-      border: none;
-      border-top: 1px solid var(--font-color);
-    }
-
-    h1, h2, h3, header {font-family: 'Mincho'; font-weight: normal;}
 
     a {color:var(--link-color); text-decoration:1px dotted underline;}
     a:hover {background-color:var(--link-color); color:#E0E2DB;}
@@ -142,7 +96,7 @@
 
     dd { padding: 1rem; }
     
-    h1 {text-align: center; }
+    h1 {font-size:3em; text-align:center;}
 
     blockquote {
     border-left: var(--link-color) 3px solid;
@@ -187,48 +141,13 @@
     .up { position: fixed;
     bottom: 10px; right: 10px; }
 
-    .flex {display:flex; gap:.5em;}
-
-    .flex-box {
-      display:flex;
-      flex-wrap:wrap;
-      margin: 0 auto;
-      padding: 0;
-      align-items: flex-start;
-    }
-
-    .flex-box section {
-    margin: 1em;
-    }
-
-    .full { flex: 1 1 100%;}
-    .half { flex: 1 1 calc(50% - 2em); }
-    .third { flex: 1 1 calc(33% - 2em); }
-    .twothird { flex: 1 1 calc(66% - 2em); }
-    .quarter { flex: 1 1 calc(25% - 2em); }
-    .threequarter { flex: 1 1 calc(75% - 2em); }
-
-    .bubble {
-      position: relative;
-      border:1px solid;
-      border-radius: 10px;
-      background:var(--whitey);
-      box-sizing:border-box;
-      padding:.7em;
-      margin-bottom:4vh;
-    }
-    .bubble:after {
-      content: '';
-      position: absolute;
-      display: block;
-      width: 0;
-      z-index: 1;
-      border-style: solid;
-      border-color:var(--font-color) transparent;
-      border-width: 20px 15px 0;
-      bottom: -20px;
-      left: 50%;
-      margin-left: -20px;
+    #gridscrap {
+      position:absolute;
+      top:10px;
+      right:30px;
+      width:300px;
+      height:200px;
+      rotate:330deg;
     }
 
     @media screen and (max-width: 1270px){
@@ -251,16 +170,14 @@
 </head>
 <body>
   <div id="container">
-    <section class="warning popup">
-      <h2>warning!</h2>
-        <p>this site contains ...</p>
-    </section>
-
     <header id="top">
-      <div class="flex">
-        <h1>⭐︎ starlit</h1>
-        <select id="theme-switcher"></select>
-      </div>
+      <h1>⭐︎ starlit</h1>
+      <nav>
+        <button>alalalla</button>
+        <button>alalalla</button>
+        <button>alalalla</button>
+        <button>alalalla</button>
+      </nav>
     </header>
 
     <aside id="left">
@@ -286,10 +203,6 @@
     </aside>
 
     <main>
-      <div style="display:flex; align-content:flex-end; background-image:url(flowers.png); background-size:cover; border:1px solid; width:100%; height:200px; margin-bottom:2vh;">
-        
-      </div>
-
       <section>
       <p>hai welcome to slopville. im sol starlit and this is my digital bedroom!!!</p>
 
@@ -312,9 +225,7 @@
     </main>
 
     <aside id="right">
-      <div class="bubble">
-        <div><div id="statuscafe-username"></div><div id="statuscafe-content"></div> <script src="https://status.cafe/current-status.js?name=kitty" defer></script></div>
-      </div>
+        <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content"></div> <script src="https://status.cafe/current-status.js?name=kitty" defer></script></div>
 
       <img src="itty.png">
     </aside>

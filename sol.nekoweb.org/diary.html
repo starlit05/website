@@ -9,44 +9,18 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
   <script src="tab.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
   <script src="tooltip.js"></script>
-  <script src="layout.js"></script>
 
   <style>
-    #container, footer {width:80vw; margin-inline:0;}
-
-    #marq {
-      border:1px solid;
-      border-bottom:none;
-      background-color:var(--bg-color);
-      padding:.2em;
-    }
-    #statuscafe-username {display:none;}
-
-    header {
-      border:1px solid var(--font-color);
-      box-shadow:0 0 15px white;
-      background-image:url('flowers.png');
-      background-size:cover;
-      height:250px;
-      padding:1em;
-      margin-bottom:1vh;
-    }
-
-    .flex {gap:.7em; margin-top:3vh;}
+    #container {font-family:sans-serif; width:80vw; margin-inline:0;}
 
     nav {
-      flex:1;
-      border:2px solid;
-      border-radius:5px;
-      outline:1px solid var(--font-color);
-      background:var(--mantle);
-      color:var(--shale);
+      position:fixed;
       padding:.7em;
-      height:500px;
+      width:300px;
+      height:700px;
       overflow:auto;
     }
 
@@ -69,15 +43,15 @@
     #posts {
       border:1px solid;
       border-radius:5px;
-      box-shadow:0 0 10px white;
       background:white;
-      padding:.7em;
       width:45vw;
-      height:500px;
-      overflow:auto;
+      padding:1em;
+      margin-top:3vh;
+      margin-left:400px;
     }
     #posts .bit:not(:first-child) {display:none;} 
     /* from https://www.tutorialspoint.com/how-to-use-a-not-first-child-selector-in-css */
+    #posts h2 {margin:.5em;}
     
     p {text-indent:1em;}
     a {color:inherit; text-decoration-color:var(--mauve);}
@@ -97,17 +71,18 @@
 </head>
 <body>
   <div id="container">
-    <section id="marq">
-      <div><div id="statuscafe-username"></div><div id="statuscafe-content"></div> <script src="https://status.cafe/current-status.js?name=kitty" defer></script></div>
-    </section>
-    <header></header>
     <div class="flex">
-      <nav>
+      <nav class="txtbrd">
         <a href="javascript:history.back()">&lt; return</a>
 
         <details open>
           <summary><h3 style="display:inline-block;">before you continue...</h3></summary>
             <p>this is the diary of a mentally ill teenager and the contents will reflect this fact. as previously mentioned on the landing page, there will be mentions of <strong>anxiety, depression, suicide</strong> and <strong>suggestive topics</strong>. click away now if you don't want to see that.</p>
+        </details>
+
+        <details open>
+          <summary>2026</summary>
+            <button onclick="openBit('jan_9_26')">jan 9 // remake</button>
         </details>
 
         <details>
@@ -163,6 +138,11 @@
       </nav>
       
       <section id="posts">
+        <article id="jan_9_26" class="bit">
+          <h2>jan 9 // remake</h2>
+            <p>im sol and i made my website over... again.</p>
+        </article>
+        
         <article id="dec_11_25" class="bit">
           <h2>dec 11 // an update</h2>
             <p>hello nekowebbers. i had a draft for the last "latest update" back in late september, and then everything got away from me and i got worse again :heart: the draft was about when me and a friend going to see a movie; i have since irreprably destroyed the relationship between me and said friend. i've been feeling pretty guilty about it and then feeling guilty about feeling guilty and then it spirals into gender bullshit and then unlovability bullshit so it's a big mess. but at least he doesnt have to pretend to care about me anymore</p>
@@ -662,12 +642,6 @@
         </article>
       </section>
     </div>
-
-    <footer></footer>
-
-    <img src="https://64.media.tumblr.com/72bf6204fe796cc1080d7fad205bd32f/edf21ab8be8c4878-8e/s2048x3072/5254d213afaee2a7bf4db14877a6a1f5b1cb7d95.pnj" alt="" id="yidoll">
-    
-    <img src="frillku.png" id="pagedoll" class="border">
   </div>
 </body>
 </html>
