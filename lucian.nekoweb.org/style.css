@@ -1,0 +1,29 @@
+:root {
+  --bg-color:#fefef1;
+  --font-color:#545f81;
+
+  --red:#c55e80;
+  --depurp:#cdcddb;
+}
+
+body {
+  background-color:var(--bg-color);
+  font-family:'Kindergarten';
+  color:var(--font-color);
+}
+
+@font-face {
+  font-family: 'New Romantics'; 
+  src: url(ROMANTIC.TTF);
+}
+@font-face {
+  font-family: 'Kindergarten'; 
+  src: url(kindergarten.ttf);
+}
+
+#container {
+  width:50vw;
+  padding:.5em;
+}
+
+img {max-width:100%;}

@@ -16,4 +16,4 @@ jobs:
           nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
           nekoweb-domain: 'sol.nekoweb.org'
           nekoweb-username: 'sol'
-          directory: 'public'
+          directory: '.public'
