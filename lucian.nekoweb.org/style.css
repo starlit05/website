@@ -24,6 +24,7 @@ body {
 #container {
   width:50vw;
   padding:.5em;
+  margin-left:3vw;
 }
 
 img {max-width:100%;}
