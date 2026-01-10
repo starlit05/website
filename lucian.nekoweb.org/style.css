@@ -1,16 +1,20 @@
 :root {
-  --bg-color:#fefef1;
-  --font-color:#545f81;
+  --bg-color:white;
+  --font-color:/*#545f81*/ black;
 
-  --red:#c55e80;
+  --red:#db5e88;
   --depurp:#cdcddb;
+
+  --fonts:'Kindergarten', 'MS Gothic', sans-serif;
 }
 
 body {
   background-color:var(--bg-color);
-  font-family:'Kindergarten';
+  font-family:var(--fonts);
   color:var(--font-color);
 }
+
+::selection, mark {background-color:var(--red); color:var(--bg-color);}
 
 @font-face {
   font-family: 'New Romantics'; 
@@ -21,10 +25,59 @@ body {
   src: url(kindergarten.ttf);
 }
 
+h1, h2, h3, h4 {
+  font-family:'New Romantics';
+  font-weight:normal;
+  letter-spacing:.2em;
+  margin:0;
+  margin-bottom:.3em;
+}
+h1 {font-size:3em;}
+
+p {text-indent:1em;}
+
+a, a:visited {color:var(--red); text-decoration:1px solid underline;}
+a:hover {text-decoration:none;}
+
+img {max-width:100%;}
+
+details {max-width:85%; padding:.5em; margin:.3em;}
+summary {border-bottom:1px dashed; margin-left:.5em;}
+summary::marker, :is(::-webkit-details-marker) {content: "";}
+
+hr {border:none; border-top:1px solid var(--red);}
+
+textarea {border:none; font-family:var(--fonts);}
+
 #container {
-  width:50vw;
+  width:65vw;
   padding:.5em;
   margin-left:3vw;
 }
 
-img {max-width:100%;}
+footer {
+  position:fixed;
+  left:0;bottom:0;
+  display:block;
+  background-color:white;
+  width:100%;
+  padding-left:1em;
+}
+
+.ttt {text-decoration:1px solid underline;}
+
+#s-m-t-tooltip {
+  border:1px solid;
+  background-color:white;
+  font-size:1em;
+  max-width: 300px;
+  text-align: center;
+  z-index: 9999;
+  margin:1em;
+  padding:.3em;
+}
+
+@media screen and (max-width:700px) {
+  #container {width:100%;}
+  #catshinji {display:none;}
+}

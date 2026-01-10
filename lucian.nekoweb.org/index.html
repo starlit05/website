@@ -6,28 +6,53 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="pixil-frame-0.png">
   <link rel="stylesheet" href="style.css">
-  <script src="pixil-frame-0.png"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
   <script src="tooltip.js"></script>
   <script src="statLoad.js"></script>
 
   <style>
-    h1 {font-family:'New Romantics'; font-size:3em; letter-spacing:.2em;}
+    #button {margin-top:3vh;}
 
-    #profile {
-      background:var(--depurp);
-      border-radius:25px;
-      padding:.7em;
+    #catshinji {
+      position:absolute;
+      right:0; bottom:0;
+      pointer-events:none;
     }
-    #profile img {border-radius:25px;}
   </style>
 </head>
 <body>
   <div id="container">
-    <h1>lucian</h1>
+    <header>
+      <h1>lucian's diary</h1>
+        <span id="updated"></span> // <a href="oc">additional writing</a>
+    </header>
 
-    <section id="profile">
-      <img src="evilfreak.jpg" style="width:100px;">
-    </section>
+      <main>
+        <p><mark>warning:</mark> suicide and mental illness and violence and whatnot will be discussed. beware!</p>
+
+        <details name="d" open>
+          <summary>january 9</summary>
+            <p>worked on the website today. i claimed a <a href="https://webtiles.kicya.net/#-875,-1875">webtile</a> but i'll make it look better later. i spent ages working on my button but then i realized i could just style it in html then eraser bucket tool the excess in csp. i also spent literally forever messing with the shinji pagedoll and the kaworu png used for the button. pinterest -&gt; ditherit.com -&gt; remove.bg pipeline. beware!!! </p>
+            <p>mmm. when it comes to personal updates, i'll be flying back home tonight. technically we have a layover but the layover <em>is</em> on the way home. i'll be back in the U.S in 2-3 days basically. the philippines and japan was really nice, and even though i don't like hanging out with my relatives, it was good to see them. the thing i enjoyed the most was definitely getting to buy some nge merch, including a kaworu figure! when i get home and unpack, i'll take a picture and try to remember to post it in the nekoweb server, <a href="https://luciansdiary.tumblr.com">my tumblr</a>, and here.</p>
+        </details>
+
+        <details open>
+          <summary>about</summary>
+            <p>im lucian. teenage <span class="ttt" title="americans describing themselves: okay now imagine a burger">nothingburger.</span> please use it/its for me or he/him if absolutely necessary.
+            <p>you proabbly already figured out that i am #mentally ill. if you find my discord account in the nekoweb server i'd be interested to hear which mental illnesses specifically you think i have.</p>
+        </details>
+
+        <section id="button">
+          <img src="button.png" style="width:88px; height:31px; image-rendering: pixelated;" alt="an indistinct picture of an anime boy with a cat on his shoulder in a reddish pink. superimposed atop the anime boy is the name 'lucian'.">
+          <textarea><a href="https://lucian.nekoweb.org"><img src="button.png" style="width:88px; height:31px; image-rendering: pixelated;" alt="an indistinct picture of an anime boy with a cat on his shoulder in a reddish pink. superimposed atop the anime boy is the name 'lucian'."></a></textarea>
+        </section>
+      </main>
+
+      <footer>
+        <p>sweet cherries freshly picked. a cat slumbers nearby; it smells like almond. // haiku last updated january 9th</p>
+      </footer>
   </div>
+
+  <img src="catshinji.png" id="catshinji">
 </body>
 </html>
