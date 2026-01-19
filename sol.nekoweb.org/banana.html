@@ -1,135 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>starlit05</title>
+  <title>sol.nekoweb.org</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="button.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="7.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
   <script src="tooltip.js"></script>
-  <script src="statLoad.js"></script>
-  <script src="tab.js"></script>
   <script src="theme-wizard.js"></script>
-
+  <script src="discord.js"></script>
+  
   <style>
-    * { 
-    box-sizing: border-box;
-    scrollbar-color:var(--link-color) var(--bg-color);
+    body {
+      background-image:url(poopoo.png);
+      background-repeat:no-repeat;
+      background-size:120%;
     }
 
     #container {
       width:55vw;
+      margin-top:5vh;
       margin-inline:auto;
     }
 
     header {
-      color:var(--bg-color);
-      text-shadow: -1px 0 var(--font-color), 0 1px var(--font-color), 1px 0 var(--font-color), 0 -1px var(--font-color),
-      0px 0px 3px var(--font-color), 0px 0px 3px var(--font-color);
-      padding:1.5em;
+      position:fixed;
+      top:0;
+      padding:1.3em;
+      z-index:10;
+    }
+    h1 {
+      color:var(--font-color); 
+      font-size:2.5em; 
+      font-weight:bold; 
+      text-align:left;
+      text-shadow: -1px 0 var(--bg-color), 0 1px var(--bg-color), 1px 0 var(--bg-color), 0 -1px var(--bg-color),
+      0px 0px 3px var(--bg-color), 0px 0px 3px var(--bg-color);
+    }
+    h1:hover {font-style:italic;}
+    
+    #right:hover { opacity:100%;}
+
+    #left {
+      width:250px;
+      padding:.75em;
+    }
+    #left h2 {margin-bottom:1vh;}
+    #left a {
+      display:block;
+      color:var(--link-color);
+      font-weight:bold;
+      padding-left:.2em;
+    }
+    #left a:hover {color:var(--bg-color);}
+    ul.tree-view.has-connector ul:before {border-left:1px dashed var(--bg-color);}
+
+    .grape {
+      /*border-width:8px;
+      border-style:solid;
+      border-image: url("https://dl.dropbox.com/s/l61yvavjx2e501e/image.png") 6 fill round;*/
+      border: 10px solid transparent;
+      box-sizing: border-box;
+      border-image: url(https://i.postimg.cc/QM9dMFhq/cloud.png) 70 round;
+      border-image-outset:5px;
+      background-color:white;
+      margin-bottom:3vh;
+    }
+    .exp {
+      border:1px solid;
+      background:var(--bg-color);
+      padding:.7em;
+      transition:.2s all;
+    }
+    .exp:hover {
+      box-shadow:5px 5px var(--link-color);
     }
 
-    #left, #right {
+    #right {
+      right:3vw;
       position:fixed;
-      top:10vh;
+      bottom:10vh;
       width:250px;
       opacity:60%;
       transition:.4s opacity;
       padding:.5em;
     }
-    #left:hover {border:1px solid; background:var(--bg-color);}
-    #left:hover, #right:hover { opacity:100%;}
+    #statuscafe {max-height:100px; overflow:auto;}
 
-    #left {
-      left:5vw;
-      border:1px solid transparent;
+    #blog {
+      flex:1;
+      border-left:1px dashed var(--bg-color);
+      padding-left:.3em;
     }
-    nav h2 {margin:.5em;}
-    nav h3 {margin:.3em; margin-top:1em;}
-    nav a {
-      display:block;
-      padding:.15em;
-    }
-
-    main {
-      border:1px solid;
-      background: linear-gradient(
-        to bottom,
-        #c7e3db,
-        #c7e3db 10%,
-        var(--bg-color) 10%,
-        var(--bg-color)
-      );
-      background-size: 100% 20px;
-    }
-
-    #right {
-      right:5vw;
-    }
-    #statuscafe {
-      background-image:url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F043%2F274%2F669%2Fnon_2x%2Fwhite-ripped-paper-scrap-graph-paper-with-torn-edge-scrapbook-sticky-notes-notebook-page-free-png.png&f=1&nofb=1&ipt=34f4a5c859e9ab9c491d9beb91c2e3c039f26b976432644f7bf55ea57a606fcd);
-      background-size:cover;
-      max-height:80px;
-      padding:1em;
-      padding-bottom:0;
-      overflow:auto;
-    }
-
-    section {
-      padding: 1em 1.5em;
-    }
-
-    a {color:var(--link-color); text-decoration:1px dotted underline;}
-    a:hover {background-color:var(--link-color); color:#E0E2DB;}
-
-    ul, ol {
-    margin: 1rem 0 1rem 1.5rem;
-    }
-
-    dl { margin: 1rem 0; }
-
-    dt { 
-    background: linear-gradient(to right, var(--link-color), var(--bg-color));
-    padding: 0.25rem 0.5rem;
-    color: #E0E2DB;
-    }
-
-    dd { padding: 1rem; }
-    
-    h1 {font-size:3em; text-align:center;}
-
-    blockquote {
-    border-left: var(--link-color) 3px solid;
-    padding: 0 1rem;
-    }
-
-    cite { 
-    display: block;
-    text-align: right;
-    }
-
-    code, pre {
-    background-color: #2E3532;
-    color: #E0E2DB;
-    }
-
-    details { border: 1px solid; }
-
-    code { 
-    font-family: 'annotation mono', monospace; 
-    padding: 2px 4px;
-    }
-
-    details, pre {
-    padding: 1em;
-    }
-
-    pre { overflow-x: auto; }
-
-    details p { margin: 0.5rem 0 0 2rem; }
+    #myuttons {margin-top:3vh;}
 
     footer {
-      grid-area:footer;
       font-size: 0.9em;
       text-align: center;
       width:70vw;
@@ -138,107 +105,217 @@
       margin-bottom:5vh;
     }
 
-    .up { position: fixed;
-    bottom: 10px; right: 10px; }
+    #lastfm {
+      position:fixed;
+      top:10vh; left:9vw;
+      max-width:150px;
+      padding:.7em;
+    }
 
-    #gridscrap {
-      position:absolute;
-      top:10px;
-      right:30px;
-      width:300px;
-      height:200px;
-      rotate:330deg;
+    #status-blob {
+      border-radius: 50%;
+      height: 10px;
+      width: 10px;
+      /* margin top to align is prob bad but idk how to css... */
+      margin-top: 4px;
+    }
+    #status-details {
+      margin: 0;
+      padding-right: 5px;
+    }
+    .status {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .laces {
+      display:block;
+      position:fixed;
+      left:0;
+      color:transparent;
+      image-rendering:pixelated;
+      width:100%;
+      pointer-events:none;
+      z-index:9;
+    }
+
+    #toplace {
+      top:0;
+      background-image:url(http://media.tumblr.com/tumblr_lszn6r9iXL1ql1l0v.gif);
+      height:51px;
+    }
+
+    #botlace {
+      bottom:0;
+      background-image:url(bla.png);
+      height:35px;
     }
 
     @media screen and (max-width: 1270px){
       .up { position: static; width: fit-content; margin: 10px auto; }
     }
-
     @media screen and (max-width: 700px){
-      section {
-        margin: 1em auto;
-        padding: 0.5em 1em;
-      }
-      ul, ol {
-        margin: 1rem 0 1rem 0.5rem;
-      }
-      ul ul, ol ol { 
-        margin: 0 0 0 1rem;
-      }
+      body {background-size:cover;}
+      #container {width:100%;}
     }
   </style>
 </head>
 <body>
   <div id="container">
     <header id="top">
-      <h1>⭐︎ starlit</h1>
-      <nav>
-        <button>alalalla</button>
-        <button>alalalla</button>
-        <button>alalalla</button>
-        <button>alalalla</button>
-      </nav>
+      <h1>☼ sol.nekoweb.org</h1>
+      <select id="theme-switcher"></select>
     </header>
 
-    <aside id="left">
-      <nav>
-        <h2>navigation</h2>
-          <h3>sitely</h3>
-          <a href="">homepage</a>
-          <a href="">about me</a>
-          <a href="">diary</a>
-          <a href="">now</a>
-          <a href="">credits</a>
-          <h3>projects</h3>
-          <a href="">azure</a>
-          <a href="">love and hate</a>
-          <a href="">stupid story</a>
-          <a href="">becoming a person</a>
-          <h3>fandom</h3>
-          <a href="">transformers</a>
-          <a href="">undertale + deltarune</a>
-          <a href="">ultrakill</a>
-          <a href="">sans aus</a>
-      </nav>
-    </aside>
+    <div class="flex" style="margin-top:6vh;">
+      <aside id="left">
+        <nav>
+          <ul class="tree-view has-collapse-button has-connector txtbrd">
+            <h2>navigation</h2>
+            <details open>
+              <summary>sitely</summary>
+              <ul>
+                <li><a href="about.html">about me</a></li>
+                <li><a href="diary.html">diary</a></li>
+                <li><a href="/now">now</a></li>
+                <li><a href="/credits">credits</a></li>
+                <li><a href="">azure</a></li>
+                <li><a href="">love and hate</a></li>
+                <li><a href="">transformers</a></li>
+              </ul>
+            </details>
+          </ul>
+        </nav>
 
-    <main>
-      <section>
-      <p>hai welcome to slopville. im sol starlit and this is my digital bedroom!!!</p>
+        <iframe width="200" height="200" style="border:none; margin-top:2vh;" src="https://rubybulbs.net/neko.html"></iframe>
 
-      <hr>
+        
+      </aside>
 
-      <dl>
-      <dt>Description list item 1</dt>
-      <dd>Description details</dd>
-      <dt>Description list item 2</dt>
-      <dd>Description details</dd>
-      <dt>Description list item 3</dt>
-      <dd>Description details</dd>
-      </dl>
+      <main>
+        <section id="top" class="grape">
+          <p>hello welcome to slopville. this is not a place of honor, nothing valued is here, etc.</p>
+          <p style="color:var(--red);"><strong><em>warning for mentions of violence, death, abuse, and suicide on this site.</em></strong> take care of yourself.</p>
+        </section>
 
+        <section id="blog" class="txtbrd">
+          <article>
+            <h3>remake - jan X 2026</h3>
+            <p>i have remade my website and got into neon genesis evangelion. this is catastrophic. <a href="diary">read more!</a></p>
+          </article>
+        </section>
 
-      <details>
-      <summary>Summary</summary> <p>Details</p> 
-      </details>
+        <section id="myuttons">
+          <a href="https://wolfsbane.nekoweb.org" title="chew toy"><img class="button" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.WoICK_kezbrncDfQjlVjjAHaFQ%3Fpid%3DApi%26ucfimg%3D1&f=1&ipt=80b738b14b13d046bc4772653552b2c79667fc0019853e96daa1e28106cfc35d&ipo=images" style="border:1px solid; width:88px; height:31px;"></a>
+  
+          <a href="https://yumeoi.skin" title="alternate universe twin"><img class="button" src="https://yumeoi.skin/image-files/my-buttons/icantread.png"></a>
+  
+          <a href="https://oversurge.nekoweb.org" title="ultrakill og since like march 2024"><img class="button" style="width:88px; height:31px;" src="https://oversurge.nekoweb.org/osvbtnanim.gif"></a>
+  
+          <a href="https://nekoweb.org/" title="ultrakill on nekoweb happens to be hosted on nekoweb. who knew?"><img src="https://nekoweb.org/assets/buttons/button6.gif" class="button"></a><!-- button by s1nez.nekoweb.org -->
+  
+          <a href="https://temstuff.neocities.org" target="_blank"><img src="https://64.media.tumblr.com/c7cf0eeea7b528183d95bbc043079c1e/a51f6f9947d2d663-2c/s100x200/598c4337b54f4e9c8c9f4cb04148a191c4daafde.gif" alt="button that reads 'tem stuff' on it" class="button"></a>
+  
+          <a href="https://maia.crimew.gay" target="_blank" title="the maia. if you don't know it i really suggest reading the blog section"><img src="https://maia.crimew.gay/badges/maia.crimew.gay.png" alt="maia crimew" class="button"></a>
+  
+          <a href="https://pawpyrus.art" title="words cannot describe how cool i think this site is"><img src="https://pawpyrus.art/graphics/siteButton.gif" height="31px" width="88px" class="button"></a>
+          <a href="https://melankorin.net/" title="of course it's melankorin theres no button wall complete without them"><img src="https://melankorin.net/assets/img/buttons/button-1.gif" alt="" class="button"></a>
+          <a href="https://yatagarasu.nekoweb.org" target="_blank" title="RAHHHHHHH"><img src="https://yatagarasu.nekoweb.org/images/yatagarasuButtonB.gif" alt="Yatagarasu site button" class="button"></a>
+          <a href="https://dreamscape.nekoweb.org" target="_blank" title="a very neat website with a really interesting webmaster"><img src="https://files.catbox.moe/901i0e.gif" alt="" class="button"></a>
+          <a href="https://decadancen.com/" title="im excited to see where it'll go next"><img src="sciku.png" class="button" style="width:88px; height:31px;"></a>
+          <a href="http://nondmo.online" title="peak aesthetic imo, simple but sophisticated in a way."><img src="http://nondmo.online/assets/button.png" class="button"></a>
+          <a href="https://satorikeiko.nekoweb.org" title="an interesting person"><img src="https://satorikeiko.nekoweb.org/88x31.png" class="button"></a>
+          <a href="https://deathlobotomy.nekoweb.org/" title="one of the first nekoweb sites i ever saw,, definitely a factor in me going into the indieweb scene. very cool 👍"><img src="https://deathlobotomy.nekoweb.org/img/buttons/moldbutton.gif" class="button"></a>
+          <a href="https://sunshine.nekoweb.org/" target="_blank" title="first status.cafe theme i saw and went 'they made this with html and css only- maybe i can do that too!' also we have the same name lol"><img src="https://sunshine.nekoweb.org/assets/sitebutton.gif" class="button"></a>
+          <a href="https://cyberdemon.nekoweb.org/" title="its cool"><img src="https://cyberdemon.nekoweb.org/button.png" class="button"></a>
+          <a href="https://obama.nekoweb.org/" title="senator ocasio-cortez said i need to link him so everyone knows i pay him for ads on his website. sorry chat"><img src="https://obama.nekoweb.org/obbutton.png" alt="obama button" class="button"></a>
+          <a href="https://amfmradio.org"><img src="https://amfmradio.org/imgs/buttonB.png" class="button"></a>
+        </section>
+        
+      </main>
+    </div>
+
+    <div class="flex" style="margin-top:1vh;">
+      <section id="ailjf">
+        <iframe src="https://webtiles.kicya.net/e/sol.nekoweb.org" width="250px" height="270" frameborder="0"></iframe>
       </section>
-    </main>
+
+      <section style="margin-top:1vh">
+        <div class="window active">
+          <div class="title-bar">
+            <div class="title-bar-text">discord status</div>
+            <div class="title-bar-controls">
+              <button aria-label="Minimize"></button>
+              <button aria-label="Maximize"></button>
+              <button aria-label="Close"></button>
+            </div>
+          </div>
+          <div class="window-body has-space">
+            <div class="status">
+              <p id="status-details">loading...</p>
+              <div id="status-blob"></div>
+              <p><small><a href="https://rice.place/other/discord.html">tutorial by rice!</a></small></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <aside id="right">
-        <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content"></div> <script src="https://status.cafe/current-status.js?name=kitty" defer></script></div>
+      <div class="window active" style="max-width: 320px; margin-bottom:3vh;">
+        <div class="title-bar">
+          <div class="title-bar-text">status.cafe</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body has-space">
+          <section class="flex" style="max-height:100px; overflow:auto;">
+            <img src="https://i.pinimg.com/736x/cb/49/07/cb4907a3e528ebbe89d967ad0e3dfb79.jpg" style="border:1px solid; width:100px">
+            <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content"></div> <script src="https://status.cafe/current-status.js?name=kitty" defer></script></div>
+          </section>
+        </div>
+      </div>
 
-      <img src="itty.png">
+      <iframe src="https://www3.cbox.ws/box/?boxid=3537120&boxtag=8dz91p" width="100%" height="350px" style="border:1px solid var(--font-color); padding:0;" title="" class="exp"></iframe>
     </aside>
 
+    <footer class="border">
+      <p>written on vscode // sol 2024-26
+    </footer>
+
     <div class="up"><a href="#top">to top</a></div>
+
+    <div id="toplace" class="laces">e</div>
+    <div id="botlace" class="laces">e</div>
+
+    <div role="tooltip" id="lastfm" class="is-top is-right" style="margin-bottom:3vh;">
+      <p><span id="song">loading...</span></p>
+            <p><small>powered by <a href="https://github.com/biancarosa/lastfm-last-played" target="_blank">biancarosa's last.fm widget</a></small></p>
+            <script type="text/javascript">
+              let user = 'starredhalo';
+              let url = 'https://lastfm-last-played.biancarosa.com.br/' + user + '/latest-song';
+              let song = document.querySelector('#song');
+              fetch(url)
+                .then(function (response) {
+                  return response.json()
+                }).then(function (json) {
+                  song.innerHTML = json['track']['name'] + ' - ' + json['track']['artist']['#text'];
+                });
+            </script>
+    </div>
+    <img src="lkdfjk.png" alt="" class="border" id="woru">
+    <img src="itty.png" alt="" class="border" id="ittydoll">
   </div>
 </body>
+<script src="./oneko.js"></script>
 <script>
   var library = {
-    "dark theme" : "dark.css",
-    "light theme" : "light.css",
+    "Dark Theme" : "dark.css",
+    "Light Theme" : "light.css"
   };
   window.themes.initialize(library);
-  window.themes.set("Dark Theme");
-  </script>
+</script>
 </html>

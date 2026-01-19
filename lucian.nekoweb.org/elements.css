@@ -1,0 +1,6 @@
+.site-box {text-align:center;background:black;transition:.5s all}.site-box:hover{transform:scale(110%)}
+.site-box>a>p{color:#ff4930;font-weight: bold;}
+.site-box>a>span{display:none;}
+.*.site-box .sitefeature{visibility: hidden;}*/
+.post-box {background-color:black;border:none;padding:15px;border-radius:0;color:#5e5e5e;}
+.post-box span, .post-title {color:#ff4930}

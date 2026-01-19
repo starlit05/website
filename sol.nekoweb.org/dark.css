@@ -1,9 +1,15 @@
 :root {
   --bg-color:#181a1b;
-  --font-color:#e7e5e2;
-  --link-color:#9a79dd;
-
-  --whitey:black;
+  --whitey:#f6f1f9;
+  --link-color:#b7b8f5;
 }
 
-body {background:var(--bg-color);}
+body {
+  background:var(--bg-color);
+}
+
+h1, h2, #left, summary, #blog, .exp, footer {color:var(--whitey)}
+
+a {text-decoration:1px solid underline;} 
+#left a {color:var(--link-color)}
+#left a:hover, #blog a:hover {color:var(--whitey)}

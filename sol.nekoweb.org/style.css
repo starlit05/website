@@ -4,12 +4,12 @@
   /*
   colors from catppuccin macchiato https://catppuccin.com/palette/
   */
-  --bg-color:#f6ebe0;
+  --bg-color:/*#f6ebe0*/ #f6f1f9;
   --font-color:/*#3f4148*/ #363D53;
-  --link-color:#585589;
+  --link-color:#9e93f1;
 
-  --red:#ac6375;
-  --purp: #585589;
+  --red:#de6e8a;
+  --purp: #f1d6ff;
 }
 body {
   background-image:url(ijflksdldjnv.png);
@@ -36,7 +36,7 @@ body {
 
 * {scrollbar-color: var(--bg-color) var(--shale);}
 
-::selection {background-color:var(--red); color:var(--bg-color)}
+::selection {background-color:var(--link-color); color:var(--bg-color)}
 
 .txtbrd {
   color:var(--bg-color);
@@ -138,7 +138,7 @@ h5 {
 p {/*text-indent:1em;*/ margin:3px;} 
 
 a {color:var(--link-color); text-decoration:1px dotted underline;}
-a:hover {background-color:var(--link-color); color:#E0E2DB;}
+a:hover {background-color:var(--link-color); color:var(--bg-color);}
 
 img, iframe {max-width:100%;}
 
