@@ -16,8 +16,8 @@ body {
   background-size:cover;
   background-repeat:no-repeat;
   background-attachment:fixed;
-  font-family:'JF Dot', sans-serif, serif;
-  font-size:1.1em;
+  font-family:'Monofoki', 'Apercu Mono', sans-serif, serif;
+  font-size:1em;
   color:var(--font-color);
   letter-spacing:.05em;
   line-height:1.2em;
@@ -43,7 +43,8 @@ body {
   text-shadow: -1px 0 var(--font-color), 0 1px var(--font-color), 1px 0 var(--font-color), 0 -1px var(--font-color),
   0px 0px 3px var(--font-color), 0px 0px 3px var(--font-color);
 }
-
+@font-face {font-family: 'Monofoki'; src: url(monofoki.otf);
+}
 @font-face {font-family: 'Apercu Mono'; src: url(ApercuMonoProRegular.ttf);
 }
 @font-face {font-family: 'iosevka'; src: url(https://cdn.jsdelivr.net/fontsource/fonts/iosevka@latest/latin-400-normal.ttf);
@@ -189,5 +190,6 @@ button {
   text-align: center;
   z-index: 9999;
   margin:1em;
-  padding:.3em;
+  padding:.5em;
+  transition:.3s all;
 }

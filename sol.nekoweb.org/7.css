@@ -2,7 +2,7 @@
 and https://khang-nd.github.io/7.css/ */
 
 :root {
-  --font:1em 'Apercu Mono', 'JF Dot', 'MS Gothic', monospace, sans-serif;
+  --font:1em 'Monofoki', 'Apercu Mono', 'JF Dot', 'MS Gothic', monospace, sans-serif;
   --font-color:#363D53;
 }
 
@@ -12,6 +12,8 @@ body {
 }
 
 @font-face {font-family: 'Apercu Mono'; src: url(ApercuMonoProRegular.ttf);
+}
+@font-face {font-family: 'Monofoki'; src: url(monofoki.otf);
 }
 @font-face {
   font-family:'JF Dot';

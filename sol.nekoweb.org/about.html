@@ -1,112 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>sol.nekoweb.org</title>
+  <title>about</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <link rel="icon" type="image/png" href="button.png">
+  <link rel="icon" type="image/png" href="itty.png">
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
   <script src="tooltip.js"></script>
-  <script src="statLoad.js"></script>
-  <script src="theme-wizard.js"></script>
 
   <style>
-    * { 
-    box-sizing: border-box;
-    scrollbar-color:var(--link-color) var(--bg-color);
+    :root {
+      --bg-color:black;
+      --font-color:#f6f1f9;
     }
 
-    #container {
-      width:55vw;
-      margin-inline:auto;
-    }
+    body {background:var(--bg-color);}
 
-    header {
-      position:fixed;
-      padding:1.3em;
-    }
-    h1:hover {font-style:italic;}
-    
-    #right:hover { opacity:100%;}
+    #container {width:50vw; margin-top:5vh;}
 
-    #left {
-      width:250px;
-      padding:.75em;
-    }
-    #left h2 {margin-bottom:1vh;}
-    #left a {
-      display:block;
-      color:var(--bg-color);
-      text-shadow: -1px 0 var(--font-color), 0 1px var(--font-color), 1px 0 var(--font-color), 0 -1px var(--font-color),
-      0px 0px 3px var(--font-color), 0px 0px 3px var(--font-color);
-      padding-left:.2em;
-    }
+    p {text-indent:1em; margin:.7em;}
 
-    .exp {
-      border:1px solid;
-      background:var(--bg-color);
-      padding:.7em;
-      transition:.2s all;
-    }
-    .exp:hover {
-      box-shadow:5px 5px var(--red);
-    }
+    ul, ol {margin: 1rem 0 1rem 1.5rem;}
 
-    #right {
-      right:5vw;
-      position:fixed;
-      bottom:10vh;
-      width:250px;
-      opacity:60%;
-      transition:.4s opacity;
-      padding:.5em;
-    }
-    #statuscafe {max-height:100px; overflow:auto;}
-
-    #blog {
-      flex:1;
-      border-left:1px dashed var(--bg-color);
-      padding-left:.3em;
-    }
-
-    ul, ol {
-    margin: 1rem 0 1rem 1.5rem;
-    }
-
-    dl { margin: 1rem 0; }
-
+    dl {margin:1em;}
     dt { 
-    background: linear-gradient(to right, var(--link-color), var(--bg-color));
-    padding: 0.25rem 0.5rem;
-    color: #E0E2DB;
+      font-weight:bold;
+      width:75%;
+      padding: 0.25rem 0.5rem;
+      margin-bottom:0;
     }
-
-    dd { padding: 1rem; }
+    dd {padding:1em; margin-top:0; margin-left:.3em;}
     
     blockquote {
-    border-left: var(--link-color) 3px solid;
-    padding: 0 1rem;
+      border-left: var(--link-color) 3px solid;
+      padding: 0 1rem;
+      width:50%;
     }
-    cite { 
-    display: block;
-    text-align: right;
-    }
-    code, pre {
-    background-color: #2E3532;
-    color: #E0E2DB;
-    }
+    cite {display: block; text-align: right;}
 
-    details { border: 1px solid; }
+    details {border: 1px solid var(--link-color);}
 
-    code { 
-    font-family: 'annotation mono', monospace; 
-    padding: 2px 4px;
-    }
-
-    details, pre {
-    padding: 1em;
-    }
+    details, pre {padding: 1em;}
 
     details p { margin: 0.5rem 0 0 2rem; }
 
@@ -132,78 +67,361 @@
 </head>
 <body>
   <div id="container">
-    <header id="top" class="txtbrd">
-      <h1>☼ sol.nekoweb.org</h1>
+    <header id="top" style="margin-bottom:3vh">
+      <h1>about</h1>
     </header>
 
-    <div class="flex" style="margin-top:8vh;">
-      <aside id="left" class="txtbrd">
-        <nav>
-          <h2>navigation</h2>
-            <a href="/about">about</a> 
-            <a href="/diary">diary</a> 
-            <a href="/now">now</a>
-            <a href="/credits">credits</a>
-            <a href="">azure</a>
-            <a href="">love and hate</a>
-            <a href="">transformers</a>
-        </nav>
-
-        <iframe width="200" height="200" style="border:none; margin-top:2vh;" src="https://rubybulbs.net/neko.html"></iframe>
-      </aside>
-
       <main>
-        <section class="exp">
-          <p>hello welcome to slopville. this is not a place of honor, nothing valued is here, etc.</p>
-          <p style="color:var(--red);"><strong><em>warning for mentions of violence, death, abuse, and suicide on this site.</em></strong> take care of yourself.</p>
-        </section>
+        <blockquote>
+          <p><div id="statuscafe"><div id="statuscafe-content"></div> <script src="status_cafe_script.js" defer></script></div></p>
+          <cite><div id="statuscafe-username"></div></cite>
+        </blockquote>
 
+        <section>
+          <dl>
+            <dt>name</dt>
+              <dd>sol</dd>
+            <dt>pronouns</dt>
+              <dd>he/him, testing it/its out recently</dd>
+            <dt>born</dt>
+              <dd>december 1st</dd>
+            <dt>cultural identity i guess</dt>
+              <dd>complicated? culturally american; ethnically filipino; ancestrally filipino (tagalog), han chinese, spanish, and lot of other east asian stuff. for short i just call myself filipino-american</dd>
+            <dt>favorite color</dt>
+              <dd>purple, my second favorite spot is tied between blue and red</dd>
+          </dl>
 
-        <section class="exp flex" style="margin-top:1vh;">
-          <img src="https://i.pinimg.com/736x/cb/49/07/cb4907a3e528ebbe89d967ad0e3dfb79.jpg" style="border:1px solid; width:100px">
-          <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content"></div> <script src="https://status.cafe/current-status.js?name=kitty" defer></script></div>
-        </section>
+          <p>i'm not a very interesting person nor do i consider myself to possess a personality, but i try. i'm sol and this is my website. i like to write html and <span class="ttt" title="a lot of 'barcode-scrubbed-off' oc work and halfhearted self-portraits tbh">draw pictures</span>. i like to think of myself as a writer even though i don't write a lot. the idea of ~being smart~ is very alluring to me as it is to most, i guess. i like cats more than dogs and it takes me a long time to get around to watching/reading/listening to something.</p>
 
-        <section style="margin-top:1vh">
-          adsfdgf
+          <details name="d" style="margin-top:3vh">
+            <summary>quizzes</summary>
+              <p>quizzes will go here when i do them.</p>
+          </details>
+
+          <details name="d" style="margin-top:3vh">
+            <summary>100 questions for webmasters</summary>
+              <p>thank you to <a href="https://mouseling.net/100webmaster.txt">mouseling.net for a blank copy.</a></p>
+
+              <dl>
+                <dt>1. Please introduce yourself.</dt>
+                <dd>i'm sol. i like to draw.</dd>
+                
+                <dt>2. How long have you been making websites?</dt>
+                <dd>since march of 2024, so as of today (january 2026) almost two years!</dd>
+                
+                <dt>3. And what got you into the hobby?</dt>
+                <dd>i found <a href="https://webring.koinuko.pink/">the original self-insert webring</a> while mindlessly scrolling the internet and noticed that it would be shutting down soon and the fear of missing out got to me, so i started learning html and css so i could have a page for my little widget to live on.</dd>
+                
+                <dt>4. What kind of website are you most interested in?</dt>
+                <dd>i like ones with blogs.</dd>
+                
+                <dt>5. What's your workflow? Do you plan your websites out thoroughly or do you come up with the design as you go along?</dt>
+                <dd>sometimes i plan my layouts out, but more often i find myself throwing whatever comes to mind together as it comes.</dd>
+                
+                <dt>6. Please link to your biggest inspirations.</dt>
+                <dd>i mostly actually based my more recent layouts on old layouts i did, which i have no screenshots of.</dd>
+                
+                <dt>7. What's your favourite part about making websites?</dt>
+                <dd>when they look nice and other people like them :&rpar;</dd>
+                
+                <dt>8. And the thing you struggle with the most?</dt>
+                <dd>i'm pretty averse to using javascript in any situation, but it's not hard. i just find free resources other people make.</dd>
+                
+                <dt>9. Do you keep the same layout on all of your pages? Or do you use different ones?</dt>
+                <dd>before i tried to keep the same layout on every page, but now i want to be more free.</dd>
+                
+                <dt>10. How confident are you with CSS?</dt>
+                <dd>i'm somewhere between beginner and intermediate. i don't know anything about 3d css or complicated transitions or anything.</dd>
+                
+                <dt>11. Do you know how to correctly use &lt;dl&gt;?</dt>
+                <dd>i hope so?</dd>
+                
+                <dt>12. What is your favourite HTML element?</dt>
+                <dd>i like semantic html like header, aside, main, footer, section, etc.</dd>
+                
+                <dt>13. If you're making a new web page from scratch, what is the first thing you do?</dt>
+                <dd>i look up how to do it on mdn web docs. i'm forgetful and not good at doing things from scratch.</dd>
+                
+                <dt>14. Do you know JavaScript?</dt>
+                <dd>nope!</dd>
+                
+                <dt>15. How about PHP?</dt>
+                <dd>nekoweb doesn't support it and i don't know what i'd use it for.</dd>
+                
+                <dt>16. Does your website have a theme that you stick to?</dt>
+                <dd>this time around i want it to be purple, but sometimes it doesn't.</dd>
+                
+                <dt>17. Are you more focused on content or design?</dt>
+                <dd>i want to focus more on content, but i always spend too much time on design.</dd>
+                
+                <dt>18. Do you own a domain name? If not, would you ever want to?</dt>
+                <dd>i don't own a domain name, but i'd like to. maybe something like "aortic.work" or copycat-something; i'm not very original.</dd>
+                
+                <dt>19. What do you think of nostalgia-focused or "retro" websites?</dt>
+                <dd>they're cool if they add a personal spin to the aesthetic. if not i find them to be mostly copy-and-paste (i.e boring).</dd>
+                
+                <dt>20. Is your HTML valid? Do you even check?</dt>
+                <dd>i think it is, and i only check if there's an error i can't figure out.</dd>
+                
+                <dt>21. What are your opinion on buttons and banners?</dt>
+                <dd>i like them! another way for people to express their creativity is usually good in my eyes.</dd>
+                
+                <dt>22. What do you think of button walls in particular?</dt>
+                <dd>it's like having a visual list of people's sites you like. pretty neat to see how other people use such a small canvas.</dd>
+                
+                <dt>23. If you started over again, would you make something similar or completely different?</dt>
+                <dd>probably make something similar. i'm not very original.</dd>
+                
+                <dt>24. Are you envious of other people's websites?</dt>
+                <dd>sometimes, but then i remember that i'm the only me who can make what i do, even if it seems similar to others' work.</dd>
+                
+                <dt>25. What text editor do you use?</dt>
+                <dd>i used to use phcode, but i switched to vscode. i might use nekode if i get desperate.</dd>
+                
+                <dt>26. Why do you use that one?</dt>
+                <dd>vscode offers git support and since i have it downloaded, can be used offline. i don't like the ai features and i don't use them.</dd>
+                
+                <dt>27. Do you host your image files on your web server, or on another host?</dt>
+                <dd>i try to host them on my nekoweb site, but sometimes i get worried and use <a href="https://filegarden.com">filegarden</a>.</dd>
+                
+                <dt>28. This might not be relevant to you, but what's your opinion on the Neocities vs. Nekoweb debate?</dt>
+                <dd>i only used nekoweb because neocities was blocked on my school chromebook, but now that both are blocked i'm partial to nekoweb as it's the only web host i've ever used. the whole pro-ai thing with neocities' owner kind of put me off, too. overall i don't see it as a huge issue.</dd>
+                
+                <dt>29. How much server space would you estimate your main website takes up?</dt>
+                <dd>like 2gb?</dd>
+                
+                <dt>30. Do you keep local backups of your files?</dt>
+                <dd>i do now, but not before.</dd>
+                
+                <dt>31. Do you prefer simple or highly visual websites?</dt>
+                <dd>i like both, depending on how they're used.</dd>
+                
+                <dt>32. Do you stick to certain colours? Do you do that on purpose, or is it your subconscious?</dt>
+                <dd>i stick to purple because i like purple and it makes me pleased when i see it.</dd>
+                
+                <dt>33. Have you ever thought about quitting? Why?</dt>
+                <dd>i did go on a rather long hiatus when i changed my site url often and cleared all my files. this was because of burnout, but i'm back now with more to yap about.</dd>
+                
+                <dt>34. Do you have many webmaster friends, or is it a solitary hobby?</dt>
+                <dd>i have webmaster acquaintances. i tried to get my irls into it but it didn't really click.</dd>
+                
+                <dt>35. Do people in your real life know about your website?</dt>
+                <dd>the people closest to me do.</dd>
+                
+                <dt>36. Do you update your website very often? How often is "very often"?</dt>
+                <dd>recently i've been doing a few updates a week, which is sort of often.</dd>
+                
+                <dt>37. And the overall design, do you change that much? Why or why not?</dt>
+                <dd>i get disappointed with my previous work frequently, so i scrap and restart a lot.</dd>
+                
+                <dt>38. Is your website more you-focused, hobby-focused, or outside world-focused?</dt>
+                <dd>hobby-focused. i don't see myself as having much to talk about regarding myself, so i want to focus on the things i do.</dd>
+                
+                <dt>39. Do you do web design professionally?</dt>
+                <dd>nope.</dd>
+                
+                <dt>40. If not, would you like to? And if you're comfortable answering, what do you do for work?</dt>
+                <dd>i don't have a job. i'd prefer to keep webdev a hobby.</dd>
+                
+                <dt>41. Do you communicate with people by email very much?</dt>
+                <dd>not really. i find it impractical.</dd>
+                
+                <dt>42. Some people reject social media and use websites as a replacement. Do you keep social media outside of your website?</dt>
+                <dd>yeah, tumblr, pinterest, sometimes bluesky.</dd>
+                
+                <dt>43. How about instant messengers? Do you use a mainstream one like Discord or Telegram? Or something like Matrix? Do you avoid them?</dt>
+                <dd>i use discord but nothing else.</dd>
+                
+                <dt>44. Do you listen to music while you work on websites? If so, what kinds of artists?</dt>
+                <dd>i watch video essays instead of music, and i like long video essays about a variety of topics such as history, politics, urban design, art, etc.</dd>
+                
+                <dt>45. Do you keep everything you make on one website, or do you have more than one?</dt>
+                <dd>i have more than one, but the others are secret.</dd>
+                
+                <dt>46. On a similar note, do you keep to one topic on your site, or many?</dt>
+                <dd>many per site.</dd>
+                
+                <dt>47. Do you present your real self, or at least try? Or do you construct a persona on purpose?</dt>
+                <dd>i don't have a real self. it's all a constructed persona.</dd>
+                
+                <dt>48. Have you ever made a good friend thanks to your website?</dt>
+                <dd>nope.</dd>
+                
+                <dt>49. Are you happy with the way HTML and CSS currently work?</dt>
+                <dd>i'm fine with them.</dd>
+                
+                <dt>50. What are practices that you think people should avoid?</dt>
+                <dd>don't put a DNI on your site. it's different from social media, in which people can and will interact directly. on the indie web, you can't control nor know who clicks on a link.</dd>
+                
+                <dt>51. What about under-utilised practices, or things you think people should do more?</dt>
+                <dd>please make your site mobile friendly. it is not that hard. try not to throw a tantrum about it either. add more image descriptions too, please.</dd>
+                
+                <dt>52. Do you use a lot of semantic HTML? Or are you guilty of generic structure?</dt>
+                <dd>i :heart: semantic html. section my beloved.</dd>
+                
+                <dt>53. Do you consider different browsers?</dt>
+                <dd>yep. i used to use chrome (not by choice) on my school computer. i was going to switch to firefox, but then the whole ai thing came up, so i ended up using zen. i've been thinking about trying opera gx out for a while.</dd>
+                
+                <dt>54. Speaking of, what's your preferred browser? Convince your readers why they should use it.</dt>
+                <dd>
+                  <ul>
+                    <li>inbuilt theme picker, complete with dial to add a static/"tv snow" effect</li>
+                    <li>built off firefox, so offers firefox extension support</li>
+                    <li>compact mode can hide your side tabs on command, with the tabs showing up on hover</li>
+                    <li>ability to choose whether your side tabs are on the left or right</li>
+                    <li>can customize folder icons out of a predetermined favicon list</li>
+                    <li>multiple "spaces" (essentially user profiles) in one window with their own essentials (fixed tabs that show up at top of tablist) and pinned tabs. you can name these spaces.</li>
+                  </ul>
+                </dd>
+                
+                <dt>55. And what OS are you on?</dt>
+                <dd>macos. once i become more computer literate i might switch to linux mint or something.</dd>
+                
+                <dt>56. Do you have a strong opinion on that, or do you just happen to use it?</dt>
+                <dd>just happen to use it.</dd>
+                
+                <dt>57. Are your websites mobile-friendly?</dt>
+                <dd>sometimes? it seems to depend on the browser and how it interprets the @media tag.</dd>
+                
+                <dt>58. What are your thoughts on autoplay?</dt>
+                <dd>not good. i don't like it.</dd>
+                
+                <dt>59. What are your thoughts on webrings? Are you in any?</dt>
+                <dd>webrings are cute. i'm in a few but i haven't updated my url in them yet.</dd>
+                
+                <dt>60. Do you have any web shrines? What do you like to see in that sort of page?</dt>
+                <dd>i have some, but they're sort of personal. i like to see how people discovered media and what they first thought about them.</dd>
+                
+                <dt>61. Are your websites "cliche", in your opinion?</dt>
+                <dd>maybe? i don't really care.</dd>
+                
+                <dt>62. What is your ideal website? Are you striving for that, or for something else?</dt>
+                <dd>my ideal website is a website where i am honest. i am not good at this.</dd>
+                
+                <dt>63. Are you an artist? Do you draw or design your own assets?</dt>
+                <dd>yes, but i'm lazy and i don't design my own assets.</dd>
+                
+                <dt>64. What are your favourite resource sites?</dt>
+                <dd>the <a href="https://developer.mozilla.org/en-US/">mdn web docs</a> are peak.</dd>
+                
+                <dt>65. Is there a habit you just can't get away from no matter how hard you try?</dt>
+                <dd>i tend to shut myself away when i feel bad.</dd>
+                
+                <dt>66. What's your biggest advice for a new webmaster?</dt>
+                <dd>put the w3schools tab down, it's outdated. you'll get better luck straight up searching it up.</dd>
+                
+                <dt>67. Do you keep all your styling in CSS? Or do you hard-code some?</dt>
+                <dd>i don't understand this question.</dd>
+                
+                <dt>68. What do you think of frameset layouts?</dt>
+                <dd>i don't have any strong opinion on them.</dd>
+                
+                <dt>69. How about table-based layouts?</dt>
+                <dd>BAD. outdated. 2005 (derogatory).</dd>
+                
+                <dt>70. Do you subscribe to the ideas of "one-column", "two-column" and "three-column" layouts? Do you use any of these?</dt>
+                <dd>how would i "subscribe" to them? they're just descriptor words. i tend to use "three-column" layouts the most.</dd>
+                
+                <dt>71. Do you spend longer on the HTML or the CSS?</dt>
+                <dd>equal?</dd>
+                
+                <dt>72. Have you ever made a page with no CSS? It's useful for your thoughts.</dt>
+                <dd>yes, but i ended up thinking it was ugly.</dd>
+                
+                <dt>73. Do you ever find yourself making layouts with nothing to put on them? Or do you only make layouts when the need arises?</dt>
+                <dd>sometimes i make layouts for the purpose of making them templates. my personal layouts are created when needed.</dd>
+                
+                <dt>74. Would you consider yourself a beginner? Or advanced? Somewhere in the middle?</dt>
+                <dd>beginner-intermediate.</dd>
+                
+                <dt>75. Do you have a habit of looking at the source code of websites you visit?</dt>
+                <dd>only when they have something i need.</dd>
+                
+                <dt>76. How did YOU learn how to make websites?</dt>
+                <dd>lots of mdn web docs and referencing other people's websites and dissecting free templates.</dd>
+                
+                <dt>77. Do you ever force elements to do things they're not supposed to?</dt>
+                <dd>not as much as i did when i was starting out.</dd>
+                
+                <dt>78. Thoughts on floating elements?</dt>
+                <dd>useful for small things, do not build a layout out of them.</dd>
+                
+                <dt>79. When you're sizing stuff, what do you use first? Do you use px, em, %, or something else?</dt>
+                <dd>em for general sizing, vh/vw for margins, % for... how do i describe this? making something a size relative to its container element without being as concrete as em. i try to avoid px so my layouts are more responsive.</dd>
+                
+                <dt>80. Do you have a favourite font?</dt>
+                <dd>i cycle through a lot, but right now i like <a href="https://github.com/datMaffin/monofoki">monofoki</a>.</dd>
+                
+                <dt>81. Would you run a website with another person? How would that work?</dt>
+                <dd>no. websites are very personal to me.</dd>
+                
+                <dt>82. Do you surf the Web to find new personal websites very often?</dt>
+                <dd>yeah, mostly for inspiration for my own.</dd>
+                
+                <dt>83. Do you bookmark other people's websites? How would you feel knowing someone else bookmarked yours?</dt>
+                <dd>yes, and i think i would be very flattered.</dd>
+                
+                <dt>84. What do you want people to be most impressed with when they see your website?</dt>
+                <dd>the quality of my creative writing.</dd>
+                
+                <dt>85. Are you interested in technology outside of websites? Do you collect?</dt>
+                <dd>i like to play simple video games...?</dd>
+                
+                <dt>86. How often and for how long are you online?</dt>
+                <dd>very online, but in solitary ways. scrolling through pinterest vs. talking on discord.</dd>
+                
+                <dt>87. When it comes to your website, who is your target audience?</dt>
+                <dd>the target audience is me.</dd>
+                
+                <dt>88. Have you ever been interested in XHTML?</dt>
+                <dd>nope.</dd>
+                
+                <dt>89. Do you program in general? Have you ever written a program for use with or on your website, not counting simple JavaScript?</dt>
+                <dd>nope.</dd>
+                
+                <dt>90. Speaking of programs that help you make websites, what do you think of static site generators (SSGs)? Have you ever used one?</dt>
+                <dd>sound interesting. i want to be more consistent with my work before i try to use one, though.</dd>
+                
+                <dt>91. Do you keep a hitcounter? Why or why not?</dt>
+                <dd>i have site stats, but i switch between displaying them or not. i feel weird about them.</dd>
+                
+                <dt>92. Do you frequent forums? Which ones?</dt>
+                <dd>nope.</dd>
+                
+                <dt>93. Do you write your page content directly into the editor, or do you prepare it elsewhere, like a text document or a Word document?</dt>
+                <dd>vscode is an editor, but it's not the native nekoweb editor.</dd>
+                
+                <dt>94. Do you think you appear cool to others? A more accurate answer now: do other people ever say you're cool?</dt>
+                <dd>nope. only one or two people have ever said i was cool.</dd>
+                
+                <dt>95. Are you embarrassed of your old work? Have you ever deleted everything out of shame?</dt>
+                <dd>sort of, and yes.</dd>
+                
+                <dt>96. Would you close down your website if you couldn't update it, or would you leave an archive?</dt>
+                <dd>i'd leave an archive if it was permanent.</dd>
+                
+                <dt>97. Do you reveal a lot about yourself on your website? Or are you more secretive?</dt>
+                <dd>reveal a lot. i don't know how to keep my mouth shut.</dd>
+                
+                <dt>98. Are you willing to reveal who your best online friend is, and/or if they have a website?</dt>
+                <dd>i don't have a best online friend.</dd>
+                
+                <dt>99. And do you optimise the images on your website?</dt>
+                <dd>sometimes. i dither them using <a href="https://ditherit.com">ditherit</a>.</dd>
+                
+                <dt>100. We're out of time! How do you feel after answering 100 questions? ....other than exhausted.</dt>
+                <dd>i want to go brush my teeth.</dd>
+              </dl>
+          </details>
+
+          <details name="d" style="margin-top:3vh">
+            <summary>images</summary>
+              <div class="flex"><img src="gojlkbeljf.png"><p>i tried to do a self-portrait without blacking my face out. it feels wrong.</p></div>
+          </details>
         </section>
       </main>
-    </div>
-
-    <div class="flex" style="margin-top:2vh;">
-      <section id="blog">
-        <article class="txtbrd">
-          <h3>remake - jan X 2026</h3>
-          <p>i have remade my website and got into neon genesis evangelion. this is catastrophic. <a href="diary" style="color:var(--red)">read more!</a></p>
-        </article>
-      </section>
-
-      <section id="ailjf">
-        dsf
-      </section>
-    </div>
-
-    <footer class="border">
-      <p>written on vscode // sol 2024-26
-    </footer>
-
-    <aside id="right">
-      <iframe src="https://www3.cbox.ws/box/?boxid=3537120&boxtag=8dz91p" width="100%" height="350px" style="border:1px solid var(--bg-color); padding:0;" title="" class="exp"></iframe>
-    </aside>
 
     <div class="up"><a href="#top">to top</a></div>
   </div>
-    
-  <img src="lkdfjk.png" alt="" class="border" id="woru">
-  
-  <img src="itty.png" alt="" class="border" id="ittydoll">
 </body>
-<script>
-  var library = {
-    "dark theme" : "dark.css",
-    "light theme" : "light.css",
-  };
-  window.themes.initialize(library);
-  window.themes.set("Dark Theme");
-  </script>
 </html>
