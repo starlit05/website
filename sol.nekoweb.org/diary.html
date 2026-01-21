@@ -7,14 +7,14 @@
   <title>diary</title>
   <meta name="description" content="peek into my brain">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script src="tab.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
   <script src="tooltip.js"></script>
 
   <style>
-    #container {font-family:sans-serif; width:80vw; margin-inline:0;}
+    :root {--bg-color:black; --font-color:#f6f1f9}
+    body {background:var(--bg-color);}
+    #container {width:80vw; margin-inline:0;}
 
     nav {
       position:fixed;
@@ -25,25 +25,28 @@
     }
 
     details {margin:.5em;}
-    summary::marker, :is(::-webkit-details-marker) {content: "+ "; color:var(--darker);}
-    details[open]:first-of-type summary::marker {content: "− "; color:var(--darker)}
+    /*summary::marker, :is(::-webkit-details-marker) {content: "+ ";;}
+    details[open]:first-of-type summary::marker {content: "− ";}*/
 
     button {
       display:block;
       border:none;
       background:none;
       color:inherit;
+      font-family:'Monofoki';
       font-size:inherit;
       text-align:left;
       margin:.3em;
     }
-    button:hover {cursor:cell; margin-left:.5em;}
-    button:hover:before {content:"> ";}
+    button:hover {
+      background-color:var(--link-color); 
+      color:var(--bg-color); 
+      cursor:cell; 
+      /*margin-left:.5em;*/
+    }
+    /*button:hover:before {content:"> ";}*/
 
     #posts {
-      border:1px solid;
-      border-radius:5px;
-      background:white;
       width:45vw;
       padding:1em;
       margin-top:3vh;
@@ -56,8 +59,12 @@
     p {text-indent:1em;}
     a {color:inherit; text-decoration-color:var(--mauve);}
 
-    blockquote>p:first-of-type:before {content:"“ "} 
-    blockquote>p:first-of-type:after {content:" ”"}
+    blockquote {
+      border-left: var(--link-color) 3px solid;
+      padding: 0 1rem;
+      width:50%;
+    }
+    cite {display: block; text-align: right;}
     blockquote p:first-of-type {text-indent:0;}
 
     .spoiler {background-color:var(--bg-color); color:var(--bg-color);} .spoiler:hover {color:var(--font-color);}
@@ -72,7 +79,7 @@
 <body>
   <div id="container">
     <div class="flex">
-      <nav class="txtbrd">
+      <nav>
         <a href="javascript:history.back()">&lt; return</a>
 
         <details open>
@@ -140,7 +147,15 @@
       <section id="posts">
         <article id="jan_9_26" class="bit">
           <h2>jan 9 // remake</h2>
-            <p>im sol and i made my website over... again.</p>
+            <p>im sol and i lowkey ruined the friendship i valued the most and i cant even open the message telling me it's concretely over because if i do i know i'll descend into begging the other person not to leave me 😂 i am working on my website instead of thinking about it. my dad came into my room and was like "you can literally trust us....." no i cant can you get real</p>
+            <p>it's always between "i need to communicate" and "i need to shut down" and "i need to kill myself" and "i need to live" and "i need to neuter my personality" and "i need to be the me that i am" and "if someone pulled me into a cult i'd go along with it just so i could feel seen"</p>
+            <div class="gtxt">
+              &gt; be me<br>&gt; too mentally ill to feel safe opening up to the people i care about<br>&gt; not mentally ill enough to be noticable to others<br>&gt; don't open up<br>&gt; i end up blowing up because i feel like they're all going to leave me<br>&gt; my friends leave me
+              <span>how could i have predicted this? does anyone know if telling them i'll be good and they don't have to care about me at all and just talk about fandom nonsense so they won't throw me away works?</span>
+            </div>
+            <p>like i'll feel like i should kill myself and then in 10 minutes to 5 hours later i'll go back to feeling nothing. i can't really remember the last time i felt happy? even when i'm surrounded by friends it's just an absence of bad. i started this article with "i am going to be on the fucking news" and now all i feel like is that my back hurts. and then as soon as i think about my friend or anything i associate with him i'll burst into tears and wish i had painkillers! this is annoying. if anything i just wish there were words i could say without holding back and being worried that i'll somehow say something as horrible as i did on halloween and ruin it all BUT at least that won't happen because i'm not gonna be able to say anything !! if i don't talk to any of my friends it'll save me the effort of pushing them away via a painful method lol</p>
+            <p>okay now for good things. um i'm going to therapy next monday and i think i'm missing spanish (yay) i find it hard to care about my academics when there's the feeling in the back of my chest telling me that since i'm gonna kill myself i shouldn't put effort in. i had mac n cheese today. itty was soft and nice to pet. i found a nice font for my website. i did some research into the symptoms of BPD and i am not fond of how much of them i fit. &gt; claims to not want people to leave me &gt; mistreat them and they leave me. who could have predicted this</p>
+            <p>now i'm feeling better because i looked at things online. i didn't even want them but it was good* to get my mind off things. i tried watching Pokemon Origins but i didn't like the artstyle and the free website i was watching it on had the english dub perma-enabled. boo. now i'm reading love bullet after procrastinating on it for a while. tomorrow or the day after that i might call with a friend so i can play windows games on my mac and i'll get to play limbus company. i guess it'll be an excersize in "do something associated with him and not spiral." i have a feeling i will lose.</p>
         </article>
         
         <article id="dec_11_25" class="bit">
