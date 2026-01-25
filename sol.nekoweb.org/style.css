@@ -1,9 +1,6 @@
 /*looking at my code all by yourself, handsome?*/
 /*just link back to me somewhere if you copy+paste something you find useful, okay?*/
 :root{
-  /*
-  colors from catppuccin macchiato https://catppuccin.com/palette/
-  */
   --bg-color:/*#f6ebe0*/ #f6f1f9;
   --font-color:/*#3f4148*/ #363D53;
   --link-color:#9e93f1;
@@ -12,7 +9,7 @@
   --purp: #f1d6ff;
 }
 body {
-  background-image:url(ijflksdldjnv.png);
+  background-image:url(poopoo.png);
   background-size:cover;
   background-repeat:no-repeat;
   background-attachment:fixed;
@@ -20,7 +17,7 @@ body {
   font-size:1em;
   color:var(--font-color);
   letter-spacing:.05em;
-  line-height:1.2em;
+  line-height:1.3em;
 
   &::after {
     content: "";
@@ -34,7 +31,7 @@ body {
   }
 }
 
-* {scrollbar-color: var(--bg-color) var(--shale);}
+* {scrollbar-color: var(--link-color) var(--bg-color);}
 
 ::selection {background-color:var(--link-color); color:var(--bg-color)}
 
@@ -113,7 +110,8 @@ h5 {
   padding:.5em;
   margin-inline:auto;
   position:absolute;
-  left:50%;top:50%;transform: translateX(-50%) translateY(-50%);
+  left:50%;top:50%;
+  transform: translateX(-50%) translateY(-50%);
   box-sizing:border-box;
 }
 

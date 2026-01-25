@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/gif" href="https://file.garden/ZkRD3wbiZDsBIZnn/koharu_channel.png">
+  <title>home</title>
+  <meta name="description" content="you and me, we're not the same">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="7.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script src="tooltip.js"></script>
+  <script src="statLoad.js"></script>
+  <script src="theme-wizard.js"></script>
+  <script src="discord.js"></script>
+   
+    <style>
+      :root {
+        --bg:#f6f1f9;
+      }
+      body {
+        background-image:url(poopoo.png);
+      }
+
+      .homediv, nav, #stats, main, .int, footer {padding:.5em;}
+      
+      .homediv {
+        border:1px solid var(--font-color);
+        background:url(https://64.media.tumblr.com/2f0c25188e39557d2cf49f3c9e1f16e5/addc04f6bc692b0b-cf/s1280x1920/752f1f401b908185e2e7fcfad8402d6ee07d0ce8.gifv);
+        box-shadow:0 0 var(--font-color);
+        opacity:75%;
+        transition:.4s all;
+      }
+      .homediv:hover {
+        opacity:100%;
+      }
+
+      #container {
+        display:grid;
+        gap:.5em;
+        grid-template-columns:.7fr 1fr 1fr;
+        grid-template-rows:.1fr 1fr .3fr 1fr .1fr;
+        grid-template-areas:
+          'header header header'
+          'menu profile chat'
+          'log profile chat'
+          'log bonus bonus'
+          'footer footer footer';
+        width:65vw;
+        height:85vh;
+        margin:0;
+        margin-top:7vh;
+        margin-left:30vw;
+      }
+
+      header {
+        position:fixed;
+        top:2vh; left:17vw;
+        padding:1.3em;
+        z-index:10;
+      } h1 {font-family:'Monofoki'; font-weight:bold;}
+      
+      #head {
+        grid-area:header;
+        justify-content:space-around;
+        align-items:center;
+        padding:.7em;
+      }
+      
+      #profile {
+        grid-area:profile;
+      }
+      
+      #right {
+        grid-area:chat;
+      }
+      
+      main {
+        grid-area:log;
+        overflow:auto;
+      }
+      
+      #menu {
+        grid-area:menu;
+        overflow:auto;
+      }
+      nav>h2 {text-align:center;}
+      nav>h3 {font-size:1.3em;}
+      nav>a {display:block;}
+      
+      #e {
+        grid-area:bonus;
+        overflow:auto;
+      }
+      
+      section .bit:not(:first-child) {display:none;}
+      .tabcontent {background:var(--bg-color); box-shadow:0 0 7px var(--bg-color); margin-top:3vh; margin-bottom:3vh;}
+
+      footer {grid-area:footer;}
+      
+      summary>h3 {display:inline-block;}
+      
+      .out {
+        display:grid;
+        gap:.5em;
+        grid-template-rows:.1fr 1fr;
+      }
+      
+      .int {
+        color:var(--font-color);
+        overflow:auto;
+      }
+
+      .grape {
+        /*border-width:8px;
+        border-style:solid;
+        border-image: url("https://dl.dropbox.com/s/l61yvavjx2e501e/image.png") 6 fill round;*/
+        border: 10px solid transparent;
+        box-sizing: border-box;
+        border-image: url(https://i.postimg.cc/QM9dMFhq/cloud.png) 70 round;
+        border-image-outset:5px;
+        background-color:white;
+        margin:.5em;
+      }
+
+      #statuscafe {max-height:100px; overflow:auto;}
+
+      #lastfm {
+        position:fixed;
+        top:13vh; left:9vw;
+        max-width:150px;
+        padding:.7em;
+      }
+      
+      .status {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .laces {
+        display:block;
+        position:fixed;
+        left:0;
+        color:transparent;
+        image-rendering:pixelated;
+        width:100%;
+        pointer-events:none;
+        z-index:9;
+      }
+
+      #toplace {
+        top:0;
+        background-image:url(http://media.tumblr.com/tumblr_lszn6r9iXL1ql1l0v.gif);
+        height:51px;
+      }
+
+      #botlace {
+        bottom:0;
+        background-image:url(bla.png);
+        height:35px;
+      }
+
+      @media screen and (max-width: 700px) {
+        #container {width:calc(100% - 20px); width: 80%;}
+        .flex {flex-wrap:wrap;}
+        #left, #right, main, #webrings {width:100%;}
+      }
+    </style>
+ </head>
+
+ <body>
+  <div id="container">
+    <header id="top">
+      <select id="theme-switcher"></select>
+    </header>
+
+    <div id="head" class="homediv flex">
+      <h1>copycat.channel</h1> 
+      <span>
+        <a href="https://www.swatch.com/en-us/internet-time.html" data-astro-cid-j7pv25f6=""> <span data-astro-cid-j7pv25f6="true">@324.26</span> <script type="module">
+          import {now} from 'https://esm.sh/dot-beat-time'
+          const time = document.getElementById("swatchTimeClock")
+        
+          window.onload = setInterval(() => {
+            time.innerHTML = now(true)
+          }, 1000)
+        </script> </a>
+      </span> <span>nekoweb</span>
+    </div>
+    
+    <aside id="menu" class="grape homediv">
+      <h2>navigation</h2>
+        <nav>
+          <h3>general</h3>
+          <a href="about">about</a>
+          <a href="diary">diary</a>
+          <a href="credits">credits page</a>
+          <h3>prjects</h3>
+          <a href="azure">azure</a>
+          <a href="">love and hate</a>
+          <h3>for u</h3>
+          <a href="templates">templates</a>
+        </nav>
+
+        <section id="stats">
+          <span id="followers"></span> whom i will be feeding to Mr. Sharkie shortly
+        </section>
+
+        <form method="post" action="https://poll.pollcode.com/28343643"><div><div><strong>do you remember my old url?</strong></div><input type="radio" name="answer" value="1" id="answer283436431" style="float:left;" /><label for="answer283436431" style="float:left;">yep!</label><div style="clear:both;"></div><input type="radio" name="answer" value="2" id="answer283436432" style="float:left;" /><label for="answer283436432" >nop</label><div style="clear:both;"></div><div align="center"><input type="submit" value=" Vote ">&nbsp;<input type="submit" name="view" value=" View "></div></div></form>
+    </aside>
+
+    <main class="homediv">
+      <h2>webrings will go here... eventually!</h2>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXAB7yai1_lt438JHrPQyetPB2drNL9EKdmQ&s">
+
+      <iframe width="200" height="200" style="border:none; margin-top:2vh;" src="https://rubybulbs.net/neko.html"></iframe>
+    </main>
+      
+    <aside id="right" class="homediv">
+      <iframe src="https://www3.cbox.ws/box/?boxid=3537120&boxtag=8dz91p" width="100%" height="100%" style="border:none; margin:0;" title=""></iframe>
+    </aside>
+
+    <aside id="profile">
+      <div class="window active" style="max-width: 400px; margin-bottom:3vh;">
+        <div class="title-bar">
+          <div class="title-bar-text">status.cafe</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <div class="window-body has-space">
+          <section class="flex" style="max-height:100px; overflow:auto;">
+            <img src="https://file.garden/ZkRD3wbiZDsBIZnn/koharu_channel.png" style="border:1px solid; width:100px" title="shes so cute">
+            <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content"></div> <script src="https://status.cafe/current-status.js?name=kitty" defer></script></div>
+          </section>
+        </div>
+      </div>
+
+      <div class="status">
+        <p id="status-details" class="border">loading...</p>
+        <p><small><a href="https://rice.place/other/discord.html" class="txtbrd">tutorial by rice!</a></small></p>
+      </div>
+     </aside>
+    
+    <aside id="e">
+      <iframe src="https://sop.atabook.org" style="border:0; height:100%; width:100%;">
+    </aside>
+
+    <footer class="border">
+      coded with my own two paws
+      <section id="myuttons">
+        <a href="https://wolfsbane.nekoweb.org" title="chew toy"><img class="button" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.WoICK_kezbrncDfQjlVjjAHaFQ%3Fpid%3DApi%26ucfimg%3D1&f=1&ipt=80b738b14b13d046bc4772653552b2c79667fc0019853e96daa1e28106cfc35d&ipo=images" style="border:1px solid; width:88px; height:31px;"></a>
+
+        <a href="https://yumeoi.skin" title="alternate universe twin"><img class="button" src="https://yumeoi.skin/image-files/my-buttons/icantread.png"></a>
+
+        <a href="https://oversurge.nekoweb.org" title="ultrakill og since like march 2024"><img class="button" style="width:88px; height:31px;" src="https://oversurge.nekoweb.org/osvbtnanim.gif"></a>
+
+        <a href="https://nekoweb.org/" title="ultrakill on nekoweb happens to be hosted on nekoweb. who knew?"><img src="https://nekoweb.org/assets/buttons/button6.gif" class="button"></a><!-- button by s1nez.nekoweb.org -->
+
+        <a href="https://temstuff.neocities.org" target="_blank"><img src="https://64.media.tumblr.com/c7cf0eeea7b528183d95bbc043079c1e/a51f6f9947d2d663-2c/s100x200/598c4337b54f4e9c8c9f4cb04148a191c4daafde.gif" alt="button that reads 'tem stuff' on it" class="button"></a>
+
+        <a href="https://maia.crimew.gay" target="_blank" title="the maia. if you don't know it i really suggest reading the blog section"><img src="https://maia.crimew.gay/badges/maia.crimew.gay.png" alt="maia crimew" class="button"></a>
+
+        <a href="https://pawpyrus.art" title="words cannot describe how cool i think this site is"><img src="https://pawpyrus.art/graphics/siteButton.gif" height="31px" width="88px" class="button"></a>
+        <a href="https://melankorin.net/" title="of course it's melankorin theres no button wall complete without them"><img src="https://melankorin.net/assets/img/buttons/button-1.gif" alt="" class="button"></a>
+        <a href="https://yatagarasu.nekoweb.org" target="_blank" title="RAHHHHHHH"><img src="https://yatagarasu.nekoweb.org/images/yatagarasuButtonB.gif" alt="Yatagarasu site button" class="button"></a>
+        <a href="https://dreamscape.nekoweb.org" target="_blank" title="a very neat website with a really interesting webmaster"><img src="https://files.catbox.moe/901i0e.gif" alt="" class="button"></a>
+        <a href="https://decadancen.com/" title="im excited to see where it'll go next"><img src="sciku.png" class="button" style="width:88px; height:31px;"></a>
+        <a href="http://nondmo.online" title="peak aesthetic imo, simple but sophisticated in a way."><img src="http://nondmo.online/assets/button.png" class="button"></a>
+        <a href="https://satorikeiko.nekoweb.org" title="an interesting person"><img src="https://satorikeiko.nekoweb.org/88x31.png" class="button"></a>
+        <a href="https://deathlobotomy.nekoweb.org/" title="one of the first nekoweb sites i ever saw,, definitely a factor in me going into the indieweb scene. very cool 👍"><img src="https://deathlobotomy.nekoweb.org/img/buttons/moldbutton.gif" class="button"></a>
+        <a href="https://sunshine.nekoweb.org/" target="_blank" title="first status.cafe theme i saw and went 'they made this with html and css only- maybe i can do that too!' also we have the same name lol"><img src="https://sunshine.nekoweb.org/assets/sitebutton.gif" class="button"></a>
+        <a href="https://cyberdemon.nekoweb.org/" title="its cool"><img src="https://cyberdemon.nekoweb.org/button.png" class="button"></a>
+        <a href="https://obama.nekoweb.org/" title="senator ocasio-cortez said i need to link him so everyone knows i pay him for ads on his website. sorry chat"><img src="https://obama.nekoweb.org/obbutton.png" alt="obama button" class="button"></a>
+        <a href="https://amfmradio.org"><img src="https://amfmradio.org/imgs/buttonB.png" class="button"></a>
+      </section>
+    </footer>
+  </div>
+
+  <div id="toplace" class="laces">e</div>
+  <div id="botlace" class="laces">e</div>
+
+  <div role="tooltip" id="lastfm" class="is-top is-right" style="margin-bottom:3vh;">
+    <p><span id="song">loading...</span></p>
+          <p><small>powered by <a href="https://github.com/biancarosa/lastfm-last-played" target="_blank">biancarosa's last.fm widget</a></small></p>
+          <script type="text/javascript">
+            let user = 'starredhalo';
+            let url = 'https://lastfm-last-played.biancarosa.com.br/' + user + '/latest-song';
+            let song = document.querySelector('#song');
+            fetch(url)
+              .then(function (response) {
+                return response.json()
+              }).then(function (json) {
+                song.innerHTML = json['track']['name'] + ' - ' + json['track']['artist']['#text'];
+              });
+          </script>
+  </div>
+  <img src="lkdfjk.png" alt="" class="border" id="woru">
+  <img src="itty.png" alt="" class="border" id="ittydoll">
+</body>
+<script src="./oneko.js"></script>
+<script>
+  var library = {
+    "Dark Theme" : "dark.css",
+    "Light Theme" : "light.css"
+  };
+  window.themes.initialize(library);
+</script>
+</html>
