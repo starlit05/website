@@ -5,8 +5,22 @@
   --font-color:/*#3f4148*/ #363D53;
   --link-color:#9e93f1;
 
+  /* duotone darksky */
+  --uno-1:#f1ebff;
+  --uno-2:#cab2fa;
+  --uno-3:#ae91e8;
+  --uno-4:#715f95;
+  --uno-5:#544d60;
+
+  --duo-1:#fec38f;
+  --duo-2:#b07745;
+
+  --grab:#211e1f;
+  --yel:#edda8e;
+
   --red:#de6e8a;
   --purp: #f1d6ff;
+  --blue:#9db5f3;
 }
 body {
   background-image:url(poopoo.png);
@@ -97,13 +111,14 @@ h5 {
 
 #woru {
   position:fixed;
-  left:-20px; bottom:10px;
+  left:-30px; bottom:-10px;
   width:12%;
 }
 #ittydoll {
   position:fixed;
-  left:0; bottom:-25px;
+  left:-15px; bottom:-35px;
   width:20%;
+  z-index:3;
 }
 
 .box {

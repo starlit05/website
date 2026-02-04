@@ -3,9 +3,13 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/gif" href="https://file.garden/ZkRD3wbiZDsBIZnn/koharu_channel.png">
-  <title>home</title>
-  <meta name="description" content="you and me, we're not the same">
+  <link rel="icon" type="image/png" href="images/nekon.png">
+  <title>home.html</title>
+  <meta
+  name="description" content="more stuff in my website :D">
+  <meta name="creator" content="sol">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#9e93f1">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="7.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
@@ -15,64 +19,74 @@
   <script src="discord.js"></script>
    
     <style>
-      :root {
-        --bg:#f6f1f9;
-      }
       body {
         background-image:url(poopoo.png);
       }
-
-      .homediv, nav, #stats, main, .int, footer {padding:.5em;}
       
       .homediv {
         border:1px solid var(--font-color);
-        background:url(https://64.media.tumblr.com/2f0c25188e39557d2cf49f3c9e1f16e5/addc04f6bc692b0b-cf/s1280x1920/752f1f401b908185e2e7fcfad8402d6ee07d0ce8.gifv);
+        background:url(images/grid_purple.webp);
         box-shadow:0 0 var(--font-color);
-        opacity:75%;
         transition:.4s all;
-      }
-      .homediv:hover {
-        opacity:100%;
       }
 
       #container {
-        display:grid;
-        gap:.5em;
-        grid-template-columns:.7fr 1fr 1fr;
-        grid-template-rows:.1fr 1fr .3fr 1fr .1fr;
-        grid-template-areas:
-          'header header header'
-          'menu profile chat'
-          'log profile chat'
-          'log bonus bonus'
-          'footer footer footer';
-        width:65vw;
-        height:85vh;
-        margin:0;
-        margin-top:7vh;
-        margin-left:30vw;
+        background-color:var(--red);
+        width:55vw;
+        margin-top:5vh;
+      }
+
+      .disclaimer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .talkbubble::before {
+        content: "";
+        position: absolute;
+        right: 100%;
+        top: 20px;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-right: 10px solid var(--yel);
+        border-bottom: 10px solid transparent;
+      }
+      .talkbubble {
+        position: relative;
+        width: 250px;
+        max-height: 100px;
+        padding: 10px;
+        border-radius: 5px;
+        border: solid var(--yel);
+        background: var(--yel);
       }
 
       header {
         position:fixed;
-        top:2vh; left:17vw;
-        padding:1.3em;
+        top:0; left:0;
+        display:block;
+        background-color:rgba(0, 0, 0, 0.75);
+        align-items:center;
+        color:var(--bg-color);
+        width:100%;
+        padding:1em;
         z-index:10;
       } h1 {font-family:'Monofoki'; font-weight:bold;}
-      
-      #head {
-        grid-area:header;
-        justify-content:space-around;
-        align-items:center;
-        padding:.7em;
-      }
       
       #profile {
         grid-area:profile;
       }
+
+      #other {
+        grid-area:other;
+      }
       
       #right {
-        grid-area:chat;
+        position:fixed;
+        top:0; right:0;
+        height:100vh;
       }
       
       main {
@@ -80,8 +94,14 @@
         overflow:auto;
       }
       
-      #menu {
-        grid-area:menu;
+      #left {
+        position:fixed;
+        top:8.3vh; left:0;
+        background-color:rgba(0, 0, 0, 0.75);
+        color:var(--bg-color);
+        height:100vh;
+        width:275px;
+        padding:.7em;
         overflow:auto;
       }
       nav>h2 {text-align:center;}
@@ -96,20 +116,15 @@
       section .bit:not(:first-child) {display:none;}
       .tabcontent {background:var(--bg-color); box-shadow:0 0 7px var(--bg-color); margin-top:3vh; margin-bottom:3vh;}
 
-      footer {grid-area:footer;}
+      footer {
+        position:fixed;
+        bottom:0;left:17vw;
+        text-align: center;
+        width:60vw;
+        padding:.7em;
+      }
       
       summary>h3 {display:inline-block;}
-      
-      .out {
-        display:grid;
-        gap:.5em;
-        grid-template-rows:.1fr 1fr;
-      }
-      
-      .int {
-        color:var(--font-color);
-        overflow:auto;
-      }
 
       .grape {
         /*border-width:8px;
@@ -127,7 +142,7 @@
 
       #lastfm {
         position:fixed;
-        top:13vh; left:9vw;
+        top:13vh; left:7vw;
         max-width:150px;
         padding:.7em;
       }
@@ -170,25 +185,29 @@
 
  <body>
   <div id="container">
-    <header id="top">
-      <select id="theme-switcher"></select>
-    </header>
+    <div class="disclaimer">
+      <img src="images/patronichi.png" style="height:100px">
+      <div class="talkbubble">
+        <text><b>ATTENTION!</b>: This site was made by an <b>adult</b> and may sometimes feature <b>mature</b>content.</text>
+      </div>
+    </div>
 
-    <div id="head" class="homediv flex">
-      <h1>copycat.channel</h1> 
-      <span>
-        <a href="https://www.swatch.com/en-us/internet-time.html" data-astro-cid-j7pv25f6=""> <span data-astro-cid-j7pv25f6="true">@324.26</span> <script type="module">
+    <header class="flex">
+      <h1>copycat.channel</h1>
+
+      <span>(<a href="https://www.swatch.com/en-us/internet-time.html" data-astro-cid-j7pv25f6=""> <span data-astro-cid-j7pv25f6="true">@324.26</span> <script type="module">
           import {now} from 'https://esm.sh/dot-beat-time'
           const time = document.getElementById("swatchTimeClock")
         
           window.onload = setInterval(() => {
             time.innerHTML = now(true)
           }, 1000)
-        </script> </a>
-      </span> <span>nekoweb</span>
-    </div>
+        </script> </a>)</span>
+
+        <select id="theme-switcher"></select>
+    </header>
     
-    <aside id="menu" class="grape homediv">
+    <aside id="left">
       <h2>navigation</h2>
         <nav>
           <h3>general</h3>
@@ -205,20 +224,22 @@
         <section id="stats">
           <span id="followers"></span> whom i will be feeding to Mr. Sharkie shortly
         </section>
+    </aside>
 
-        <form method="post" action="https://poll.pollcode.com/28343643"><div><div><strong>do you remember my old url?</strong></div><input type="radio" name="answer" value="1" id="answer283436431" style="float:left;" /><label for="answer283436431" style="float:left;">yep!</label><div style="clear:both;"></div><input type="radio" name="answer" value="2" id="answer283436432" style="float:left;" /><label for="answer283436432" >nop</label><div style="clear:both;"></div><div align="center"><input type="submit" value=" Vote ">&nbsp;<input type="submit" name="view" value=" View "></div></div></form>
+    <aside id="other">
+      <form method="post" action="https://poll.pollcode.com/28343643"><div><div><strong>do you remember my old url?</strong></div><input type="radio" name="answer" value="1" id="answer283436431" style="float:left;" /><label for="answer283436431" style="float:left;">yep!</label><div style="clear:both;"></div><input type="radio" name="answer" value="2" id="answer283436432" style="float:left;" /><label for="answer283436432" >nop</label><div style="clear:both;"></div><div align="center"><input type="submit" value=" Vote ">&nbsp;<input type="submit" name="view" value=" View "></div></div></form>
+
+      <section class="status">
+        <p id="status-details">loading...</p>
+        <p><small><a href="https://rice.place/other/discord.html">tutorial by rice!</a></small></p>
+      </section>
     </aside>
 
     <main class="homediv">
       <h2>webrings will go here... eventually!</h2>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXAB7yai1_lt438JHrPQyetPB2drNL9EKdmQ&s">
 
       <iframe width="200" height="200" style="border:none; margin-top:2vh;" src="https://rubybulbs.net/neko.html"></iframe>
     </main>
-      
-    <aside id="right" class="homediv">
-      <iframe src="https://www3.cbox.ws/box/?boxid=3537120&boxtag=8dz91p" width="100%" height="100%" style="border:none; margin:0;" title=""></iframe>
-    </aside>
 
     <aside id="profile">
       <div class="window active" style="max-width: 400px; margin-bottom:3vh;">
@@ -237,52 +258,50 @@
           </section>
         </div>
       </div>
-
-      <div class="status">
-        <p id="status-details" class="border">loading...</p>
-        <p><small><a href="https://rice.place/other/discord.html" class="txtbrd">tutorial by rice!</a></small></p>
-      </div>
      </aside>
     
     <aside id="e">
-      <iframe src="https://sop.atabook.org" style="border:0; height:100%; width:100%;">
     </aside>
 
-    <footer class="border">
-      coded with my own two paws
-      <section id="myuttons">
-        <a href="https://wolfsbane.nekoweb.org" title="chew toy"><img class="button" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.WoICK_kezbrncDfQjlVjjAHaFQ%3Fpid%3DApi%26ucfimg%3D1&f=1&ipt=80b738b14b13d046bc4772653552b2c79667fc0019853e96daa1e28106cfc35d&ipo=images" style="border:1px solid; width:88px; height:31px;"></a>
-
-        <a href="https://yumeoi.skin" title="alternate universe twin"><img class="button" src="https://yumeoi.skin/image-files/my-buttons/icantread.png"></a>
-
-        <a href="https://oversurge.nekoweb.org" title="ultrakill og since like march 2024"><img class="button" style="width:88px; height:31px;" src="https://oversurge.nekoweb.org/osvbtnanim.gif"></a>
-
-        <a href="https://nekoweb.org/" title="ultrakill on nekoweb happens to be hosted on nekoweb. who knew?"><img src="https://nekoweb.org/assets/buttons/button6.gif" class="button"></a><!-- button by s1nez.nekoweb.org -->
-
-        <a href="https://temstuff.neocities.org" target="_blank"><img src="https://64.media.tumblr.com/c7cf0eeea7b528183d95bbc043079c1e/a51f6f9947d2d663-2c/s100x200/598c4337b54f4e9c8c9f4cb04148a191c4daafde.gif" alt="button that reads 'tem stuff' on it" class="button"></a>
-
-        <a href="https://maia.crimew.gay" target="_blank" title="the maia. if you don't know it i really suggest reading the blog section"><img src="https://maia.crimew.gay/badges/maia.crimew.gay.png" alt="maia crimew" class="button"></a>
-
-        <a href="https://pawpyrus.art" title="words cannot describe how cool i think this site is"><img src="https://pawpyrus.art/graphics/siteButton.gif" height="31px" width="88px" class="button"></a>
-        <a href="https://melankorin.net/" title="of course it's melankorin theres no button wall complete without them"><img src="https://melankorin.net/assets/img/buttons/button-1.gif" alt="" class="button"></a>
-        <a href="https://yatagarasu.nekoweb.org" target="_blank" title="RAHHHHHHH"><img src="https://yatagarasu.nekoweb.org/images/yatagarasuButtonB.gif" alt="Yatagarasu site button" class="button"></a>
-        <a href="https://dreamscape.nekoweb.org" target="_blank" title="a very neat website with a really interesting webmaster"><img src="https://files.catbox.moe/901i0e.gif" alt="" class="button"></a>
-        <a href="https://decadancen.com/" title="im excited to see where it'll go next"><img src="sciku.png" class="button" style="width:88px; height:31px;"></a>
-        <a href="http://nondmo.online" title="peak aesthetic imo, simple but sophisticated in a way."><img src="http://nondmo.online/assets/button.png" class="button"></a>
-        <a href="https://satorikeiko.nekoweb.org" title="an interesting person"><img src="https://satorikeiko.nekoweb.org/88x31.png" class="button"></a>
-        <a href="https://deathlobotomy.nekoweb.org/" title="one of the first nekoweb sites i ever saw,, definitely a factor in me going into the indieweb scene. very cool 👍"><img src="https://deathlobotomy.nekoweb.org/img/buttons/moldbutton.gif" class="button"></a>
-        <a href="https://sunshine.nekoweb.org/" target="_blank" title="first status.cafe theme i saw and went 'they made this with html and css only- maybe i can do that too!' also we have the same name lol"><img src="https://sunshine.nekoweb.org/assets/sitebutton.gif" class="button"></a>
-        <a href="https://cyberdemon.nekoweb.org/" title="its cool"><img src="https://cyberdemon.nekoweb.org/button.png" class="button"></a>
-        <a href="https://obama.nekoweb.org/" title="senator ocasio-cortez said i need to link him so everyone knows i pay him for ads on his website. sorry chat"><img src="https://obama.nekoweb.org/obbutton.png" alt="obama button" class="button"></a>
-        <a href="https://amfmradio.org"><img src="https://amfmradio.org/imgs/buttonB.png" class="button"></a>
-      </section>
-    </footer>
+    <aside id="right">
+      <iframe src="https://www3.cbox.ws/box/?boxid=3537120&boxtag=8dz91p" width="100%" height="100%" style="border:none; margin:0;" title=""></iframe>
+    </aside>
   </div>
 
-  <div id="toplace" class="laces">e</div>
-  <div id="botlace" class="laces">e</div>
+  <footer class="border">
+    written on vscode ✦ sol 2024-26 ✦ you can pet the neko!
+    <section id="myuttons">
+      <a href="https://wolfsbane.nekoweb.org" title="chew toy"><img class="button" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.WoICK_kezbrncDfQjlVjjAHaFQ%3Fpid%3DApi%26ucfimg%3D1&f=1&ipt=80b738b14b13d046bc4772653552b2c79667fc0019853e96daa1e28106cfc35d&ipo=images" style="border:1px solid; width:88px; height:31px;"></a>
 
-  <div role="tooltip" id="lastfm" class="is-top is-right" style="margin-bottom:3vh;">
+      <a href="https://yumeoi.skin" title="alternate universe twin"><img class="button" src="https://yumeoi.skin/image-files/my-buttons/icantread.png"></a>
+
+      <a href="https://oversurge.nekoweb.org" title="ultrakill og since like march 2024"><img class="button" style="width:88px; height:31px;" src="https://oversurge.nekoweb.org/osvbtnanim.gif"></a>
+
+      <a href="https://nekoweb.org/" title="ultrakill on nekoweb happens to be hosted on nekoweb. who knew?"><img src="https://nekoweb.org/assets/buttons/button6.gif" class="button"></a><!-- button by s1nez.nekoweb.org -->
+
+      <a href="https://temstuff.neocities.org" target="_blank"><img src="https://64.media.tumblr.com/c7cf0eeea7b528183d95bbc043079c1e/a51f6f9947d2d663-2c/s100x200/598c4337b54f4e9c8c9f4cb04148a191c4daafde.gif" alt="button that reads 'tem stuff' on it" class="button"></a>
+
+      <a href="https://maia.crimew.gay" target="_blank" title="the maia. if you don't know it i really suggest reading the blog section"><img src="https://maia.crimew.gay/badges/maia.crimew.gay.png" alt="maia crimew" class="button"></a>
+
+      <a href="https://pawpyrus.art" title="words cannot describe how cool i think this site is"><img src="https://pawpyrus.art/graphics/siteButton.gif" height="31px" width="88px" class="button"></a>
+      <a href="https://melankorin.net/" title="of course it's melankorin theres no button wall complete without them"><img src="https://melankorin.net/assets/img/buttons/button-1.gif" alt="" class="button"></a>
+      <a href="https://yatagarasu.nekoweb.org" target="_blank" title="RAHHHHHHH"><img src="https://yatagarasu.nekoweb.org/images/yatagarasuButtonB.gif" alt="Yatagarasu site button" class="button"></a>
+      <a href="https://dreamscape.nekoweb.org" target="_blank" title="a very neat website with a really interesting webmaster"><img src="https://files.catbox.moe/901i0e.gif" alt="" class="button"></a>
+      <a href="https://decadancen.com/" title="im excited to see where it'll go next"><img src="sciku.png" class="button" style="width:88px; height:31px;"></a>
+      <a href="http://nondmo.online" title="peak aesthetic imo, simple but sophisticated in a way."><img src="http://nondmo.online/assets/button.png" class="button"></a>
+      <a href="https://satorikeiko.nekoweb.org" title="an interesting person"><img src="https://satorikeiko.nekoweb.org/88x31.png" class="button"></a>
+      <a href="https://deathlobotomy.nekoweb.org/" title="one of the first nekoweb sites i ever saw,, definitely a factor in me going into the indieweb scene. very cool 👍"><img src="https://deathlobotomy.nekoweb.org/img/buttons/moldbutton.gif" class="button"></a>
+      <a href="https://sunshine.nekoweb.org/" target="_blank" title="first status.cafe theme i saw and went 'they made this with html and css only- maybe i can do that too!' also we have the same name lol"><img src="https://sunshine.nekoweb.org/assets/sitebutton.gif" class="button"></a>
+      <a href="https://cyberdemon.nekoweb.org/" title="its cool"><img src="https://cyberdemon.nekoweb.org/button.png" class="button"></a>
+      <a href="https://obama.nekoweb.org/" title="senator ocasio-cortez said i need to link him so everyone knows i pay him for ads on his website. sorry chat"><img src="https://obama.nekoweb.org/obbutton.png" alt="obama button" class="button"></a>
+      <a href="https://amfmradio.org"><img src="https://amfmradio.org/imgs/buttonB.png" class="button"></a>
+    </section>
+  </footer>
+
+  <img src="itty.png" id="ittydoll"><!--
+  <img src="images/lkdfjk.png" id="woru">
+
+  <div role="tooltip" id="lastfm" class="is-top is-right">
     <p><span id="song">loading...</span></p>
           <p><small>powered by <a href="https://github.com/biancarosa/lastfm-last-played" target="_blank">biancarosa's last.fm widget</a></small></p>
           <script type="text/javascript">
@@ -296,9 +315,7 @@
                 song.innerHTML = json['track']['name'] + ' - ' + json['track']['artist']['#text'];
               });
           </script>
-  </div>
-  <img src="lkdfjk.png" alt="" class="border" id="woru">
-  <img src="itty.png" alt="" class="border" id="ittydoll">
+  </div>-->
 </body>
 <script src="./oneko.js"></script>
 <script>
