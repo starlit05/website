@@ -3,7 +3,7 @@
 :root{
   --bg-color:/*#f6ebe0*/ #f6f1f9;
   --font-color:/*#3f4148*/ #363D53;
-  --link-color:#9e93f1;
+  --link-color:/*#9e93f1*/ #9693d2;
 
   /* duotone darksky */
   --uno-1:#f1ebff;
@@ -23,14 +23,9 @@
   --blue:#9db5f3;
 }
 body {
-  background-image:url(poopoo.png);
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
-  font-family:'Monofoki', 'Apercu Mono', sans-serif, serif;
-  font-size:1em;
+  font-family:'mbytepc', 'Monofoki', 'Apercu Mono', sans-serif, serif;
+  font-size:1.2em;
   color:var(--font-color);
-  letter-spacing:.05em;
   line-height:1.3em;
 
   &::after {
@@ -42,6 +37,21 @@ body {
     image-rendering: auto;
     pointer-events: none;
     z-index: 99;
+  }
+
+  &::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    z-index: 3;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index:99;
   }
 }
 
@@ -56,20 +66,23 @@ body {
 }
 @font-face {font-family: 'Monofoki'; src: url(monofoki.otf);
 }
-@font-face {font-family: 'Apercu Mono'; src: url(ApercuMonoProRegular.ttf);
-}
+@font-face {font-family: 'Apercu Mono'; src: url(ApercuMonoProRegular.ttf);}
 @font-face {font-family: 'iosevka'; src: url(https://cdn.jsdelivr.net/fontsource/fonts/iosevka@latest/latin-400-normal.ttf);
 }
 @font-face {
+  font-family:"mbytepc";
+  src:url(mbytepc.ttf);
+}
+/*@font-face {
   font-family:'JF Dot';
   src:url(JF-Dot-Shinonome-14-Regular.ttf);
 }
 @font-face {
   font-family:'Mincho';
   src:url(BIZUDMincho-Regular.ttf);
-}
+}*/
 
-h1, h2, h3, h4 {font-family:'Mincho'; font-weight:normal; margin:0;}
+h1, h2, h3, h4 {font-family:'monofoki'; font-weight:normal; margin:0;}
 
 h1 {text-align:center;}
 
@@ -199,7 +212,18 @@ button {
   filter: drop-shadow(.5px .5px 0 black) drop-shadow(-.5px 1px 0 black) drop-shadow(0 -.5px 0 black) drop-shadow(1px 0 black);
 }
 
-.flex {display:flex; gap:.5em;}
+.wborder {
+  filter: drop-shadow(.5px .5px 0 white) drop-shadow(-.5px 1px 0 white) drop-shadow(0 -.5px 0 white) drop-shadow(1px 0 white);
+}
+
+.flex {display:flex; gap:1em;}
+/*flex magic by kalechips on https://kalechips.net/projects/snippets/flexcolumns*/
+.full { flex: 1 1 100%;}
+.half { flex: 1 1 50%; }
+.third { flex: 1 1 33%; }
+.twothird { flex: 1 1 66%; }
+.quarter { flex: 1 1 25%; }
+.threequarter { flex: 1 1 75%; }
 
 .ttt {text-decoration:1px solid underline;}
 

@@ -1,310 +1,148 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin #3: Almost Deviant</title>
+    <link href="wah.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="7.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class=wrapper>
+      <aside class=sidebar>
+        <div class="sidebar-image border"><img src="images/ultraviolet_star.png"></div>
 
-    <title>Bloggy Template</title>
+        <div class=thing><div class=inner>
+          <p>i'm <strong>sol</strong>! (you can also call me sop)</p>
 
-    <meta name="author" content="you!!">
-    <meta content="A flexbox centric template" name="description">
-    <link rel="icon" type="image/webp" href="https://files.catbox.moe/tx39k1.webp">
-
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="wah.css">
-    <link rel="stylesheet" href="7.css">
-</head>
-<body>
-  <div id="skip"><a href="#content">Skip to content</a></div>
-  <button onclick="topFunction()" id="backscroll" title="Go to top">Top</button>
-
-  <div class="container">
-      <div id="left-sidebar">
-          <div class="about">
-              <div class="quote">
-                  <p>you can put any cool quote here, the side will expand out to your writing</p>
-              </div>
-              <div class="icon">
-                  <img src="https://placehold.co/200" loading="lazy" alt="" />
-              </div>
-              <div class="description">
-                  <p>
-                      Short intro can go here. You can remove this part but it'll make mobile look a little weird
-                      since it's made with the idea in mind of having text here. Feel free to decorate it with
-                      <code>.hide-desktop</code> images if it looks empty on mobile.
-                  </p>
-              </div>
-          </div>
-          <nav>
-              <a href="">link</a>
-              <a href="">link</a>
-              <a href="">longer link</a>
-              <a href="">cooler link</a>
-              <!-- most likely will drop this, doesn't work well on mobile -->
-              <!--<details>
-                  <summary>dropdown</summary>
-                  <a href="">wow another link!</a>
-                  <a href="">wow another link!</a>
-              </details>-->
-              <a href="">awesome link</a>
-          </nav>
-          <section class="hide-mobile" style="text-align: center">
-              <div class="center-item"><img src="https://placehold.co/88x31" alt="" /></div>
-              <p>
-                  <textarea
-                      id="site-button"
-                      name="site-button"
-                      style="width: 100%; height: 40px; font-size: 0.8em">
-Textarea</textarea
-                  ><label for="site-button">Website button!</label>
-              </p>
-          </section>
+          <p><span id="song">loading...</span></p>
+          <p><small>powered by <a href="https://github.com/biancarosa/lastfm-last-played" target="_blank">biancarosa's last.fm widget</a></small></p>
+          <script type="text/javascript">
+            let user = 'starredhalo';
+            let url = 'https://lastfm-last-played.biancarosa.com.br/' + user + '/latest-song';
+            let song = document.querySelector('#song');
+            fetch(url)
+              .then(function (response) {
+                return response.json()
+              }).then(function (json) {
+                song.innerHTML = json['track']['name'] + ' - ' + json['track']['artist']['#text'];
+              });
+          </script>
+        </div></div>
+      </aside>
+    
+    
+    <div class=main-wrapper>
+      <header class="flex">
+        <h1>sol.nekoweb.org</h1>
+  
+        <span>(<a href="https://www.swatch.com/en-us/internet-time.html" data-astro-cid-j7pv25f6=""> <span data-astro-cid-j7pv25f6="true">@324.26</span> <script type="module">
+            import {now} from 'https://esm.sh/dot-beat-time'
+            const time = document.getElementById("swatchTimeClock")
+          
+            window.onload = setInterval(() => {
+              time.innerHTML = now(true)
+            }, 1000)
+          </script> </a>)</span>
+  
+          <select id="theme-switcher"></select>
+      </header>
+    
+      <div class=links>
+        <div class=thing><div class=inner> <ul>
+          <li><a href="/testdirectory.html">Directory</a></li>
+          <li><a href="busy_base2.html">Base Style</a></li>
+          <li><a href="busy_base2_skin1.html">Skin 1</a></li>
+          <li><a href="busy_base2_skin2.html">Skin 2</a></li>
+          <li class=last><a href="busy_base2_skin3.html">Skin 3</a></li>
+        </ul></div></div>
       </div>
-      <main id="content">
-          <section>
-              <h1>Intro and Header</h1>
-              <p>
-                  If you'd like to see a fully 'edited' version of this template, check out
-                  <a href="https://zhongvie.neocities.org/templates/bloggy.html">my example</a>.
-              </p>
-              <p>
-                  I will now show you how to use the most common HTML text elements:
-                  <b>This is bold text.</b>
-                  <strong>This is also bold text.</strong>
-                  <i>This is italic text.</i>
-                  <em>This is also italic text.</em>
-                  <s>This is strikethrough text.</s>
-                  <u>This is underlined text.</u>
-                  <a href="/index.html">This is an internal link.</a>
-                  <a href="https://petrapixel.neocities.org/" target="_blank"
-                      >This is a link that will open in a new tab and site.</a
-                  >
-                  <code>This is code (displayed in a monospace font).</code>
-                  <abbr title="Example.">This is an abbreviation (Try hovering over it).</abbr>
-                  <mark>This is highlighted text.</mark>
-                  This is a line break (The br stands for break.): <br />It's different from a paragraph because
-                  it does not add space inbetween the lines of text.
-              </p>
-              <p>
-                  This is a paragraph. As you can see, there's a bit of space between it and the previous
-                  paragraph.
-              </p>
-              <hr />
-              <p>
-                  And this is a divider! You can also add a cool glow to images using
-                  <code>.image-glow</code>
-              </p>
-              <p>Some of the features of this template include:</p>
-              <ul>
-                  <li>
-                      A decorative border to add to images using <code>.image-deco</code> (and the glow mentioned
-                      above)
-                  </li>
-                  <li>Outgoing links having an arrow attached to them</li>
-                  <li>A marquee with an adjustable scroll speed (thanks to Salarua!)</li>
-                  <li>
-                      A scrollable area you can place anywhere (and can change the size of by using inline CSS to
-                      just set it off the default 200px)
-                  </li>
-                  <li>
-                      Colour variables + system-respecting dark mode colours
-                      <ul>
-                          <li>
-                              Also variables for changing the size of the sidebar + content! Currently it's at
-                              250px for the sidebar and 700px for the main content
-                          </li>
-                      </ul>
-                  </li>
-                  <li>Pixel decorations for H1 and H2 which you can swap out using variables</li>
-                  <li>Focus elements + skip to content</li>
-                  <li>
-                      A mobile friendly layout + a mobile navigation with a dropdown toggle to hide/show the
-                      buttons
-                  </li>
-                  <li>
-                      Helper classes like <code>.hide-mobile</code> and <code>.hide-desktop</code> to easily
-                      enable/disable mobile-specific and desktop-only things (if you're on mobile, you may see a
-                      box only meant for you!), and others like <code>.center-item</code>,
-                      <code>.float-img-right</code>, and <code>.float-img-left</code> (which on mobile will turn
-                      it to a non-floating item)
-                  </li>
-              </ul>
-              <p><i>Some</i> Javascript is included, though it's mostly for going back to the top of the site.</p>
-              <hr />
-              <details>
-                  <summary>Credits</summary>
-                  <ul>
-                      <li>
-                          <a href="https://rentry.org/lavender-pix">lavendergalactic</a> for the header and
-                          favicon pixels
-                      </li>
-                      <li>
-                          <a href="https://salarua.neocities.org/misc/accessible_marquee/">Salarua</a> for the
-                          accessibility marquee
-                      </li>
-                      <li>
-                          <a href="https://codepen.io/sadness97/full/dPoEqNN">sadgirl</a> for the tiled
-                          backgrounds
-                      </li>
-                      <li>
-                          <a href="https://www.deviantart.com/king-lulu-deer">king-lulu-deer</a> for the wing
-                          pixel
-                      </li>
-                  </ul>
-              </details>
-          </section>
-          <section>
-              <div class="marquee">
-                  <div>
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                      <img src="https://placehold.co/88x31" alt="" />
-                  </div>
-              </div>
-          </section>
-          <section class="hide-desktop">
-              <h2>Surprise Box!</h2>
-              Hi! I'm a box you can only see on mobile, you <i>will not</i> see me on the desktop! Have a cookie.
-              🍪
-          </section>
-          <section>
-              <h2>Heading 2</h2>
-              <p>Wow look it's a little mini gallery you can use to show whatever images you wanna show!!</p>
-              <p>These are multiple images in a row:</p>
-              <div class="image-gallery">
-                  <div><img alt="" src="https://placedog.net/400/280" loading="lazy" /></div>
-                  <div><img alt="" src="https://placedog.net/200/280" loading="lazy" /></div>
-                  <div><img alt="" src="https://placedog.net/300/280" loading="lazy" /></div>
-                  <div><img alt="" src="https://placedog.net/300/480" loading="lazy" /></div>
-                  <div><img alt="" src="https://placedog.net/300/580" loading="lazy" /></div>
-              </div>
-              <p>Here's a full width image!</p>
-              <img
-                  src="https://placedog.net/800/380"
-                  alt=""
-                  class="full-width-image image-deco hide-mobile"
-                  loading="lazy" />
-          </section>
-          <section class="clearfix">
-              <div class="float-img-right hide-mobile">
-                  <img src="../oc/hideki/img/stamp_1.png" alt="" /><br /><img
-                      src="../oc/hideki/img/stamp_2.png"
-                      alt="" /><br /><img src="../oc/hideki/img/stamp_3.png" alt="" /><br /><img
-                      src="../oc/hideki/img/stamp_4.png"
-                      alt="" /><br /><img src="../oc/hideki/img/stamp_5.png" alt="" /><br /><img
-                      src="../oc/hideki/img/stamp_6.png"
-                      alt="" /><br /><img src="../oc/hideki/img/stamp_7.png" alt="" /><br />
-              </div>
-              <h3>Heading 3</h3>
-              <img src="https://placedog.net/200/400" class="float-img-left image-deco hide-mobile" />
-              <p>You can do a bunch of cool stuff here!!</p>
-              <ul>
-                  <li>Unsorted list</li>
-                  <li>Unsorted list</li>
-                  <li>
-                      Unsorted list
-                      <ul>
-                          <li>And within a list!</li>
-                      </ul>
-                  </li>
-              </ul>
-              <hr />
-              <p>
-                  Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-                  vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-                  sanctus est Lorem ipsum dolor sit amet.
-              </p>
+      
+      <div class="main single-column">
+        <div class="disclaimer">
+          <img src="images/patronichi.png" style="height:100px" class="wborder">
+          <div class="talkbubble">
+            <text><strong>ATTENTION</strong>: this site discusses topics like mental health, intrusive thoughts, and suicide. <em>please take care of yourself.</em></text>
+          </div>
+        </div>
 
-              <ol>
-                  <li>Sorted list</li>
-                  <li>Sorted list</li>
-                  <li>Sorted list</li>
-              </ol>
-          </section>
-          <section>
-              <img
-                  src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cf2836cb-5893-4a6c-b156-5a89d94fc721/daymbdh-c5acfef0-0b27-479c-a96a-9198f0357921.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9jZjI4MzZjYi01ODkzLTRhNmMtYjE1Ni01YTg5ZDk0ZmM3MjEvZGF5bWJkaC1jNWFjZmVmMC0wYjI3LTQ3OWMtYTk2YS05MTk4ZjAzNTc5MjEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.eyiMWFPzVDjivwZz814q-tCxvQIfTj4fYMt9Mruwm_Y"
-                  class="float-img-right hide-mobile"
-                  alt="" />
-              <h4>Heading 4</h4>
-              <p>Here are two columns:</p>
-              <div class="two-columns">
-                  <div>
-                      <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
-                      <p>At vero eos et accusam et justo duo dolores et ea rebum.</p>
-                      <div class="center-item">
-                          <a href="https://www.deviantart.com/kittea-paws/art/fluffy-pastel-cat-ears-824419141">
-                              <img
-                                  src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2920b107-ff04-45f0-8cee-f15c7e0e729d/ddmu5vp-0b5c04e0-09aa-47ab-83d3-e1bc97955996.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi8yOTIwYjEwNy1mZjA0LTQ1ZjAtOGNlZS1mMTVjN2UwZTcyOWQvZGRtdTV2cC0wYjVjMDRlMC0wOWFhLTQ3YWItODNkMy1lMWJjOTc5NTU5OTYuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.UqpWPG_rPug3EMiCQq8ezsQ9TgdNJ3IIhqp808Dn-HQ"
-                                  alt=""
-                                  loading="lazy"
-                                  class="image-glow"
-                          /></a>
-                      </div>
-                  </div>
-                  <div>
-                      <div class="scrollable">
-                          <p><b>Cool Update:</b> words words words</p>
-                          <p>
-                              Here's a cool area that can scroll as you write more in it; it's set to be at 200px
-                              by default but you can easily change that in the CSS or in the HTML directly!
-                          </p>
-                          <p>
-                              You can use this to dedicate to your updates, or anything else like webrings and
-                              what not.
-                          </p>
-                      </div>
-                  </div>
-              </div>
-              <hr />
-              <h5>Heading 5</h5>
-              <pre>
-&#x3C;div class=&#x22;two-columns&#x22;&#x3E;
-&#x3C;div&#x3E;
-  &#x3C;p&#x3E;Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.&#x3C;/p&#x3E;
-  &#x3C;p&#x3E;At vero eos et accusam et justo duo dolores et ea rebum.&#x3C;/p&#x3E;
-&#x3C;/div&#x3E;
-&#x3C;div&#x3E;
-  &#x3C;p&#x3E;Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr.&#x3C;/p&#x3E;
-  &#x3C;p&#x3E;At vero eos et accusam et justo duo dolores et ea rebum.&#x3C;/p&#x3E;
-&#x3C;/div&#x3E;
-&#x3C;/div&#x3E;</pre
-              >
-          </section>
-          <section>
-              <h6>Heading 6</h6>
-              <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorp</p>
+      <div class=thing><div class=inner>
+            <P>This thing is single-column, but two columns is also possible.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi   architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+         </div></div></div>
+      
+      <div class=main>
+      <div class=thing><div class=inner>    
+      <p>This section has two columns!</p>
+          <p>This is a paragraph! Here's how you make a link: <a href="https://neocities.org">Neocities</a>.</p>
 
-              <p><input type="text" value="Input" /></p>
-              <p>
-                  <select>
-                      <option selected>Selection</option>
-                      <option>Option 1</option>
-                      <option>Option 2</option>
-                      <option>Option 3</option>
-                  </select>
-              </p>
-              <p><textarea>Textarea</textarea></p>
-              <p><button type="button">Button</button></p>
-          </section>
-      </main>
-  </div>
-  <footer>2025. bloggy template by <a href="https://vgen.co/asuraid">asuraid</a>.</footer>
+          <p>Here's how you can make <strong>bold</strong> and <em>italic</em> text.</p>
 
-  <!-- Scroll to Top -->
-  <script src="../js/scroll-to-top.js"></script>
-</body>
+           <p>Here's how you can add an image:</p>
+          <img src="/neocities.png">
+
+          <p>Here's how to make a list:</p>
+
+           <ul>
+             <li>First thing</li>
+             <li>Second thing</li>
+             <li>Third thing</li>
+           </ul>
+
+            <p>To learn more HTML/CSS, check out these <a href="https://neocities.org/tutorials">tutorials</a>!</p>
+    
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi   architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+         </div></div>
+         <div class=thing><div class=inner>
+           <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+         </div></div>
+         <div class=thing><div class=inner>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <aside id="right">
+      <iframe src="https://www3.cbox.ws/box/?boxid=3537120&boxtag=8dz91p" width="100%" height="100%" style="border:none; margin:0;" title=""></iframe>
+    </aside>
+    
+    <footer class="border">
+      written on vscode ✦ sol 2024-26 ✦ you can pet the neko!
+      <section id="myuttons">
+        <a href="https://wolfsbane.nekoweb.org" title="chew toy"><img class="button" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.WoICK_kezbrncDfQjlVjjAHaFQ%3Fpid%3DApi%26ucfimg%3D1&f=1&ipt=80b738b14b13d046bc4772653552b2c79667fc0019853e96daa1e28106cfc35d&ipo=images" style="border:1px solid; width:88px; height:31px;"></a>
+  
+        <a href="https://yumeoi.skin" title="alternate universe twin"><img class="button" src="https://yumeoi.skin/image-files/my-buttons/icantread.png"></a>
+  
+        <a href="https://oversurge.nekoweb.org" title="ultrakill og since like march 2024"><img class="button" style="width:88px; height:31px;" src="https://oversurge.nekoweb.org/osvbtnanim.gif"></a>
+  
+        <a href="https://nekoweb.org/" title="ultrakill on nekoweb happens to be hosted on nekoweb. who knew?"><img src="https://nekoweb.org/assets/buttons/button6.gif" class="button"></a><!-- button by s1nez.nekoweb.org -->
+  
+        <a href="https://temstuff.neocities.org" target="_blank"><img src="https://64.media.tumblr.com/c7cf0eeea7b528183d95bbc043079c1e/a51f6f9947d2d663-2c/s100x200/598c4337b54f4e9c8c9f4cb04148a191c4daafde.gif" alt="button that reads 'tem stuff' on it" class="button"></a>
+  
+        <a href="https://maia.crimew.gay" target="_blank" title="the maia. if you don't know it i really suggest reading the blog section"><img src="https://maia.crimew.gay/badges/maia.crimew.gay.png" alt="maia crimew" class="button"></a>
+  
+        <a href="https://pawpyrus.art" title="words cannot describe how cool i think this site is"><img src="https://pawpyrus.art/graphics/siteButton.gif" height="31px" width="88px" class="button"></a>
+        <a href="https://melankorin.net/" title="of course it's melankorin theres no button wall complete without them"><img src="https://melankorin.net/assets/img/buttons/button-1.gif" alt="" class="button"></a>
+        <a href="https://yatagarasu.nekoweb.org" target="_blank" title="RAHHHHHHH"><img src="https://yatagarasu.nekoweb.org/images/yatagarasuButtonB.gif" alt="Yatagarasu site button" class="button"></a>
+        <a href="https://dreamscape.nekoweb.org" target="_blank" title="a very neat website with a really interesting webmaster"><img src="https://files.catbox.moe/901i0e.gif" alt="" class="button"></a>
+        <a href="https://decadancen.com/" title="im excited to see where it'll go next"><img src="sciku.png" class="button" style="width:88px; height:31px;"></a>
+        <a href="http://nondmo.online" title="peak aesthetic imo, simple but sophisticated in a way."><img src="http://nondmo.online/assets/button.png" class="button"></a>
+        <a href="https://satorikeiko.nekoweb.org" title="an interesting person"><img src="https://satorikeiko.nekoweb.org/88x31.png" class="button"></a>
+        <a href="https://deathlobotomy.nekoweb.org/" title="one of the first nekoweb sites i ever saw,, definitely a factor in me going into the indieweb scene. very cool 👍"><img src="https://deathlobotomy.nekoweb.org/img/buttons/moldbutton.gif" class="button"></a>
+        <a href="https://sunshine.nekoweb.org/" target="_blank" title="first status.cafe theme i saw and went 'they made this with html and css only- maybe i can do that too!' also we have the same name lol"><img src="https://sunshine.nekoweb.org/assets/sitebutton.gif" class="button"></a>
+        <a href="https://cyberdemon.nekoweb.org/" title="its cool"><img src="https://cyberdemon.nekoweb.org/button.png" class="button"></a>
+        <a href="https://obama.nekoweb.org/" title="senator ocasio-cortez said i need to link him so everyone knows i pay him for ads on his website. sorry chat"><img src="https://obama.nekoweb.org/obbutton.png" alt="obama button" class="button"></a>
+        <a href="https://amfmradio.org"><img src="https://amfmradio.org/imgs/buttonB.png" class="button"></a>
+      </section>
+    </footer>
+    </div>
+
+    <div role="tooltip" id="lastfm" class="is-top is-left">
+      <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content"></div> <script src="https://status.cafe/current-status.js?name=kitty" defer></script></div>
+    </div>
+  </body>
 </html>
